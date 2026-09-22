@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Dicionário de Dados — Loja de Tintas e Materiais de Construção</title>
+  <style>
+    :root { color-scheme: light; }
+    body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif; max-width: 980px; margin: 40px auto; padding: 0 20px; color: #1f2937; line-height: 1.5; }
+    h1 { font-size: 1.6rem; border-bottom: 3px solid #2F5597; padding-bottom: 10px; }
+    h2 { font-size: 1.15rem; color: #2F5597; margin-top: 2.2rem; border-left: 5px solid #C0504D; padding-left: 10px; }
+    table { border-collapse: collapse; width: 100%; margin: 0.8rem 0 1.6rem; font-size: 0.92rem; }
+    th, td { border: 1px solid #d1d5db; padding: 8px 10px; text-align: left; vertical-align: top; }
+    th { background: #2F5597; color: white; }
+    tr:nth-child(even) { background: #f3f6fb; }
+    .pk { font-weight: 700; }
+    .note { background: #FCE4D6; border-left: 5px solid #C0504D; padding: 10px 14px; margin-bottom: 1.5rem; font-size: 0.92rem; }
+    code { background: #eef0f3; padding: 1px 5px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <h1>Dicionário de Dados Conceitual — Loja de Tintas e Materiais de Construção</h1>
+
+  <div class="note">
+    Exemplos de valores para clientes e funcionários apresentados abaixo são <strong>fictícios</strong>, criados apenas para ilustrar o formato do atributo — não correspondem a pessoas reais da organização.
+  </div>
+
+  <h2>CATEGORIA</h2>
+  <table>
+    <tr><th>Atributo</th><th>Descrição</th><th>Regra de negócio associada</th></tr>
+    <tr><td class="pk">id_categoria</td><td>Identificador único da categoria</td><td>Obrigatório, gerado automaticamente</td></tr>
+    <tr><td>nome_categoria</td><td>Nome da categoria de produto (ex.: &quot;Tintas e Vernizes&quot;)</td><td>Obrigatório, único</td></tr>
+  </table>
+
+  <h2>PRODUTO</h2>
+  <table>
+    <tr><th>Atributo</th><th>Descrição</th><th>Regra de negócio associada</th></tr>
+    <tr><td class="pk">id_produto</td><td>Identificador único interno</td><td>Obrigatório</td></tr>
+    <tr><td>codigo_barras</td><td>Código de barras/EAN</td><td>Opcional</td></tr>
+    <tr><td>nome_produto</td><td>Nome/descrição comercial do produto</td><td>Obrigatório</td></tr>
+    <tr><td>preco</td><td>Preço de venda vigente</td><td>Obrigatório, ≥ 0</td></tr>
+    <tr><td>id_categoria</td><td>Categoria do produto</td><td>Opcional (FK)</td></tr>
+  </table>
+
+  <h2>CLIENTE</h2>
+  <table>
+    <tr><th>Atributo</th><th>Descrição</th><th>Regra de negócio associada</th></tr>
+    <tr><td class="pk">id_cliente</td><td>Identificador único</td><td>Obrigatório</td></tr>
+    <tr><td>nome</td><td>Nome do cliente ou razão social</td><td>Obrigatório</td></tr>
+    <tr><td>cpf</td><td>CPF do cliente pessoa física</td><td>Opcional</td></tr>
+    <tr><td>telefone</td><td>Telefone de contato</td><td>Opcional</td></tr>
+    <tr><td>cnpj</td><td>CNPJ da obra/empresa</td><td>Obrigatório</td></tr>
+    <tr><td>razao_social</td><td>Razão social da obra/empresa</td><td>Obrigatório</td></tr>
+    <tr><td>endereco</td><td>Endereço da obra/empresa</td><td>Obrigatório</td></tr>
+    <tr><td>cep</td><td>CEP do endereço da obra/empresa</td><td>Obrigatório</td></tr>
+  </table>
+
+  <h2>FUNCIONARIO</h2>
+  <table>
+    <tr><th>Atributo</th><th>Descrição</th><th>Regra de negócio associada</th></tr>
+    <tr><td class="pk">id_funcionario</td><td>Identificador único</td><td>Obrigatório</td></tr>
+    <tr><td>nome_funcionario</td><td>Nome do funcionário</td><td>Obrigatório</td></tr>
+  </table>
+
+  <h2>VENDA</h2>
+  <table>
+    <tr><th>Atributo</th><th>Descrição</th><th>Regra de negócio associada</th></tr>
+    <tr><td class="pk">id_venda</td><td>Identificador único</td><td>Obrigatório</td></tr>
+    <tr><td>data_hora</td><td>Data e hora da venda</td><td>Obrigatório, automática</td></tr>
+    <tr><td>id_cliente</td><td>Cliente que realizou a compra</td><td>Opcional (FK)</td></tr>
+    <tr><td>id_funcionario</td><td>Funcionário que realizou a venda</td><td>Obrigatório (FK)</td></tr>
+    <tr><td>valor_total</td><td>Valor total da venda</td><td>Obrigatório, ≥ 0</td></tr>
+  </table>
+
+  <h2>ITEM_VENDA</h2>
+  <table>
+    <tr><th>Atributo</th><th>Descrição</th><th>Regra de negócio associada</th></tr>
+    <tr><td class="pk">id_item_venda</td><td>Identificador único do item</td><td>Obrigatório</td></tr>
+    <tr><td>id_venda</td><td>Venda à qual pertence</td><td>Obrigatório (FK)</td></tr>
+    <tr><td>id_produto</td><td>Produto vendido</td><td>Obrigatório (FK)</td></tr>
+    <tr><td>quantidade</td><td>Quantidade vendida</td><td>Obrigatório, &gt; 0</td></tr>
+    <tr><td>preco_unitario</td><td>Preço praticado no momento da venda</td><td>Obrigatório, ≥ 0</td></tr>
+    <tr><td>subtotal</td><td>Quantidade × preço unitário</td><td>Calculado automaticamente</td></tr>
+  </table>
+
+  <h2>PAGAMENTO</h2>
+  <table>
+    <tr><th>Atributo</th><th>Descrição</th><th>Regra de negócio associada</th></tr>
+    <tr><td class="pk">id_pagamento</td><td>Identificador único</td><td>Obrigatório</td></tr>
+    <tr><td>id_venda</td><td>Venda associada</td><td>Obrigatório (FK)</td></tr>
+    <tr><td>forma_pagamento</td><td>Forma utilizada no pagamento</td><td>Obrigatório</td></tr>
+    <tr><td>valor_pago</td><td>Valor pago por aquela forma</td><td>Obrigatório, ≥ 0</td></tr>
+  </table>
+
+  <h2>USO DE IA</h2>
+  <table>
+    <tr><th>Objetivo</th><th>Orientação para IA</th></tr>
+    <tr><td>Partes Repetitivas</td><td>Identificar rotinas ou estruturas duplicadas no código e reutilizar padrões, utilitários e funções genéricas.</td></tr>
+    <tr><td>Melhoria de Código</td><td>Sugerir refatorações para legibilidade, simplificação de lógica e otimização de desempenho.</td></tr>
+  </table>
+
+</body>
+</html>
