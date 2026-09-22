@@ -214,11 +214,39 @@ O modelo já comporta evolução futura, por exemplo: histórico de reajuste de 
 |------|------------------|
 | **Ferramenta e etapa** | `feeramenta utilizadas chatgpt e claude para alteração de dados e tambem para auxilio na construção do banco de dados "]` |
 | **Motivação** | `[]` |
-| **Prompt(s) utilizados** | `[altere os nomes e dados para dados ficticios para que posssa ser utilizado no projeto de bancod de dados.Foi encaminhado imagens das planilhas que obtivemos na ida na loja ]` |
-| **Resposta recebida** | `[PREENCHER: resuma o que a IA devolveu]` |
+| **Prompt(s) utilizados** | tenho um trabalho da faculdade onde preciso montar um banco de dados pretendo utilizar mysql para realizar a tarefa o meu grupo escolheu o uma loja de tintas e materiais de construção me ajude a criar o banco de dados solido plausivel e com todas as informações como um otimo banco de dados deve ser foi anexado as informações da loja tambem esta anexado o esqueleto e requisitos das entregas solicitados pelo professor  me ajude criar o banco de dados e tambem os requisitos que estão sendo solicitados ]` |
+| **Resposta recebida** | `Vou te ajudar com as duas entregas. Antes de gerar tudo, um ponto importante direto: o enunciado exige que a organização seja real, com evidências reais (fotos, endereço, contato, link no Google) — isso não posso inventar para vocês, precisa vir da pesquisa de campo do grupo. Vou montar tudo que é tecnicamente possível (modelo conceitual, DER, dicionário de dados, script SQL completo com massa de dados fictícia, normalização, README das duas entregas) usando os catálogos que vocês anexaram (que mostram claramente uma loja de tintas/ferramentas/materiais de construção), e deixo marcado com [PREENCHER] exatamente os pontos que só vocês podem completar com dados reais da loja.
+
+Vou gerar o script SQL primeiro (a parte mais longa e que precisa ser consistente).
+
+O script final, com o cabeçalho, roda do zero sem erro — banco criado, 67 produtos, 18 vendas, joins/updates/deletes/consultas gerenciais e de auditoria todos funcionando (inclusive a consulta de auditoria pegando de propósito a inconsistência gerada pelo DELETE de exemplo). Todos os arquivos estão prontos.
+
+Presented 6 files
+
+Montei o pacote completo cobrindo as duas entregas, com base nos catálogos que vocês mandaram (uma loja de tintas/ferramentas/materiais de construção):
+
+Banco de dados (rodado do zero e testado num MariaDB de verdade — sem erros):
+
+9 tabelas: categoria, fornecedor, produto, estoque, cliente, funcionario, venda, item_venda (associativa N:N) e pagamento
+script_banco_dados.sql — CREATE DATABASE, CREATE TABLE com PK/FK/UNIQUE/CHECK, massa de dados fictícia (67 produtos reais dos seus catálogos + 8 clientes e 5 funcionários fictícios + 18 vendas), SELECT com JOIN, UPDATE, DELETE, consultas gerenciais (faturamento por mês/categoria/vendedor, ranking de produtos, reposição de estoque) e consultas de auditoria
+
+Diagramas (imagens prontas para anexar):
+
+DER_loja_tintas_materiais.png — notação Chen, com cardinalidades
+Modelo_Logico_Relacional.png — tabelas, colunas, PK/FK
+
+Documentação (esqueletos preenchidos):
+
+README_Entrega1.md — caracterização, processos, requisitos, regras de negócio, dicionário de dados, justificativa técnica
+Relatorio_Tecnico_Entrega2.md — conversão conceitual→lógico, normalização (1FN/2FN/3FN) com exemplos reais do seu modelo, justificativas, proposta de BI/IA
+Dicionario_Dados.html
+
+O que só o grupo pode preencher (marcado [PREENCHER] nos arquivos): nome real da loja, endereço, contato, fotos/link do Google e o quadro de "Uso de IA" — isso é exigência explícita do professor de pesquisa de campo real, não posso inventar.
+
+Quer que eu já monte os slides da apresentação final (item 7 da Entrega 2)?` |
 | **Fontes consultadas e verificadas** | `[Dados e planilhas do estabelecimento]` |
 | **Trechos rejeitados ou corrigidos** | `[todas as informações pessoais forma alteradas por ficticias .]` |
-| **Justificativa da escolha final** | `[PREENCHER]` |
+| **Justificativa da escolha final** | `foi escolhido as ias chatgpt e claude pafra auxilio em infomrações e resoluções de problemas |
 | **Reflexão crítica** | `[PREENCHER: ex. "a IA não pode confirmar dados reais da loja, então todos os campos de caracterização e evidências tiveram que ser preenchidos pelo grupo após a visita de campo"]` |
 
 > **Importante:** esta seção precisa ser preenchida com honestidade pelo grupo. O conteúdo técnico deste repositório (estrutura de entidades, DER, script SQL) foi produzido com apoio de IA a partir dos catálogos de produtos fornecidos pelo grupo — isso deve constar aqui como uso real de IA, não pode ser omitido.
