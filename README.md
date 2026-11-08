@@ -12,11 +12,9 @@
 | Gabriel Souza | 46683305 | [gabrieldesouza1830-cell](https://github.com/gabrieldesouza1830-cell) |
 | Gabriel Rodrigues da Silva | 46885030 | [GabrielsRodrigues15](https://github.com/GabrielsRodrigues15) (repositório `GabrielsRodrigues15/Banco-de-dados-3feira`) |
 | Ítalo Leal Oliveira | 47837098 | [italoleal567](https://github.com/italoleal567) |
-| Vinicius Batista Merencio | 46749257 `[VALIDAR]` | [viniciusmerencio0-cpu](https://github.com/viniciusmerencio0-cpu) |
+| Vinicius Batista Merencio | 46749527 | [viniciusmerencio0-cpu](https://github.com/viniciusmerencio0-cpu) |
 
-> `[VALIDAR]` RGM do Vinicius: aqui está **46749257** (informado agora); na Entrega 1 constava **46749527**. Confirmar qual é o correto.
-
-**Curso / Disciplina:** `[PREENCHER]` — Modelagem de Banco de Dados (turma de terça-feira) · Prof. Cid Andrade `[VALIDAR]`.
+**Curso / Disciplina:** Banco de Dados — Modelagem de Banco de Dados (turma de terça-feira) · Prof. Cid Andrade `[VALIDAR]`.
 **SGBD:** MySQL 8.0 (InnoDB, `utf8mb4`) · **Banco:** `loja_tintas_materiais`.
 
 ## Situação atual do projeto
