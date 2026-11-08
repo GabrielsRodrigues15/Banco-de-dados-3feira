@@ -1,8 +1,5 @@
-# Entrega 1 — Modelo Conceitual (DER)
-### Modelagem de um sistema de gestão de informações para uma organização de pequeno porte
 # Máximo Das Tintas 🫟 — Relatório Técnico Final
 
----
 ### Modelagem de Banco de Dados · Entrega 2 (modelo lógico, SQL em MySQL e arquitetura analítica)
 
 > Este README é o relatório da Entrega 2. A Entrega 1 (caracterização, processos, requisitos, regras, dicionário conceitual e DER) está preservada no **[Anexo A](#anexo-a--entrega-1-modelo-conceitual)** no fim do arquivo.
@@ -15,19 +12,20 @@
 | Gabriel Souza | 46683305 | [gabrieldesouza1830-cell](https://github.com/gabrieldesouza1830-cell) |
 | Gabriel Rodrigues da Silva | 46885030 | [GabrielsRodrigues15](https://github.com/GabrielsRodrigues15) (repositório `GabrielsRodrigues15/Banco-de-dados-3feira`) |
 | Ítalo Leal Oliveira | 47837098 | [italoleal567](https://github.com/italoleal567) |
+| Vinicius Batista Merencio | 46749257 `[VALIDAR]` | [viniciusmerencio0-cpu](https://github.com/viniciusmerencio0-cpu) |
 
-**Curso / Disciplina:** `[PREENCHER]` — Modelagem de Banco de Dados (turma de terça-feira) · Prof. `[PREENCHER]`.
+> `[VALIDAR]` RGM do Vinicius: aqui está **46749257** (informado agora); na Entrega 1 constava **46749527**. Confirmar qual é o correto.
+
+**Curso / Disciplina:** `[PREENCHER]` — Modelagem de Banco de Dados (turma de terça-feira) · Prof. Cid Andrade `[VALIDAR]`.
 **SGBD:** MySQL 8.0 (InnoDB, `utf8mb4`) · **Banco:** `loja_tintas_materiais`.
 
-## Metadados
 ## Situação atual do projeto
 
-- **Nomes dos alunos e RGM:** `[Gabriel Rodrigues Da Silva 46885030, Gabriel Souza 46683305, Vinicius Batista Merencio 46749527,Ítalo Leal Oliveira 47837098 `
 Resumo do que já está pronto e do que ainda depende do grupo (atualizado em 08/11/2026).
 
 | Item da entrega | Situação | Onde está |
 |---|---|---|
-| Caracterização da loja e problemas | ✅ pronto (faltam fotos, endereço e CNPJ) | [1.1](#11-caracterização-da-organização-problemas-e-evidências) |
+| Caracterização da loja e problemas | ✅ pronto (faltam endereço e CNPJ) | [1.1](#11-caracterização-da-organização-problemas-e-evidências) |
 | Processos, requisitos e regras de negócio | ✅ pronto | [Anexo A, seções 2 a 4](#2-processos-de-negócio) |
 | DER (modelo conceitual) | ✅ pronto (Chen + BRModelo) | [`entrega-1/`](entrega-1/) |
 | Revisão do conceitual para o lógico | ✅ documentada | [1.1](#revisão-do-modelo-conceitual) e [1.2](#12-conversão-do-conceitual-para-o-lógico) |
@@ -38,7 +36,7 @@ Resumo do que já está pronto e do que ainda depende do grupo (atualizado em 08
 | Testes de restrições | ✅ 11 de 11 operações inválidas rejeitadas | [`docs/09_testes_restricoes.sql`](docs/09_testes_restricoes.sql) |
 | Fluxogramas de processo | ✅ venda e reposição | [`fluxograma/`](fluxograma/) |
 | Arquitetura analítica (BI e IA) | ✅ proposta | [1.6](#16-arquitetura-analítica-bi-e-ia) |
-| Evidências da visita (fotos, entrevista) | ⚠️ falta anexar | [`evidencias/`](evidencias/) |
+| Evidências da visita | ✅ 2 fotos · ⚠️ falta o relatório da entrevista e os catálogos | [`evidencias/`](evidencias/) |
 | Uso de IA — reflexão crítica do grupo | ⚠️ falta o texto do grupo | [6](#6-uso-de-inteligência-artificial-nesta-entrega) |
 | Commits equilibrados entre os integrantes | ⚠️ conferir antes da entrega | [5](#5-repositório) |
 | Pitch de 8 minutos | ⚠️ roteiro pronto, falta ensaiar | [7](#7-pitch-de-8-minutos) |
@@ -54,6 +52,7 @@ Resumo do que já está pronto e do que ainda depende do grupo (atualizado em 08
 6. [Uso de IA](#6-uso-de-inteligência-artificial-nesta-entrega)
 7. [Pitch](#7-pitch-de-8-minutos)
 8. [Limitações e pontos a validar](#8-limitações-e-pontos-a-validar)
+9. [Referências da disciplina](#referências-da-disciplina)
 
 **Anexo A — Entrega 1 (modelo conceitual)**
 
@@ -69,7 +68,6 @@ Resumo do que já está pronto e do que ainda depende do grupo (atualizado em 08
 
 ---
 
-## 1. Caracterização da Organização
 ## 1. Modelo conceitual
 
 ### 1.1 Caracterização da organização, problemas e evidências
@@ -110,8 +108,14 @@ Dados informados pela loja:
 | E-mail da loja | maximosdastintas@gmail.com |
 | Endereço e CNPJ | `[PREENCHER]` |
 | Responsável entrevistado | `[PREENCHER]` nome e função |
-| Fotos da visita | `[PREENCHER]` adicionar em [`evidencias/`](evidencias/) (fachada, balcão, equipe) |
+| Fotos da visita | [`evidencias/balcao_pdv.jpg`](evidencias/balcao_pdv.jpg) (balcão com o PDV da loja) · [`evidencias/visita_loja.jpg`](evidencias/visita_loja.jpg) (integrante na loja, `[PREENCHER]` quem) · `[PREENCHER]` foto da fachada |
 | Catálogos de produtos | Listas de preço do PDV usadas para montar os 67 produtos da carga (`[PREENCHER]` anexar em `evidencias/`) |
+
+| Balcão e sistema de frente de caixa | Visita à loja |
+|---|---|
+| ![Balcão com o PDV da Máximo Das Tintas](evidencias/balcao_pdv.jpg) | ![Integrante do grupo na loja](evidencias/visita_loja.jpg) |
+
+**Observação da foto do PDV.** A tela de venda do sistema atual mostra os campos **Cliente**, **Vendedor**, produto (código/descrição), quantidade, preço, **desconto** e **taxa de entrega**, além de "Total a pagar". Cliente, vendedor, produto, quantidade e preço já estão no modelo; **desconto** e **taxa de entrega** não estão (ver seção 8). `[VALIDAR]` com a loja se há entrega e desconto na venda.
 
 **Relatório da entrevista.** `[PREENCHER]` data da visita, quem foi entrevistado e quais integrantes participaram. Assuntos levantados (conforme as respostas já registradas no Anexo A): número de funcionários, faturamento, saída de produtos, formação de preço e política de troca.
 
@@ -125,7 +129,6 @@ Dados informados pela loja:
 
 Mudanças entre o DER feito pelo grupo no BRModelo em 22/09/2026 ([`entrega-1/DER_brmodelo_22-09-2026.pdf`](entrega-1/DER_brmodelo_22-09-2026.pdf)) e o modelo implementado (DER em Chen em [`entrega-1/DER_chen_loja_tintas.png`](entrega-1/DER_chen_loja_tintas.png) e modelo lógico na seção 2):
 
-> ⚠️ **Atenção do grupo:** os campos abaixo marcados com `[PREENCHER]` só podem ser respondidos com a organização **real** visitada pelo grupo. Nada aqui pode ser inventado — o enunciado exige pesquisa de campo. O texto genérico serve apenas de estrutura/exemplo de redação.
 | No DER do BRModelo | No modelo final | Por quê |
 |---|---|---|
 | ESTOQUE ligado a CATEGORIA (1,1) | ESTOQUE ligado a **PRODUTO** (1:1) | O saldo é de cada produto, não da categoria |
@@ -271,26 +274,12 @@ Fatos: `item_venda`, `pagamento`. Dimensões: tempo (`venda.data_venda`), produt
 
 **Usos de IA que o modelo sustenta** (propostas, não implementadas): (1) **previsão de demanda** por produto e mês sobre `item_venda` (tintas têm sazonalidade: fim de ano e verão); (2) **reposição sugerida**, em que `vw_produtos_abaixo_minimo` é a versão em SQL e um modelo ajusta o mínimo pelo giro real; (3) **produtos comprados juntos** (regras de associação sobre `item_venda`: tinta + rolo + fita + lixa) para sugerir itens no balcão; (4) **detecção de anomalias** em cancelamentos e diferenças de caixa (auditorias 7.1 e 7.2).
 
-- **Nome e natureza da organização:** `[maximos das tintas]` — loja de pequeno/médio porte do varejo de **tintas, ferramentas e materiais de construção**, com fins lucrativos, atuando na venda ao consumidor final (pessoa física) e a pequenos profissionais/empresas de reforma e construção civil (pessoa jurídica).
-- **Contexto e porte:** organização comercial familiar/de pequeno porte, com equipe reduzida (ex.: gerente, vendedores, caixa) e catálogo amplo de itens de giro rápido — chaves, alicates, espátulas, pincéis, rolos, fitas, solventes e tintas de marcas como Suvinil, Bilacor, Tramontina, Ferja, Tigre, Condor, Famastil e Thompson. `[PREENCHER: número real de funcionários: 2 funcionarios volume médio de vendas/mês:valor:20 mil reais.em produtos media de 500que saem do estoque  área de atendimento: os mesmos 2 funcionarios]`.
-- **Problemas e necessidades identificados:** o controle de produtos hoje é feito por meio de listas de preço em PDF/planilha exportadas do sistema de frente de caixa (como os catálogos fornecidos), sem uma base relacional própria que integre catálogo, estoque, vendas, clientes e fornecedores em um único sistema. Isso dificulta: saber rapidamente o que está abaixo do estoque mínimo, cruzar vendas por vendedor/categoria/fornecedor, e gerar relatórios gerenciais sem exportar e tratar manualmente planilhas. `[PREENCHER: problemas relatados pelo responsável durante a visita]`.
-- **Justificativa da escolha:** é um caso real de pequeno negócio com processos de venda, controle de estoque e relacionamento com múltiplos fornecedores — volume de dados suficiente (dezenas de categorias de produtos, múltiplas marcas/fornecedores) sem a complexidade de uma rede varejista, o que a torna adequada ao escopo da disciplina.
-- **Evidências da organização:** `[https://share.google/O58fMgnEeO1ujE6RM link da loja no google  email:maximosdastintas@gmail.com]`.
 Cuidados: CPF/CNPJ, telefone e e-mail de clientes ficam fora da camada analítica (LGPD). Nenhum dado pessoal real foi usado na massa.
 
 ---
 
-## 2. Processos de Negócio
 ## 2. Modelo lógico
 
-- **Principais processos mapeados:**
-  1. **Cadastro de produtos** — inclusão de novos itens no catálogo (código interno, código de barras/EAN, descrição, NCM, unidade, preço, categoria e fornecedor).
-  2. **Cadastro de clientes** — pessoa física ou jurídica, com dados de contato.
-  3. **Controle de estoque** — entrada de mercadorias (compra ao fornecedor) e baixa automática a cada venda concluída.
-  4. **Registro de vendas** — abertura da venda, inclusão de itens (produto + quantidade), fechamento e associação ao vendedor responsável.
-  5. **Registro de pagamento** — forma de pagamento (dinheiro, PIX, cartão, boleto) e parcelamento, vinculado à venda.
-  6. **Reposição de estoque** — identificação de produtos abaixo do estoque mínimo para novo pedido ao fornecedor.
-- **Fluxograma (opcional):** `]`.
 ![Modelo lógico](docs/modelo_logico.png)
 
 Diagrama gerado pelo **Graphviz** a partir do catálogo do MySQL real (`scripts/gerar_docs_banco.py`), com PK/FK/UQ, tipos, `NOT NULL` (NN) e cardinalidade (mín,máx) em cada ponta. Versão vetorial: [`docs/modelo_logico.svg`](docs/modelo_logico.svg); fonte: [`docs/modelo_logico.dot`](docs/modelo_logico.dot). `[VALIDAR]` se o professor exige a notação do BRModelo.
@@ -365,7 +354,7 @@ Banco-de-dados-3feira/
 │                                    modelo lógico (.png/.svg/.dot), dicionário lógico (.html)
 ├── entrega-1/                     ← DER em Chen, DER do BRModelo (22/09/2026), dicionário conceitual (.html)
 ├── fluxograma/                    ← fluxos de venda e de reposição (.dot/.png/.svg)
-├── evidencias/                    ← fotos, catálogos e roteiro da entrevista (a anexar)
+├── evidencias/                    ← fotos da visita (balcão/PDV, loja); catálogos e entrevista a anexar
 └── scripts/gerar_docs_banco.py    ← gera o modelo lógico e o dicionário a partir do MySQL
 ```
 
@@ -411,8 +400,22 @@ Roteiro sugerido, na ordem pedida:
 5. **`venda.valor_total`** é informado na inserção e não é recalculado sozinho ao alterar itens; a auditoria 7.1 detecta a diferença. Um trigger de recálculo é uma melhoria possível.
 6. **Massa pequena:** 20 vendas não representam o volume real (≈ 500 unidades/mês); 5 funcionários na massa contra 2 na loja `[VALIDAR]`.
 7. **Política de troca** (2 semanas, com nota) está no processo e no fluxograma, mas não é verificada pelo banco (não há data limite de cancelamento).
-8. **Integrantes:** Vinicius Batista Merencio (RGM 46749527) constava na Entrega 1 e não está na lista desta entrega. `[VALIDAR]`
-9. **Evidências:** faltam fotos da visita, endereço/CNPJ, responsável entrevistado e os catálogos usados (`evidencias/`).
+8. **Desconto e taxa de entrega** aparecem na tela do PDV da loja (foto em `evidencias/balcao_pdv.jpg`), mas não existem no modelo. Se a loja confirmar, incluir `venda.valor_desconto` e `venda.taxa_entrega` (e ajustar o total e a auditoria 7.1). `[VALIDAR]`
+9. **RGM do Vinicius:** 46749257 nesta entrega e 46749527 na Entrega 1. `[VALIDAR]`
+10. **Evidências:** faltam foto da fachada, endereço/CNPJ, responsável entrevistado e os catálogos usados (`evidencias/`).
+
+## Referências da disciplina
+
+Materiais usados como base para a modelagem e a documentação:
+
+| Tema | Link | Onde foi aplicado neste projeto |
+|---|---|---|
+| Dicionário de dados | [medium.com/datapsico — Dicionário de dados](https://medium.com/datapsico/dicionario-de-dados-ac3ce726c34b) | Dicionário conceitual (Anexo A, seção 5) e [dicionário lógico](docs/dicionario_dados_logico.html) |
+| Script SQL passo a passo (Westeros) | [cidandrade.github.io/script-sql-westeros](https://cidandrade.github.io/script-sql-westeros/#passo-2) | Ordem do [`script.sql`](docs/script.sql): banco → tabelas → carga → consultas (seção 3) |
+| Conversão do DER em tabelas | [cidandrade.github.io/conversor-der-tabelas](https://cidandrade.github.io/conversor-der-tabelas/#c=lotacao&a=11&b=0n&alt=1) | Regras de conversão 1:1, 1:N e N:N (seção 1.2) |
+| Cardinalidade no DER | [cidandrade.github.io/cardinalidade-der](https://cidandrade.github.io/cardinalidade-der/) | Cardinalidades (mín,máx) das FKs (seção 1.3) e do [modelo lógico](docs/modelo_logico.png) |
+| Normalização (conferência) | [cidandrade.github.io/normalizacao](http://cidandrade.github.io/normalizacao/#conferencia) | 1FN, 2FN e 3FN (seção 1.4) |
+| Material da disciplina (Drive) | [Pasta no Google Drive](https://drive.google.com/drive/folders/1QVVdiG4LxFE7L3BSnZDFmHyakaoPX94A) | Enunciado e esqueleto das entregas |
 
 ---
 
@@ -441,60 +444,47 @@ Roteiro sugerido, na ordem pedida:
   6. **PR6 — Reposição de estoque:** identificação de produtos abaixo do estoque mínimo para novo pedido ao fornecedor.
 - **Fluxogramas:** [`fluxograma/fluxo_vendas.png`](fluxograma/fluxo_vendas.png) (PR2, PR4, PR5 e troca) e [`fluxograma/fluxo_reposicao.png`](fluxograma/fluxo_reposicao.png) (PR3 e PR6).
 
-## 3. Requisitos do Sistema
 ### 3. Requisitos do Sistema
 
-### 3.1 Requisitos Funcionais
 #### 3.1 Requisitos Funcionais
 - RF01 — O sistema deve permitir cadastrar, consultar, atualizar e inativar produtos.
 - RF02 — O sistema deve permitir cadastrar clientes (pessoa física ou jurídica).
 - RF03 — O sistema deve permitir registrar uma venda associada a um cliente e a um funcionário responsável.
+- RF04 — O sistema deve permitir adicionar múltiplos produtos a uma mesma venda, com quantidade e preço praticado no momento da venda.
+- RF05 — O sistema deve calcular automaticamente o valor total da venda a partir dos itens lançados.
+- RF06 — O sistema deve dar baixa no estoque do produto ao concluir uma venda.
+- RF07 — O sistema deve permitir registrar um ou mais pagamentos vinculados a uma venda.
+- RF08 — O sistema deve permitir consultar produtos com estoque igual ou abaixo do mínimo definido.
 - RF09 — O sistema deve permitir gerar relatórios gerenciais de faturamento por período, por categoria e por vendedor.
 - RF10 — O sistema deve permitir cancelar uma venda sem apagar seu histórico (mudança de status).
 
-### 3.2 Requisitos Não Funcionais
 #### 3.2 Requisitos Não Funcionais
 - RNF01 — **Integridade:** toda venda deve referenciar um cliente e um funcionário já cadastrados (chaves estrangeiras obrigatórias).
 - RNF02 — **Consistência:** o valor total da venda deve refletir a soma dos subtotais dos itens (verificável por consulta de auditoria).
 - RNF03 — **Disponibilidade:** o sistema deve estar acessível durante o horário comercial da loja, sem indisponibilidades que impeçam o fechamento de vendas.
-- RNF04 — **Segurança:** dados de clientes (CPF/CNPJ, contato) devem ter acesso restrito a usuários autorizados do sistema.
-- RNF05 — **Desempenho:** consultas gerenciais (faturamento, ranking de produtos) devem responder em tempo aceitável mesmo com histórico de milhares de vendas.
 - RNF04 — **Segurança:** dados de clientes (CPF/CNPJ, contato) devem ter acesso restrito a usuários autorizados.
 - RNF05 — **Desempenho:** consultas gerenciais (faturamento, ranking de produtos) devem responder em tempo aceitável mesmo com milhares de vendas.
 - RNF06 — **Usabilidade:** o cadastro de uma venda deve ser possível em poucos passos, dado o ritmo de atendimento no balcão.
 
----
-
-## 4. Regras de Negócio
 ### 4. Regras de Negócio
 
 - **Regras operacionais:**
   - Uma venda só pode ser registrada para um produto que exista no catálogo e esteja ativo.
   - Um item de venda não pode ter quantidade menor ou igual a zero.
-  - Um produto não pode aparecer duas vezes na mesma venda como itens separados — quantidades adicionais do mesmo produto atualizam a linha existente (garantido por restrição de unicidade `venda + produto`).
   - Um produto não pode aparecer duas vezes na mesma venda como itens separados — quantidades adicionais atualizam a linha existente (restrição de unicidade `venda + produto`).
   - Um pagamento só pode ser registrado para uma venda existente; o valor pago deve ser maior ou igual a zero.
-  - Toda venda concluída deve gerar baixa proporcional no estoque do(s) produto(s) vendido(s).
   - Toda venda concluída deve gerar baixa proporcional no estoque dos produtos vendidos.
   - O estoque de um produto não pode ficar negativo.
 - **Restrições organizacionais:**
-  - CPF/CNPJ de clientes e fornecedores devem ser únicos no cadastro, para evitar duplicidade de registros.
-  - Cada produto pertence a exatamly uma categoria e a um fornecedor principal, para permitir relatórios gerenciais por essas dimensões.
-  - `[PREENCHER: políticas específicas observadas na loja — ex. prazo de troca: 2 semanas  exigência de nota fiscal para determinadas vendas: somente para troca. forma de precificação por fornecedor:E adicoinado uma porcentagem em media 60% no valor do produto comprado pelo forncedor e repassado ao cliente como preço final após a adição do valor]`.
-
----
   - CPF/CNPJ de clientes e fornecedores devem ser únicos no cadastro, para evitar duplicidade.
   - Cada produto pertence a exatamente uma categoria e a um fornecedor principal, para permitir relatórios por essas dimensões.
   - **Troca:** prazo de **2 semanas**; a nota fiscal é exigida **somente para troca**.
   - **Precificação:** sobre o valor de compra do fornecedor é adicionada, em média, **60%**, que é repassado ao cliente como preço final.
 
-## 5. Dicionário de Dados Conceitual (Preliminar)
 ### 5. Dicionário de Dados Conceitual (Preliminar)
 
-> Tabela completa também entregue em formato HTML: `Dicionario_Dados.html`.
 > Versão em HTML: [`entrega-1/dicionario_dados_conceitual.html`](entrega-1/dicionario_dados_conceitual.html). A versão final, com tipos e restrições do MySQL, é o [dicionário lógico](docs/dicionario_dados_logico.html).
 
-### Entidade: CATEGORIA
 #### Entidade: CATEGORIA
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
@@ -502,77 +492,94 @@ Roteiro sugerido, na ordem pedida:
 | nome_categoria | Nome da categoria de produto (ex.: "Tintas e Vernizes") | Obrigatório, único |
 | descricao | Descrição complementar da categoria | Opcional |
 
-### Entidade: FORNECEDOR
 #### Entidade: FORNECEDOR
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
 | id_fornecedor | Identificador único do fornecedor | Obrigatório |
+| nome_fornecedor | Razão social / marca do fornecedor (ex.: "Tramontina") | Obrigatório |
+| cnpj | CNPJ do fornecedor | Obrigatório, único |
 | telefone | Telefone de contato | Opcional |
 | email | E-mail de contato | Opcional |
 
-### Entidade: PRODUTO
 #### Entidade: PRODUTO
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
 | id_produto | Identificador único interno | Obrigatório |
+| codigo_interno | Código do produto usado no PDV da loja (ex.: "16642") | Obrigatório, único |
+| codigo_barras | Código de barras/EAN do produto | Opcional (nem todo item possui EAN cadastrado) |
+| descricao | Descrição comercial do produto (ex.: "CHV FENDA 1/8X5 AM TRAMON") | Obrigatório |
+| ncm | Código NCM para fins fiscais | Opcional |
+| unidade_medida | Unidade de venda (ex.: UN) | Obrigatório, padrão "UN" |
+| preco_unitario | Preço de venda vigente | Obrigatório, deve ser ≥ 0 |
+| id_categoria | Categoria à qual o produto pertence | Obrigatório (FK) |
 | id_fornecedor | Fornecedor/marca do produto | Obrigatório (FK) |
 | ativo | Indica se o produto ainda é comercializado | Obrigatório, padrão verdadeiro |
 
-### Entidade: ESTOQUE
 #### Entidade: ESTOQUE
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
 | id_estoque | Identificador único do registro de estoque | Obrigatório |
+| id_produto | Produto ao qual o estoque se refere | Obrigatório, único (1 estoque por produto) |
+| quantidade_atual | Quantidade disponível em estoque | Obrigatório, não pode ser negativo |
 | quantidade_minima | Quantidade mínima antes de disparar reposição | Obrigatório, padrão 5 |
 | localizacao_deposito | Localização física no depósito/prateleira | Opcional |
 
-### Entidade: CLIENTE
 #### Entidade: CLIENTE
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
 | id_cliente | Identificador único | Obrigatório |
+| nome | Nome/razão social do cliente | Obrigatório |
+| tipo_pessoa | PF ou PJ | Obrigatório |
+| cpf_cnpj | Documento do cliente | Obrigatório, único |
+| telefone | Telefone de contato | Opcional |
+| email | E-mail de contato | Opcional |
+| endereco | Endereço do cliente | Opcional |
+| data_cadastro | Data do primeiro cadastro | Obrigatório, gerada automaticamente |
 
 *Exemplo fictício (não são dados reais de clientes da loja): "Marcos Aurelio Ribeiro", PF, telefone (11) 98765-4321.*
 
-### Entidade: FUNCIONARIO
 #### Entidade: FUNCIONARIO
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
 | id_funcionario | Identificador único | Obrigatório |
+| nome | Nome do funcionário | Obrigatório |
+| cargo | Cargo (vendedor, caixa, gerente) | Obrigatório |
+| cpf | CPF do funcionário | Obrigatório, único |
 | data_admissao | Data de admissão | Obrigatório |
 | ativo | Indica se ainda trabalha na loja | Obrigatório, padrão verdadeiro |
 
-### Entidade: VENDA
 #### Entidade: VENDA
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
 | id_venda | Identificador único da venda | Obrigatório |
+| id_cliente | Cliente que realizou a compra | Obrigatório (FK) |
+| id_funcionario | Funcionário que atendeu a venda | Obrigatório (FK) |
+| data_venda | Data/hora da venda | Obrigatório, gerada automaticamente |
 | status_venda | Orçamento, concluída ou cancelada | Obrigatório |
 | valor_total | Soma dos subtotais dos itens da venda | Obrigatório, deve ser ≥ 0 |
 
-### Entidade: ITEM_VENDA (associativa Venda–Produto)
 #### Entidade: ITEM_VENDA (associativa Venda–Produto)
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
 | id_item_venda | Identificador único do item | Obrigatório |
+| id_venda | Venda à qual o item pertence | Obrigatório (FK) |
+| id_produto | Produto vendido | Obrigatório (FK) |
+| quantidade | Quantidade vendida do produto | Obrigatório, deve ser > 0 |
 | preco_unitario_venda | Preço praticado no momento da venda (histórico) | Obrigatório |
 | subtotal | quantidade × preco_unitario_venda | Calculado automaticamente |
 
-### Entidade: PAGAMENTO
 #### Entidade: PAGAMENTO
 | Atributo | Descrição | Regra de negócio associada |
 |---|---|---|
 | id_pagamento | Identificador único | Obrigatório |
+| id_venda | Venda associada ao pagamento | Obrigatório (FK) |
+| forma_pagamento | Dinheiro, PIX, cartão de crédito/débito ou boleto | Obrigatório |
+| valor_pago | Valor pago | Obrigatório, deve ser ≥ 0 |
 | data_pagamento | Data/hora do pagamento | Obrigatório |
 | parcelas | Número de parcelas (cartão de crédito) | Obrigatório, deve ser ≥ 1 |
 
----
-
-## 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
 ### 6. Modelagem Conceitual (Entidades, Atributos, Relacionamentos)
 
-- **Entidades reconhecidas:** CATEGORIA, FORNECEDOR, PRODUTO, ESTOQUE, CLIENTE, FUNCIONARIO, VENDA, ITEM_VENDA (associativa) e PAGAMENTO. Cada uma representa um conceito estável e independente do negócio: o catálogo (categoria/fornecedor/produto/estoque), as pessoas envolvidas na venda (cliente/funcionário) e a transação em si (venda/item_venda/pagamento).
-- **Atributos e classificações:** ver Dicionário de Dados (Seção 5). Cada entidade possui um identificador substituto (`id_*`) como chave primária e um atributo natural relevante para consulta (ex.: `codigo_interno` em produto, `cpf_cnpj` em cliente) tratado como chave candidata/única.
 - **Entidades reconhecidas:** CATEGORIA, FORNECEDOR, PRODUTO, ESTOQUE, CLIENTE, FUNCIONARIO, VENDA, ITEM_VENDA (associativa) e PAGAMENTO. Cada uma representa um conceito estável do negócio: o catálogo (categoria/fornecedor/produto/estoque), as pessoas envolvidas na venda (cliente/funcionário) e a transação (venda/item_venda/pagamento).
 - **Atributos e classificações:** ver o Dicionário de Dados (seção 5). Cada entidade tem um identificador substituto (`id_*`) como chave primária e um atributo natural relevante para consulta (ex.: `codigo_interno` em produto, `cpf_cnpj` em cliente) tratado como chave candidata/única.
 - **Relacionamentos pertinentes:**
@@ -581,39 +588,24 @@ Roteiro sugerido, na ordem pedida:
   - PRODUTO (1) — (1) ESTOQUE: cada produto possui exatamente um registro de controle de estoque.
   - CLIENTE (1) — (N) VENDA: um cliente pode realizar várias vendas ao longo do tempo.
   - FUNCIONARIO (1) — (N) VENDA: um funcionário atende várias vendas.
-  - VENDA (N) — (N) PRODUTO, resolvido pela entidade associativa ITEM_VENDA: uma venda contém vários produtos, e um produto pode estar em várias vendas.
   - VENDA (N) — (N) PRODUTO, resolvido pela entidade associativa ITEM_VENDA.
   - VENDA (1) — (N) PAGAMENTO: uma venda pode ter um ou mais pagamentos (ex.: parcial + complemento).
-- **Restrições e políticas organizacionais aplicadas ao modelo:** unicidade de CPF/CNPJ (cliente/fornecedor/funcionário), unicidade de código interno do produto, obrigatoriedade de categoria e fornecedor para todo produto, e impossibilidade de estoque ou quantidade negativa.
 - **Restrições e políticas aplicadas ao modelo:** unicidade de CPF/CNPJ (cliente/fornecedor/funcionário), unicidade do código interno do produto, obrigatoriedade de categoria e fornecedor para todo produto e impossibilidade de estoque ou quantidade negativa.
 
----
 ### 7. Diagrama Entidade-Relacionamento (DER)
 
-## 7. Diagrama Entidade-Relacionamento (DER)
 **DER em notação de Chen** — entidades em retângulo, relacionamentos em losango, atributos em elipse, com as cardinalidades 1:N e 1:1 em cada ligação ([`entrega-1/DER_chen_loja_tintas.png`](entrega-1/DER_chen_loja_tintas.png)):
 
-Arquivo anexado: **`DER_loja_tintas_materiais.png`** (notação Chen — entidades em retângulo, relacionamentos em losango, atributos em elipse, com as cardinalidades 1:N e 1:1 indicadas em cada ligação).
 ![DER em notação de Chen](entrega-1/DER_chen_loja_tintas.png)
 
-O modelo já comporta evolução futura, por exemplo: histórico de reajuste de preços por produto, tabela de compras/entradas junto a fornecedores (hoje simplificada no atributo de estoque), múltiplos endereços de entrega por cliente, ou um relacionamento adicional entre funcionário e meta de vendas — sem quebrar a estrutura atual.
 #### 7.1 DER do grupo no BRModelo (22/09/2026)
 
----
 Arquivo: [`entrega-1/DER_brmodelo_22-09-2026.pdf`](entrega-1/DER_brmodelo_22-09-2026.pdf) (antes chamado `FLUXOGRAMA.pdf`). As diferenças entre este DER e o modelo final estão na [tabela de revisão da seção 1.1](#revisão-do-modelo-conceitual).
 
-## 8. Justificativa Técnica
 O modelo comporta evolução futura sem quebrar a estrutura atual: histórico de reajuste de preços por produto, compras/entradas junto a fornecedores, vários endereços por cliente ou metas de vendas por funcionário.
 
-- **Por que uma entidade ESTOQUE separada de PRODUTO?** Para isolar um atributo que muda com alta frequência (quantidade) do cadastro descritivo do produto (que muda raramente), evitando lock/contenção desnecessária em operações de venda e deixando explícito o relacionamento 1:1, que poderá evoluir para 1:N (ex.: estoque por filial) sem afetar a tabela `produto`.
-- **Por que uma entidade associativa ITEM_VENDA em vez de uma FK direta de produto em venda?** Porque a relação real é N:N — uma venda contém vários produtos e um produto aparece em várias vendas. A tabela associativa também é o lugar correto para guardar o **preço praticado no momento da venda**, que não deve ser confundido com o preço atual do produto (histórico de preço é uma exigência de qualquer sistema de vendas real).
-- **Por que separar PAGAMENTO de VENDA em vez de colocar a forma de pagamento como atributo de venda?** Porque uma venda pode ser paga em mais de uma transação (ex.: parte em dinheiro, parte no cartão), o que exige uma relação 1:N e não um atributo simples.
-- **Por que CATEGORIA e FORNECEDOR como entidades e não como atributos de texto em PRODUTO?** Para evitar redundância (o mesmo nome de categoria/fornecedor repetido em centenas de produtos) e permitir relatórios agregados (faturamento por categoria, por fornecedor) sem inconsistência de digitação — motivação que também antecipa a normalização feita na Entrega 2.
-- **Por que CLIENTE e FUNCIONARIO como entidades distintas mesmo ambas sendo "pessoas"?** Porque têm ciclos de vida, atributos e regras de negócio completamente diferentes (cliente é quem compra; funcionário é quem vende), não havendo ganho em modelá-los como uma generalização/especialização neste escopo.
-- **Alternativa considerada e descartada:** modelar produto-fornecedor como N:N (um produto poderia ter vários fornecedores possíveis). Optou-se por 1:N porque, na prática observada nos catálogos, cada item é associado a uma marca/fornecedor principal; um relacionamento N:N ficaria para uma evolução futura (ex.: cotação de compra com múltiplos fornecedores).
 ### 8. Justificativa Técnica
 
----
 - **Por que uma entidade ESTOQUE separada de PRODUTO?** Para isolar um atributo que muda com alta frequência (quantidade) do cadastro descritivo do produto (que muda raramente), deixando explícito o relacionamento 1:1, que poderá evoluir para 1:N (ex.: estoque por filial) sem afetar a tabela `produto`.
 - **Por que uma entidade associativa ITEM_VENDA em vez de uma FK de produto em venda?** Porque a relação real é N:N — uma venda contém vários produtos e um produto aparece em várias vendas. A associativa também é o lugar correto do **preço praticado no momento da venda**, que não deve ser confundido com o preço atual do produto.
 - **Por que separar PAGAMENTO de VENDA?** Porque uma venda pode ser paga em mais de uma transação (ex.: parte em dinheiro, parte no cartão), o que exige uma relação 1:N e não um atributo simples.
@@ -621,49 +613,10 @@ O modelo comporta evolução futura sem quebrar a estrutura atual: histórico de
 - **Por que CLIENTE e FUNCIONARIO como entidades distintas?** Porque têm ciclos de vida, atributos e regras completamente diferentes (cliente compra; funcionário vende), sem ganho em uma generalização/especialização neste escopo.
 - **Alternativa considerada e descartada:** produto–fornecedor como N:N. Optou-se por 1:N porque, nos catálogos da loja, cada item está associado a uma marca/fornecedor principal; o N:N fica para uma evolução futura (ex.: cotação com vários fornecedores).
 
-## 9. Uso de Inteligência Artificial
 ### 9. Uso de Inteligência Artificial
 
 | Item | Registro |
 |------|------------------|
-| **Ferramenta e etapa** | `feeramenta utilizadas chatgpt e claude para alteração de dados e tambem para auxilio na construção do banco de dados "]` |
-| **Motivação** | `[]` |
-| **Prompt(s) utilizados** | tenho um trabalho da faculdade onde preciso montar um banco de dados pretendo utilizar mysql para realizar a tarefa o meu grupo escolheu o uma loja de tintas e materiais de construção me ajude a criar o banco de dados solido plausivel e com todas as informações como um otimo banco de dados deve ser foi anexado as informações da loja tambem esta anexado o esqueleto e requisitos das entregas solicitados pelo professor  me ajude criar o banco de dados e tambem os requisitos que estão sendo solicitados ]` |
-| **Resposta recebida** | `Vou te ajudar com as duas entregas. Antes de gerar tudo, um ponto importante direto: o enunciado exige que a organização seja real, com evidências reais (fotos, endereço, contato, link no Google) — isso não posso inventar para vocês, precisa vir da pesquisa de campo do grupo. Vou montar tudo que é tecnicamente possível (modelo conceitual, DER, dicionário de dados, script SQL completo com massa de dados fictícia, normalização, README das duas entregas) usando os catálogos que vocês anexaram (que mostram claramente uma loja de tintas/ferramentas/materiais de construção), e deixo marcado com [PREENCHER] exatamente os pontos que só vocês podem completar com dados reais da loja.
-
-Vou gerar o script SQL primeiro (a parte mais longa e que precisa ser consistente).
-
-O script final, com o cabeçalho, roda do zero sem erro — banco criado, 67 produtos, 18 vendas, joins/updates/deletes/consultas gerenciais e de auditoria todos funcionando (inclusive a consulta de auditoria pegando de propósito a inconsistência gerada pelo DELETE de exemplo). Todos os arquivos estão prontos.
-
-Presented 6 files
-
-Montei o pacote completo cobrindo as duas entregas, com base nos catálogos que vocês mandaram (uma loja de tintas/ferramentas/materiais de construção):
-
-Banco de dados (rodado do zero e testado num MariaDB de verdade — sem erros):
-
-9 tabelas: categoria, fornecedor, produto, estoque, cliente, funcionario, venda, item_venda (associativa N:N) e pagamento
-script_banco_dados.sql — CREATE DATABASE, CREATE TABLE com PK/FK/UNIQUE/CHECK, massa de dados fictícia (67 produtos reais dos seus catálogos + 8 clientes e 5 funcionários fictícios + 18 vendas), SELECT com JOIN, UPDATE, DELETE, consultas gerenciais (faturamento por mês/categoria/vendedor, ranking de produtos, reposição de estoque) e consultas de auditoria
-
-Diagramas (imagens prontas para anexar):
-
-DER_loja_tintas_materiais.png — notação Chen, com cardinalidades
-Modelo_Logico_Relacional.png — tabelas, colunas, PK/FK
-
-Documentação (esqueletos preenchidos):
-
-README_Entrega1.md — caracterização, processos, requisitos, regras de negócio, dicionário de dados, justificativa técnica
-Relatorio_Tecnico_Entrega2.md — conversão conceitual→lógico, normalização (1FN/2FN/3FN) com exemplos reais do seu modelo, justificativas, proposta de BI/IA
-Dicionario_Dados.html
-
-O que só o grupo pode preencher (marcado [PREENCHER] nos arquivos): nome real da loja, endereço, contato, fotos/link do Google e o quadro de "Uso de IA" — isso é exigência explícita do professor de pesquisa de campo real, não posso inventar.
-
-Quer que eu já monte os slides da apresentação final (item 7 da Entrega 2)?` |
-| **Fontes consultadas e verificadas** | `[Dados e planilhas do estabelecimento]` |
-| **Trechos rejeitados ou corrigidos** | `[todas as informações pessoais forma alteradas por ficticias .]` |
-| **Justificativa da escolha final** | `foi escolhido as ias chatgpt e claude pafra auxilio em infomrações e resoluções de problemas |
-| **Reflexão crítica** | `[PREENCHER: ex. "a IA não pode confirmar dados reais da loja, então todos os campos de caracterização e evidências tiveram que ser preenchidos pelo grupo após a visita de campo"]` |
-
-> **Importante:** esta seção precisa ser preenchida com honestidade pelo grupo. O conteúdo técnico deste repositório (estrutura de entidades, DER, script SQL) foi produzido com apoio de IA a partir dos catálogos de produtos fornecidos pelo grupo — isso deve constar aqui como uso real de IA, não pode ser omitido.
 | **Ferramentas e etapa** | ChatGPT e Claude, para alteração de dados e auxílio na construção do banco de dados |
 | **Motivação** | `[PREENCHER]` |
 | **Prompt utilizado** | "tenho um trabalho da faculdade onde preciso montar um banco de dados pretendo utilizar mysql para realizar a tarefa o meu grupo escolheu o uma loja de tintas e materiais de construção me ajude a criar o banco de dados solido plausivel e com todas as informações como um otimo banco de dados deve ser foi anexado as informações da loja tambem esta anexado o esqueleto e requisitos das entregas solicitados pelo professor me ajude criar o banco de dados e tambem os requisitos que estão sendo solicitados" |

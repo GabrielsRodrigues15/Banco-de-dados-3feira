@@ -1,0 +1,23 @@
+// Maximo das Tintas - Fluxo de controle de estoque e reposicao
+// Gerar: dot -Tpng -Gdpi=130 fluxo_reposicao.dot -o fluxo_reposicao.png
+digraph fluxo_reposicao {
+  graph [rankdir=TB, fontname="Helvetica", label="Maximo das Tintas - Controle de estoque e reposicao", labelloc=t, fontsize=18, nodesep=0.5, ranksep=0.45];
+  node  [fontname="Helvetica", fontsize=11, style="rounded,filled", fillcolor="#F3EDF8", color="#5B2C83", shape=box];
+  edge  [fontname="Helvetica", fontsize=10, color="#555555"];
+
+  inicio  [label="Rotina de conferencia\n(gerente)", shape=oval, fillcolor="#5B2C83", fontcolor="white"];
+  consulta[label="Consultar produtos no ponto de reposicao\nSELECT * FROM vw_produtos_abaixo_minimo"];
+  ha      [label="Algum produto com\nquantidade_atual <= minima?", shape=diamond, style=filled, fillcolor="#FFF6D6"];
+  ok      [label="Estoque em dia", shape=oval, fillcolor="#E6F2E6", color="#2E7D32"];
+  forn    [label="Identificar fornecedor do produto\n(vw_estoque_situacao)"];
+  pedido  [label="Pedido de compra ao fornecedor\n(fora do sistema hoje)"];
+  receb   [label="Receber mercadoria e conferir nota"];
+  preco   [label="Definir preco de venda\n(custo + margem media de ~60%)"];
+  atual   [label="Atualizar estoque e preco\nUPDATE estoque / UPDATE produto"];
+  fim     [label="Produto disponivel para venda", shape=oval, fillcolor="#5B2C83", fontcolor="white"];
+
+  inicio -> consulta -> ha;
+  ha -> ok   [label="nao"];
+  ha -> forn [label="sim"];
+  forn -> pedido -> receb -> preco -> atual -> fim;
+}
