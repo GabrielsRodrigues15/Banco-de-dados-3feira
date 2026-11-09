@@ -5,7 +5,7 @@ Maximo das Tintas - gera a documentacao do MODELO LOGICO a partir do banco real.
 Le o catalogo (information_schema) do banco `loja_tintas_materiais` ja criado
 por docs/script.sql e gera:
   - docs/modelo_logico.dot / .png / .svg  (diagrama, via Graphviz)
-  - docs/dicionario_dados_logico.html     (dicionario de dados logico)
+  - docs/dicionario_dados.html (via scripts/gerar_dicionario.py, modelo 02-03g)
 
 Assim o diagrama e o dicionario mostram exatamente o que existe no MySQL,
 e nao uma copia manual que pode ficar desatualizada.
@@ -63,7 +63,7 @@ DESC_COLUNA = {
     ("estoque", "id_estoque"): "Identificador do registro de estoque",
     ("estoque", "id_produto"): "Produto controlado (um registro por produto)",
     ("estoque", "quantidade_atual"): "Saldo atual; baixado/devolvido pelos triggers de venda",
-    ("estoque", "quantidade_minima"): "Ponto de reposicao (vw_produtos_abaixo_minimo)",
+    ("estoque", "quantidade_minima"): "Ponto de reposicao (G05, vw_produtos_abaixo_minimo)",
     ("estoque", "localizacao_deposito"): "Prateleira / posicao no deposito",
     ("cliente", "id_cliente"): "Identificador do cliente",
     ("cliente", "nome"): "Nome ou razao social",
@@ -84,7 +84,7 @@ DESC_COLUNA = {
     ("venda", "id_funcionario"): "Funcionario que atendeu",
     ("venda", "data_venda"): "Data e hora da venda",
     ("venda", "status_venda"): "ORCAMENTO, CONCLUIDA ou CANCELADA; so CONCLUIDA mexe no estoque",
-    ("venda", "valor_total"): "Total da venda (conferido pela auditoria 7.1)",
+    ("venda", "valor_total"): "Total da venda = soma dos itens (auditoria A01)",
     ("item_venda", "id_item_venda"): "Identificador do item",
     ("item_venda", "id_venda"): "Venda a que o item pertence",
     ("item_venda", "id_produto"): "Produto vendido",
@@ -205,92 +205,6 @@ def gerar_diagrama(colunas, fks):
     subprocess.run(["dot", "-Tsvg", str(dot), "-o", str(DOCS / "modelo_logico.svg")], check=True)
 
 
-def gerar_dicionario(colunas, fks, uniques, checks, linhas, triggers, views):
-    e = html.escape
-    fk_map = {(f[0], f[1]): f for f in fks}
-    uq_map = {}
-    for t, nome, cols in uniques:
-        for c in cols.split(","):
-            uq_map.setdefault((t, c), []).append((nome, cols))
-    ck_map = {}
-    for t, nome, clausula in checks:
-        ck_map.setdefault(t, []).append((nome, clausula.replace("`", "")))
-    por_tabela = {}
-    for t, c, tipo, nulo, d, chave, extra, _o in colunas:
-        por_tabela.setdefault(t, []).append((c, tipo, nulo, d, chave, extra))
-
-    secoes = []
-    for t in ORDEM:
-        corpo = []
-        for c, tipo, nulo, d, chave, extra in por_tabela[t]:
-            restr = []
-            if chave == "PRI":
-                restr.append("PK")
-            if "auto_increment" in extra:
-                restr.append("AUTO_INCREMENT")
-            if (t, c) in fk_map:
-                f = fk_map[(t, c)]
-                regra = f" ON DELETE {f[5]}" if f[5] != "RESTRICT" and f[5] != "NO ACTION" else ""
-                restr.append(f"FK &rarr; {e(f[2])}.{e(f[3])}{regra}")
-            for nome, cols in uq_map.get((t, c), []):
-                restr.append(f"UNIQUE ({e(cols)})" if "," in cols else "UNIQUE")
-            for nome, clausula in ck_map.get(t, []):
-                if c in clausula:
-                    restr.append(f"CHECK {e(clausula)}")
-            if "GENERATED" in extra.upper():
-                restr.append("Coluna gerada (STORED)")
-            padrao = "" if d == "\\N" else e(d)
-            corpo.append(
-                f"<tr><td><code>{e(c)}</code></td><td><code>{e(tipo)}</code></td>"
-                f"<td>{'Sim' if nulo == 'YES' else 'Nao'}</td><td><code>{padrao}</code></td>"
-                f"<td>{'<br>'.join(restr)}</td><td>{e(DESC_COLUNA.get((t, c), ''))}</td></tr>")
-        secoes.append(
-            f'<section id="{t}"><h2>{t}</h2><p class="desc">{e(DESC_TABELA[t])} '
-            f'<span class="pill">{linhas[t]} linhas na massa</span></p>'
-            "<div class='scroll'><table><thead><tr><th>Coluna</th><th>Tipo</th><th>Nulo</th><th>Padrao</th>"
-            "<th>Restricoes</th><th>Significado / regra de negocio</th></tr></thead><tbody>"
-            + "".join(corpo) + "</tbody></table></div></section>")
-
-    trig_rows = "".join(f"<tr><td><code>{e(n)}</code></td><td>{e(tm)} {e(ev)}</td><td><code>{e(tb)}</code></td></tr>"
-                        for n, tm, ev, tb in triggers)
-    view_list = "".join(f"<li><code>{e(v)}</code></li>" for v in views)
-    indice = " &middot; ".join(f'<a href="#{t}">{t}</a>' for t in ORDEM)
-
-    pagina = f"""<!doctype html>
-<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Dicionario de Dados Logico - Maximo das Tintas</title>
-<style>
-:root {{ --fg:#1d1d1f; --muted:#5f6368; --bg:#ffffff; --card:#f7f5fa; --line:#ddd6e6; --accent:#5B2C83; }}
-@media (prefers-color-scheme: dark) {{ :root {{ --fg:#ecebef; --muted:#a7a3ad; --bg:#16141a; --card:#211e27; --line:#3a3442; --accent:#c9a7ef; }} }}
-body {{ font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color:var(--fg); background:var(--bg);
-       max-width:1200px; margin:0 auto; padding:24px 16px; line-height:1.45; }}
-h1 {{ color:var(--accent); margin-bottom:4px; }} h2 {{ color:var(--accent); border-bottom:2px solid var(--line); padding-bottom:4px; margin-top:36px; }}
-.sub {{ color:var(--muted); margin-top:0; }} .desc {{ color:var(--muted); }}
-.pill {{ display:inline-block; background:var(--card); border:1px solid var(--line); border-radius:999px; padding:1px 10px; font-size:.85em; margin-left:6px; }}
-.scroll {{ overflow-x:auto; }}
-table {{ border-collapse:collapse; width:100%; font-size:.92em; }}
-th, td {{ border:1px solid var(--line); padding:6px 8px; text-align:left; vertical-align:top; }}
-th {{ background:var(--card); }} code {{ font-size:.92em; }}
-nav {{ background:var(--card); border:1px solid var(--line); border-radius:8px; padding:10px 14px; }}
-a {{ color:var(--accent); }}
-</style></head><body>
-<h1>Dicionario de Dados Logico</h1>
-<p class="sub">Maximo das Tintas &middot; Modelagem de Banco de Dados &middot; Entrega 2 &middot; MySQL 8 &middot; banco <code>{DB}</code></p>
-<p>Gerado automaticamente por <code>scripts/gerar_docs_banco.py</code> a partir do catalogo (<code>information_schema</code>)
-do banco criado por <code>docs/script.sql</code>. Tipos, nulos, padroes e restricoes sao exatamente os do MySQL;
-a coluna "Significado" traz a regra de negocio. Contagem de linhas medida apos a execucao completa do script
-(incluindo os exemplos de UPDATE/DELETE).</p>
-<nav><b>Tabelas:</b> {indice} &middot; <a href="#automacao">triggers e views</a></nav>
-{''.join(secoes)}
-<section id="automacao"><h2>Triggers e views</h2>
-<p>Os triggers mantem o estoque coerente com o status da venda (baixa ao concluir, devolucao ao cancelar/excluir).</p>
-<div class='scroll'><table><thead><tr><th>Trigger</th><th>Momento</th><th>Tabela</th></tr></thead><tbody>{trig_rows}</tbody></table></div>
-<p><b>Views ({len(views)}):</b></p><ul>{view_list}</ul></section>
-</body></html>
-"""
-    (DOCS / "dicionario_dados_logico.html").write_text(pagina, encoding="utf-8")
-
-
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--host", default="127.0.0.1")
@@ -300,8 +214,9 @@ def main():
     args = ap.parse_args()
     cat = ler_catalogo(args)
     gerar_diagrama(cat[0], cat[1])
-    gerar_dicionario(*cat)
-    print("Gerados: docs/modelo_logico.(dot|png|svg) e docs/dicionario_dados_logico.html")
+    import gerar_dicionario
+    gerar_dicionario.gerar(args)
+    print("Gerados: docs/modelo_logico.(dot|png|svg) e docs/dicionario_dados.html")
 
 
 if __name__ == "__main__":
