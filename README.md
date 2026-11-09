@@ -2,9 +2,6 @@
 
 ### Modelagem de Banco de Dados · Entrega 2 (modelo lógico, SQL em MySQL e arquitetura analítica)
 
-> Este README é o relatório da Entrega 2 e segue o esqueleto da disciplina (`00-d_Esqueleto_Entrega_2.md`). A Entrega 1 (caracterização, processos, requisitos, regras, dicionário conceitual e DER) está preservada no **[Anexo A](#anexo-a--entrega-1-modelo-conceitual)** no fim do arquivo.
-> Marcadores: **`[PREENCHER]`** = dado que só o grupo tem · **`[VALIDAR]`** = ponto a confirmar com o grupo, a loja ou o professor.
-
 ## Integrantes
 
 | Nome completo do aluno | RGM | Usuário do GitHub |
