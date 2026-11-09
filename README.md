@@ -2,303 +2,381 @@
 
 ### Modelagem de Banco de Dados · Entrega 2 (modelo lógico, SQL em MySQL e arquitetura analítica)
 
-> Este README é o relatório da Entrega 2. A Entrega 1 (caracterização, processos, requisitos, regras, dicionário conceitual e DER) está preservada no **[Anexo A](#anexo-a--entrega-1-modelo-conceitual)** no fim do arquivo.
+> Este README é o relatório da Entrega 2 e segue o esqueleto da disciplina (`00-d_Esqueleto_Entrega_2.md`). A Entrega 1 (caracterização, processos, requisitos, regras, dicionário conceitual e DER) está preservada no **[Anexo A](#anexo-a--entrega-1-modelo-conceitual)** no fim do arquivo.
 > Marcadores: **`[PREENCHER]`** = dado que só o grupo tem · **`[VALIDAR]`** = ponto a confirmar com o grupo, a loja ou o professor.
 
 ## Integrantes
 
-| Integrante | RGM | Usuário no GitHub |
+| Nome completo do aluno | RGM | Usuário do GitHub |
 |---|---|---|
 | Gabriel Souza | 46683305 | [gabrieldesouza1830-cell](https://github.com/gabrieldesouza1830-cell) |
 | Gabriel Rodrigues da Silva | 46885030 | [GabrielsRodrigues15](https://github.com/GabrielsRodrigues15) (repositório `GabrielsRodrigues15/Banco-de-dados-3feira`) |
 | Ítalo Leal Oliveira | 47837098 | [italoleal567](https://github.com/italoleal567) |
 | Vinicius Batista Merencio | 46749527 | [viniciusmerencio0-cpu](https://github.com/viniciusmerencio0-cpu) |
 
-**Curso / Disciplina:** Banco de Dados — Modelagem de Banco de Dados (turma de terça-feira) · Prof. Cid Andrade `[VALIDAR]`.
+**Curso / Disciplina:** Banco de Dados — Modelagem de Banco de Dados (turma de terça-feira, noturno) · Prof. Cid Andrade.
 **SGBD:** MySQL 8.0 (InnoDB, `utf8mb4`) · **Banco:** `loja_tintas_materiais`.
 
 ## Situação atual do projeto
 
-Resumo do que já está pronto e do que ainda depende do grupo (atualizado em 08/11/2026).
+Atualizado em 09/11/2026. **Entrega da turma de terça: 10/11** (só a branch `main` é corrigida). **Vídeo do pitch: até 16/11** — a Máximo Das Tintas não está na lista de seminários presenciais da terça, então o link do vídeo (YouTube, "Não listado", 8 min) vai na [seção 7](#7-apresentação-corporativa-final).
 
 | Item da entrega | Situação | Onde está |
 |---|---|---|
-| Caracterização da loja e problemas | ✅ pronto (faltam endereço e CNPJ) | [1.1](#11-caracterização-da-organização-problemas-e-evidências) |
-| Processos, requisitos e regras de negócio | ✅ pronto | [Anexo A, seções 2 a 4](#2-processos-de-negócio) |
-| DER (modelo conceitual) | ✅ pronto (Chen + BRModelo) | [`entrega-1/`](entrega-1/) |
-| Revisão do conceitual para o lógico | ✅ documentada | [1.1](#revisão-do-modelo-conceitual) e [1.2](#12-conversão-do-conceitual-para-o-lógico) |
-| Modelo lógico (diagrama) | ✅ gerado do banco real | [`docs/modelo_logico.png`](docs/modelo_logico.png) |
-| Dicionário de dados lógico | ✅ gerado do banco real | [`docs/dicionario_dados_logico.html`](docs/dicionario_dados_logico.html) |
-| Script SQL (DDL, carga, JOIN, UPDATE, DELETE, gerenciais, auditoria) | ✅ testado no MySQL 8.0.46, sem erros | [`docs/script.sql`](docs/script.sql) |
-| Triggers de estoque e views | ✅ 6 triggers e 8 views | [`docs/03_triggers_views.sql`](docs/03_triggers_views.sql) |
-| Testes de restrições | ✅ 11 de 11 operações inválidas rejeitadas | [`docs/09_testes_restricoes.sql`](docs/09_testes_restricoes.sql) |
-| Fluxogramas de processo | ✅ venda e reposição | [`fluxograma/`](fluxograma/) |
-| Arquitetura analítica (BI e IA) | ✅ proposta | [1.6](#16-arquitetura-analítica-bi-e-ia) |
-| Evidências da visita | ✅ 2 fotos · ⚠️ falta o relatório da entrevista e os catálogos | [`evidencias/`](evidencias/) |
-| Uso de IA — reflexão crítica do grupo | ⚠️ falta o texto do grupo | [6](#6-uso-de-inteligência-artificial-nesta-entrega) |
-| Commits equilibrados entre os integrantes | ⚠️ conferir antes da entrega | [5](#5-repositório) |
-| Pitch de 8 minutos | ⚠️ roteiro pronto, falta ensaiar | [7](#7-pitch-de-8-minutos) |
+| Caracterização, problemas P1–P6, escopo | ✅ pronto | [1.1](#11-revisão-do-modelo-conceitual) |
+| Responsável (nome e telefone), endereço completo | ⚠️ **falta** | [1.1](#evidências-da-organização) |
+| Relato da entrevista e `levantamento.md` | ⚠️ modelo pronto, **grupo completa** | [`levantamento/levantamento.md`](levantamento/levantamento.md) |
+| Processos, requisitos (RF/RNF) e regras (RN01–RN18) detalhados | ✅ pronto | [1.1](#processos-de-negócio) |
+| Tabela de apontamentos da correção da Entrega 1 (Caso A) | ⚠️ **falta a correção do professor** | [1.1](#caso-a--revisão-a-partir-da-correção-da-entrega-1) |
+| DER na notação do brModelo | ✅ feito no brModelo Web | [`entrega-1/DER_brmodelo_22-09-2026.pdf`](entrega-1/DER_brmodelo_22-09-2026.pdf) |
+| Conversão, PK/FK, normalização, justificativas | ✅ pronto | [1.2 a 1.5](#12-conversão-do-modelo-conceitual-para-o-modelo-lógico) |
+| BI e IA com 12 KPIs (fórmula, período, meta, consulta) | ✅ pronto | [1.6](#16-proposta-de-arquitetura-analítica-para-bi-e-ia) |
+| Modelo lógico | ✅ gerado do banco · ⚠️ refazer no brModelo `[VALIDAR]` | [2](#2-modelo-lógico-relacional) |
+| Script SQL com consultas G01–G16 e A01–A10 | ✅ testado no MySQL 8.0.46, sem erros | [`docs/script.sql`](docs/script.sql) |
+| Massa de dados calibrada pelo porte real (940 vendas) | ✅ pronto | [4](#4-massa-de-dados) |
+| Dicionário de dados no modelo 02-03g (HTML único) | ✅ pronto | [`docs/dicionario_dados.html`](docs/dicionario_dados.html) |
+| Testes de restrições | ✅ 14 de 14 operações inválidas rejeitadas | [`docs/09_testes_restricoes.sql`](docs/09_testes_restricoes.sql) |
+| Fotos JPG no repositório | ✅ 2 fotos · ⚠️ falta foto da fachada/entrevista | [`evidencias/`](evidencias/) |
+| Uso de IA — reflexão crítica do grupo | ⚠️ falta o texto do grupo | [6](#6-uso-de-inteligência-artificial) |
+| Commits equilibrados entre os 4 integrantes | ⚠️ conferir | [5](#5-repositório-github) |
+| Vídeo do pitch (8 min) | ⚠️ gravar até 16/11 | [7](#7-apresentação-corporativa-final) |
 
 ## Sumário
 
-1. [Modelo conceitual (revisão)](#1-modelo-conceitual)
-   1.1 [Caracterização, problemas e evidências](#11-caracterização-da-organização-problemas-e-evidências) · 1.2 [Conversão](#12-conversão-do-conceitual-para-o-lógico) · 1.3 [PKs e FKs](#13-chaves-primárias-e-estrangeiras) · 1.4 [Normalização](#14-normalização) · 1.5 [Justificativas](#15-justificativas-técnicas) · 1.6 [BI e IA](#16-arquitetura-analítica-bi-e-ia)
-2. [Modelo lógico](#2-modelo-lógico)
-3. [Script SQL](#3-script-sql)
+1. [Relatório Técnico Final](#1-relatório-técnico-final)
+   1.1 [Revisão do modelo conceitual](#11-revisão-do-modelo-conceitual) · 1.2 [Conversão](#12-conversão-do-modelo-conceitual-para-o-modelo-lógico) · 1.3 [PKs e FKs](#13-definição-de-chaves-primárias-e-estrangeiras) · 1.4 [Normalização](#14-processo-de-normalização-1fn-2fn-e-3fn) · 1.5 [Justificativas](#15-justificativas-técnicas-das-decisões) · 1.6 [BI e IA](#16-proposta-de-arquitetura-analítica-para-bi-e-ia)
+2. [Modelo lógico relacional](#2-modelo-lógico-relacional)
+3. [Script SQL completo](#3-script-sql-completo)
 4. [Massa de dados](#4-massa-de-dados)
-5. [Repositório](#5-repositório)
-6. [Uso de IA](#6-uso-de-inteligência-artificial-nesta-entrega)
-7. [Pitch](#7-pitch-de-8-minutos)
+5. [Repositório GitHub](#5-repositório-github)
+6. [Uso de Inteligência Artificial](#6-uso-de-inteligência-artificial)
+7. [Apresentação corporativa final](#7-apresentação-corporativa-final)
 8. [Limitações e pontos a validar](#8-limitações-e-pontos-a-validar)
 9. [Referências da disciplina](#referências-da-disciplina)
 
-**Anexo A — Entrega 1 (modelo conceitual)**
-
-- [1. Caracterização da Organização](#1-caracterização-da-organização)
-- [2. Processos de Negócio](#2-processos-de-negócio)
-- [3. Requisitos do Sistema](#3-requisitos-do-sistema)
-- [4. Regras de Negócio](#4-regras-de-negócio)
-- [5. Dicionário de Dados Conceitual](#5-dicionário-de-dados-conceitual-preliminar)
-- [6. Modelagem Conceitual](#6-modelagem-conceitual-entidades-atributos-relacionamentos)
-- [7. Diagrama Entidade-Relacionamento (DER)](#7-diagrama-entidade-relacionamento-der)
-- [8. Justificativa Técnica](#8-justificativa-técnica)
-- [9. Uso de Inteligência Artificial](#9-uso-de-inteligência-artificial)
+**[Anexo A — Entrega 1 (modelo conceitual)](#anexo-a--entrega-1-modelo-conceitual)**
 
 ---
 
-## 1. Modelo conceitual
+## 1. Relatório Técnico Final
 
-### 1.1 Caracterização da organização, problemas e evidências
+### 1.1 Revisão do Modelo Conceitual
 
-**Organização real:** **Máximo Das Tintas**, loja de pequeno porte do varejo de **tintas, ferramentas e materiais de construção**, com fins lucrativos, que vende ao consumidor final (pessoa física) e a pintores, pequenas construtoras e empresas de reforma (pessoa jurídica). Trabalha com marcas como Suvinil, Bilacor, Tramontina, Ferja, Tigre, Condor, Famastil e Thompson.
+#### Caracterização da organização
 
-Dados informados pela loja:
+- **Nome e natureza:** **Máximo Das Tintas**, loja de pequeno porte do varejo de **tintas, ferramentas e materiais de construção**, com fins lucrativos. Vende ao consumidor final (pessoa física) e a pintores, pequenas construtoras e empresas de reforma (pessoa jurídica). Trabalha com marcas como Suvinil, Bilacor, Tramontina, Ferja, Tigre, Condor, Famastil e Thompson.
+- **Contexto e porte (números informados pela loja):**
 
-| Item | Informado |
-|---|---|
-| Funcionários | **2** (os mesmos dois fazem atendimento, caixa e reposição) |
-| Faturamento médio | **cerca de R$ 20 mil por mês** |
-| Saída de produtos | **cerca de 500 unidades por mês** |
-| Formação de preço | custo do fornecedor **+ cerca de 60%** de margem |
-| Troca | prazo de **2 semanas**; a nota fiscal é exigida **somente para troca** |
-| Sistema atual | listas de preço em PDF/planilha exportadas do sistema de frente de caixa |
+  | Item | Informado |
+  |---|---|
+  | Funcionários | **2** (os mesmos fazem atendimento, caixa e reposição) |
+  | Faturamento médio | **≈ R$ 20 mil por mês** |
+  | Saída de produtos | **≈ 500 unidades por mês** |
+  | Formação de preço | custo do fornecedor **+ ≈ 60%** |
+  | Troca | prazo de **2 semanas**; nota fiscal exigida **somente para troca** |
+  | Sistema atual | PDV de frente de caixa que exporta listas de preço em PDF/planilha |
 
-**Problemas identificados** (cada um é tratado pelo modelo e tem uma consulta que o demonstra; a rastreabilidade completa está na seção 1.6):
+- **Problemas e necessidades** (todo problema aparece no DER e tem consulta gerencial; ver a rastreabilidade na [seção 1.6](#16-proposta-de-arquitetura-analítica-para-bi-e-ia)):
 
-| # | Problema (relatado ou observado) | Como o modelo resolve |
-|---|---|---|
-| P1 | Catálogo, estoque, vendas e clientes ficam em listas PDF/planilhas soltas, sem uma base única | 9 tabelas integradas com PK, FK e restrições; um único `script.sql` cria tudo |
-| P2 | Não se sabe rapidamente o que está abaixo do estoque mínimo | `estoque.quantidade_minima` + view `vw_produtos_abaixo_minimo` |
-| P3 | Relatórios por vendedor, categoria e fornecedor exigem tratar planilhas à mão | Views `vw_faturamento_mensal`, `vw_faturamento_categoria`, `vw_desempenho_vendedor`, `vw_ranking_produtos` |
-| P4 | A baixa de estoque depende de alguém lembrar de atualizar | 6 triggers: a venda concluída baixa o estoque; cancelamento ou exclusão devolve |
-| P5 | Conferência de venda × pagamento feita à mão | `pagamento` (1:N com venda) + auditorias 7.1 (total ≠ itens) e 7.2 (venda sem pagamento) |
-| P6 | Troca/desistência apaga ou bagunça o histórico | Venda vira `CANCELADA` (não é apagada) e o estoque volta automaticamente |
+  | # | Problema de gestão de informações | Como o modelo resolve | Consultas |
+  |---|---|---|---|
+  | P1 | Catálogo, estoque, vendas e clientes em listas PDF/planilhas soltas, sem base única; orçamentos se perdem | 9 tabelas integradas; orçamento é uma venda com status `ORCAMENTO` | G13, G14, G16 |
+  | P2 | Não se sabe rapidamente o que está abaixo do estoque mínimo | `estoque.quantidade_minima` + ponto de reposição | G05, G06, G10 |
+  | P3 | Relatórios por vendedor, categoria e fornecedor exigem tratar planilhas à mão | `venda`, `item_venda`, `produto`, `categoria`, `fornecedor`, `funcionario` | G01, G02, G07, G08, G09, G15 |
+  | P4 | A baixa de estoque depende de alguém lembrar de atualizar | Triggers: venda concluída baixa; cancelamento/exclusão devolve | G03, G06, A06 |
+  | P5 | Conferência de venda × pagamento e do caixa feita à mão | `pagamento` (1:N com venda, várias formas) | G11, G12, A01–A03 |
+  | P6 | Troca/desistência apaga ou bagunça o histórico | Venda vira `CANCELADA` (não é apagada) e o estoque volta | G04 |
 
-**Escopo.** O modelo cobre catálogo (categoria, fornecedor, produto), estoque, clientes, funcionários, vendas, itens e pagamentos. Ficaram de fora, por não serem o foco da disciplina ou por falta de informação da loja: pedido de compra ao fornecedor, custo de aquisição, emissão de nota fiscal, contas a pagar e folha de pagamento (ver seção 8).
+- **Escopo do sistema:** o banco reúne **todos os dados da operação da loja**: catálogo (categoria, fornecedor, produto), estoque, clientes, funcionários, vendas de balcão e orçamentos, itens, pagamentos, cancelamentos/trocas. Ficaram fora (justificativa em [processos não incluídos](#processos-típicos-não-incluídos)): pedido de compra ao fornecedor, custo de aquisição, entrega, emissão de nota fiscal, contas a pagar e folha.
+- **Justificativa da escolha:** negócio real com processos claros de venda, estoque e vários fornecedores, com volume suficiente (67 produtos de 5 categorias e 10 marcas, ≈ 150 vendas/mês) sem a complexidade de uma rede varejista. `[PREENCHER]` vínculo de algum integrante com a loja, se houver (declarar; não dispensa a entrevista).
 
-**Justificativa da escolha.** É um negócio real com processos claros de venda, controle de estoque e vários fornecedores, com volume de dados suficiente (dezenas de categorias e marcas) sem a complexidade de uma rede varejista — adequado ao escopo da disciplina. `[PREENCHER]` como o grupo tem acesso à loja (vínculo com o proprietário, se houver).
-
-**Evidências.**
+#### Evidências da organização
 
 | Evidência | Registro |
 |---|---|
-| Google | [share.google/O58fMgnEeO1ujE6RM](https://share.google/O58fMgnEeO1ujE6RM) |
+| Google Meu Negócio | [share.google/O58fMgnEeO1ujE6RM](https://share.google/O58fMgnEeO1ujE6RM) |
 | E-mail da loja | maximosdastintas@gmail.com |
-| Endereço e CNPJ | `[PREENCHER]` |
-| Responsável entrevistado | `[PREENCHER]` nome e função |
-| Fotos da visita | [`evidencias/balcao_pdv.jpg`](evidencias/balcao_pdv.jpg) (balcão com o PDV da loja) · [`evidencias/visita_loja.jpg`](evidencias/visita_loja.jpg) (integrante na loja, `[PREENCHER]` quem) · `[PREENCHER]` foto da fachada |
-| Catálogos de produtos | Listas de preço do PDV usadas para montar os 67 produtos da carga (`[PREENCHER]` anexar em `evidencias/`) |
+| Endereço completo | `[PREENCHER]` |
+| **Responsável (nome e telefone)** | `[PREENCHER]` — o professor pode ligar para confirmar |
+| Fotos (JPG no repositório) | [`evidencias/balcao_pdv.jpg`](evidencias/balcao_pdv.jpg) (balcão com o PDV) · [`evidencias/visita_loja.jpg`](evidencias/visita_loja.jpg) (integrante na loja, `[PREENCHER]` quem) · `[PREENCHER]` foto da entrevista/fachada |
 
 | Balcão e sistema de frente de caixa | Visita à loja |
 |---|---|
 | ![Balcão com o PDV da Máximo Das Tintas](evidencias/balcao_pdv.jpg) | ![Integrante do grupo na loja](evidencias/visita_loja.jpg) |
 
-**Observação da foto do PDV.** A tela de venda do sistema atual mostra os campos **Cliente**, **Vendedor**, produto (código/descrição), quantidade, preço, **desconto** e **taxa de entrega**, além de "Total a pagar". Cliente, vendedor, produto, quantidade e preço já estão no modelo; **desconto** e **taxa de entrega** não estão (ver seção 8). `[VALIDAR]` com a loja se há entrega e desconto na venda.
+#### Relato da entrevista
 
-**Relatório da entrevista.** `[PREENCHER]` data da visita, quem foi entrevistado e quais integrantes participaram. Assuntos levantados (conforme as respostas já registradas no Anexo A): número de funcionários, faturamento, saída de produtos, formação de preço e política de troca.
+Resumo do levantamento (o texto completo, com o que foi **dito** separado do que foi **observado**, está em [`levantamento/levantamento.md`](levantamento/levantamento.md)):
 
-**Processos, requisitos e regras.** Estão no [Anexo A, seções 2 a 4](#2-processos-de-negócio) (6 processos, 10 requisitos funcionais, 6 não funcionais e as regras operacionais e organizacionais). Os fluxogramas de **venda no balcão** e **reposição de estoque** estão em [`fluxograma/`](fluxograma/):
+- **Quem / quando / onde:** `[PREENCHER]` nome e função do entrevistado, data, integrantes presentes. Entrevista no balcão da loja (fotos acima).
+- **Dito pelo entrevistado:** 2 funcionários; ≈ R$ 20 mil e ≈ 500 unidades por mês; preço = custo + ≈ 60%; troca em 2 semanas com nota; controle em listas exportadas do PDV.
+- **Observado no local:** a venda é lançada no PDV com cliente, vendedor, produto, quantidade, preço, **desconto** e **taxa de entrega**; produtos expostos por tipo (painéis de ferramentas, prateleiras de tinta, rolos e fitas no balcão), o que corresponde às categorias do modelo. Desconto e entrega não haviam sido citados na entrevista e ficaram registrados como ponto a validar (seção 8).
 
-| Fluxo de venda | Fluxo de reposição |
+#### Processos de negócio
+
+| Código | Processo | Dados envolvidos |
+|---|---|---|
+| PR1 | **Cadastro de produto** — o gerente inclui o item do catálogo | código interno do PDV, código de barras (EAN), descrição, NCM, unidade de medida, preço de venda, categoria, fornecedor principal, ativo |
+| PR2 | **Cadastro de cliente** (opcional no balcão) | nome/razão social, tipo de pessoa (PF/PJ), CPF ou CNPJ, telefone, e-mail, endereço, data de cadastro; sem cadastro, a venda usa o cliente "Consumidor final" |
+| PR3 | **Orçamento** — o vendedor monta os itens e o cliente decide depois | cliente, funcionário, data, status `ORCAMENTO`, itens (produto, quantidade, preço praticado), total; não baixa estoque nem gera pagamento |
+| PR4 | **Venda de balcão** — abertura, itens, fechamento | cliente, funcionário, data/hora, status `CONCLUIDA`, por item: produto, quantidade, preço praticado, subtotal; total da venda |
+| PR5 | **Recebimento** | por pagamento: forma (dinheiro, PIX, cartão de crédito, cartão de débito, boleto), valor, data, parcelas; uma venda pode ter mais de um pagamento |
+| PR6 | **Baixa e controle de estoque** | saldo atual, estoque mínimo, localização no depósito; baixa automática na venda concluída |
+| PR7 | **Troca/cancelamento** (até 2 semanas, com nota) | venda passa a `CANCELADA`, o estoque dos itens volta; a venda não é apagada |
+| PR8 | **Reposição** — gerente consulta o ponto de reposição e compra do fornecedor | produtos com saldo ≤ mínimo, fornecedor, cobertura em dias; entrada atualiza o saldo |
+| PR9 | **Reajuste de preço** | novo preço do produto; vendas antigas mantêm o preço praticado |
+
+Fluxogramas: [`fluxograma/fluxo_vendas.png`](fluxograma/fluxo_vendas.png) (PR2–PR5, PR7) e [`fluxograma/fluxo_reposicao.png`](fluxograma/fluxo_reposicao.png) (PR6, PR8).
+
+##### Processos típicos não incluídos
+
+Levantados por pesquisa e IA (registro na seção 6) sobre lojas de materiais de construção e conferidos com o que a loja informou:
+
+| Processo típico | Por que ficou fora |
 |---|---|
-| ![Fluxo de venda](fluxograma/fluxo_vendas.png) | ![Fluxo de reposição](fluxograma/fluxo_reposicao.png) |
+| Pedido de compra e recebimento de fornecedor | Feito fora do sistema (como é feito hoje: `[VALIDAR]` com a loja); o modelo cobre o ponto de reposição (G05/G06). Evolução: tabelas `compra`/`item_compra` (seção 8) |
+| Entrega em obra | Campo existe no PDV, mas a loja não citou entregas na entrevista `[VALIDAR]` |
+| Desconto no balcão | Campo existe no PDV `[VALIDAR]` com a loja |
+| Emissão de nota fiscal | Feita pelo próprio PDV/emissor fiscal, fora do escopo de modelagem |
+| Mistura de tintas (tintométrico) | `[VALIDAR]` se a loja tem máquina tintométrica |
+| Contas a pagar, folha e escala | Dados administrativos fora da operação de venda/estoque |
 
-#### Revisão do modelo conceitual
+#### Requisitos
 
-Mudanças entre o DER feito pelo grupo no BRModelo em 22/09/2026 ([`entrega-1/DER_brmodelo_22-09-2026.pdf`](entrega-1/DER_brmodelo_22-09-2026.pdf)) e o modelo implementado (DER em Chen em [`entrega-1/DER_chen_loja_tintas.png`](entrega-1/DER_chen_loja_tintas.png) e modelo lógico na seção 2):
+**Requisitos funcionais**
 
-| No DER do BRModelo | No modelo final | Por quê |
+| Código | Requisito (com os dados envolvidos) | Problema |
+|---|---|---|
+| RF01 | Cadastrar, consultar, atualizar e **inativar** produto com código interno, EAN, descrição, NCM, unidade, preço, categoria e fornecedor | P1 |
+| RF02 | Cadastrar cliente com nome/razão social, tipo de pessoa, CPF ou CNPJ, telefone, e-mail e endereço; permitir venda sem cadastro ("Consumidor final") | P1 |
+| RF03 | Registrar venda com data/hora, cliente, funcionário e status (orçamento, concluída, cancelada) | P1, P3 |
+| RF04 | Lançar vários produtos na venda, com quantidade e **preço praticado** no momento | P3 |
+| RF05 | Calcular o subtotal de cada item e o total da venda | P5 |
+| RF06 | Baixar o estoque automaticamente ao concluir a venda e devolver ao cancelar ou excluir | P4 |
+| RF07 | Registrar um ou mais pagamentos por venda, com forma, valor, data e parcelas | P5 |
+| RF08 | Listar produtos com saldo ≤ estoque mínimo e a cobertura em dias | P2 |
+| RF09 | Emitir relatórios de faturamento por mês, categoria, fornecedor, vendedor, perfil de cliente e forma de pagamento | P3, P5 |
+| RF10 | Cancelar venda sem apagar o histórico | P6 |
+| RF11 | Converter orçamento em venda e listar orçamentos em aberto com valor e idade | P1 |
+| RF12 | Registrar entrada de mercadoria (atualizar saldo) e reajustar preços sem alterar vendas antigas | P2 |
+
+**Requisitos não funcionais**
+
+| Código | Requisito |
+|---|---|
+| RNF01 | **Integridade:** toda venda referencia cliente e funcionário cadastrados; regras garantidas pelo próprio banco (FK, CHECK, triggers), valendo para qualquer aplicação |
+| RNF02 | **Consistência:** total = soma dos itens e pagamento = total, verificados pelas auditorias A01–A03 |
+| RNF03 | **Disponibilidade:** acessível em todo o horário comercial (seg–sáb) |
+| RNF04 | **Segurança e LGPD:** CPF/CNPJ e contatos com acesso restrito por perfil (dicionário, seção 6) |
+| RNF05 | **Desempenho:** consultas gerenciais em menos de 1 s com milhares de vendas (índices `ix_venda_data`, `ix_venda_status_data`) |
+| RNF06 | **Usabilidade:** venda de balcão em poucos passos, sem exigir cadastro do cliente |
+
+**Requisitos típicos não incluídos:** multiloja/filiais (a loja tem uma unidade), programa de fidelidade (não existe), integração com e-commerce (não vende on-line), controle de lote/validade de tintas `[VALIDAR]` (a loja não relatou controle de validade).
+
+#### Regras de negócio
+
+| Código | Regra | Implementação | Verificação |
+|---|---|---|---|
+| RN01 | Só produto cadastrado e **ativo** pode ser vendido | FK `fk_item_produto` + trigger `trg_item_venda_before_insert` | T06, T07 |
+| RN02 | Item com quantidade > 0; toda venda concluída tem ao menos um item | `chk_item_qtd` | T01, A07 |
+| RN03 | O mesmo produto não se repete na venda (aumenta-se a quantidade) | `uq_item_venda_produto` | T09 |
+| RN04 | O preço praticado fica gravado no item; reajuste não altera vendas antigas | coluna `preco_unitario_venda` | `UPDATE` 4.1 |
+| RN05 | Total da venda = soma dos subtotais dos itens | coluna gerada `subtotal` | A01 |
+| RN06 | Venda concluída baixa o estoque; orçamento não baixa | triggers `trg_item_venda_after_insert`, `trg_venda_after_update_status` | `UPDATE` 4.2 |
+| RN07 | O estoque nunca fica negativo | `chk_estoque_qtd` | T10, A06 |
+| RN08 | Cancelamento não apaga a venda e devolve o estoque | `status_venda` + `trg_venda_after_update_status` | `DELETE` 5.1 |
+| RN09 | Venda concluída é paga integralmente, em uma ou mais formas; parcelas ≥ 1 e só no cartão de crédito; valor ≥ 0; pagamento não antes da venda | FK + `chk_pagamento_valor` + `chk_pagamento_parcelas` + `ENUM` | T11, T12, A02, A03, A09, A10 |
+| RN10 | Orçamento não gera pagamento | — | A04 |
+| RN11 | CPF/CNPJ únicos; PF com 11 dígitos, PJ com 14 | `uq_cliente_doc` + `chk_cliente_doc` + `chk_fornecedor_cnpj` | T03, T04, A08 |
+| RN12 | Código interno do produto (PDV) é único | `uq_produto_codigo` | T05 |
+| RN13 | Todo produto tem uma categoria, um fornecedor principal e um registro de estoque | FKs `NOT NULL` + `uq_estoque_produto` | A05 |
+| RN14 | Toda venda tem cliente e funcionário; venda sem cadastro usa o "Consumidor final" | FKs `NOT NULL` | T08 |
+| RN15 | Troca em até 2 semanas, com nota fiscal | processo (PR7); não verificado pelo banco | seção 8 |
+| RN16 | Preço de venda ≈ custo + 60% | não modelado (sem custo) | seção 8 |
+| RN17 | Produto, cliente e funcionário com histórico não são apagados — são inativados | FKs sem `CASCADE` + coluna `ativo` | T13, T14 |
+| RN18 | LGPD: dados pessoais com acesso restrito, fora da camada analítica; anonimização a pedido | política de acesso | [dicionário, §6](docs/dicionario_dados.html#s6) |
+
+**Regras típicas não incluídas:** limite de crédito para cliente PJ (a loja não relatou venda a prazo com limite), desconto máximo por funcionário (desconto `[VALIDAR]`), venda de produtos controlados (thinner/solventes não exigem registro de comprador neste porte `[VALIDAR]`).
+
+#### DER conceitual (notação do brModelo)
+
+- **DER do grupo no brModelo Web** (22/09/2026): [`entrega-1/DER_brmodelo_22-09-2026.pdf`](entrega-1/DER_brmodelo_22-09-2026.pdf) — retângulos, losangos, círculos preenchidos (identificador) e vazios (atributos) e cardinalidade (mín, máx) dos dois lados.
+- **DER em notação de Chen** (apoio visual, gerado com Graphviz): [`entrega-1/DER_chen_loja_tintas.png`](entrega-1/DER_chen_loja_tintas.png).
+- **Software:** brModelo Web (DER oficial) e Graphviz (diagrama de apoio).
+- `[VALIDAR]` **Atualizar o DER no brModelo** com a revisão abaixo (ESTOQUE ligado a PRODUTO, FUNCIONARIO no lugar de VENDEDOR, ITEM_VENDA como entidade associativa, sem chaves estrangeiras desenhadas).
+
+#### Caso A — revisão a partir da correção da Entrega 1
+
+| Apontamento da correção da E1 | O que mudou no trabalho | Por quê |
+|---|---|---|
+| `[PREENCHER]` apontamento 1 do professor | | |
+| `[PREENCHER]` apontamento 2 do professor | | |
+
+> Apontamento não citado na tabela é tratado como não corrigido. Copiar aqui **cada** apontamento recebido na correção da Entrega 1.
+
+Mudanças feitas pelo grupo entre o DER do brModelo e o modelo implementado:
+
+| No DER do brModelo (22/09) | No modelo final | Por quê |
 |---|---|---|
 | ESTOQUE ligado a CATEGORIA (1,1) | ESTOQUE ligado a **PRODUTO** (1:1) | O saldo é de cada produto, não da categoria |
-| VENDEDOR com `id` e `nome` | **FUNCIONARIO** com `cargo`, `cpf`, `data_admissao` e `ativo` | Na loja os mesmos 2 funcionários vendem, operam o caixa e repõem; o cargo distingue a função |
-| ENDEREÇO como entidade (1,N) de CLIENTE | Atributo `endereco` (texto) em CLIENTE `[VALIDAR]` | Simplificação: a loja não faz entrega nem precisa de vários endereços; pode voltar a ser tabela (ver seção 8) |
-| "Refere-se" ligando ITEM_VENDA, PRODUTO e CATEGORIA | CATEGORIA 1:N PRODUTO e PRODUTO 1:N ITEM_VENDA | A categoria é do produto; o item só referencia o produto |
-| `nome_produto`, `preco_unitario` | `descricao`, `preco_unitario` + `codigo_interno`, `ncm`, `unidade_medida`, `ativo` | Campos reais das listas do PDV; `ativo` permite inativar sem apagar histórico |
-| VENDA com `data_hora` | `data_venda` + **`status_venda`** (ORCAMENTO, CONCLUIDA, CANCELADA) | Orçamento e troca/cancelamento precisam de estado |
-| ITEM_VENDA com `preco_unitario` e `subtotal` | `preco_unitario_venda` e `subtotal` como **coluna gerada** | O preço da venda não muda com reajuste; o subtotal nunca diverge da conta |
-| PAGAMENTO com `forma_pagamento` e `valor_pago` | + `data_pagamento` e `parcelas`; forma como domínio fechado | Cartão parcelado e conferência por data |
-| CLIENTE com `cpf_cnpj` | + `tipo_pessoa` (PF/PJ) | A loja atende consumidor e empresa |
-| FORNECEDOR com `endereco` | Sem endereço `[VALIDAR]` | Não foi usado em nenhum processo; pode ser incluído |
+| VENDEDOR com `id` e `nome` | **FUNCIONARIO** com `cargo`, `cpf`, `data_admissao` e `ativo` | Os mesmos 2 funcionários vendem, operam o caixa e repõem; `ativo` preserva o histórico de quem saiu |
+| ENDEREÇO como entidade (1,N) de CLIENTE | Atributo `endereco` (texto) em CLIENTE `[VALIDAR]` | A loja não entrega nem usa vários endereços; pode voltar a ser tabela (seção 8) |
+| "Refere-se" ligando ITEM_VENDA, PRODUTO e CATEGORIA | CATEGORIA 1:N PRODUTO; ITEM_VENDA como **associativa** entre VENDA e PRODUTO | A categoria é do produto; o item liga venda e produto |
+| Atributos `id_cliente`, `id_funcionario`, `id_categoria`... desenhados nas entidades | Removidos do conceitual; viram FK só no modelo lógico | FK é decisão do modelo lógico |
+| `nome_produto`, `preco_unitario` | `descricao`, `preco_unitario` + `codigo_interno`, `ncm`, `unidade_medida`, `ativo` | Campos reais do PDV; `ativo` permite inativar (RN01, RN17) |
+| VENDA com `data_hora` | `data_venda` + **`status_venda`** | Orçamento e cancelamento precisam de estado (PR3, PR7) |
+| ITEM_VENDA com `preco_unitario` e `subtotal` | `preco_unitario_venda` + `subtotal` como coluna gerada | Preço histórico (RN04); subtotal nunca diverge (RN05) |
+| PAGAMENTO com `forma_pagamento`, `valor_pago` | + `data_pagamento`, `parcelas`; forma como domínio fechado | Parcelamento e conferência por data (RN09) |
+| CLIENTE com `cpf_cnpj` | + `tipo_pessoa` e cliente "Consumidor final" | PF e PJ (RN11); venda sem cadastro (RN14) |
+| FORNECEDOR com `endereco` | Sem endereço `[VALIDAR]` | Não é usado em nenhum processo |
 
-O dicionário conceitual em HTML da Entrega 1 ([`entrega-1/dicionario_dados_conceitual.html`](entrega-1/dicionario_dados_conceitual.html)) ainda mostra uma versão anterior (CPF e CNPJ separados, `razao_social`, `cep`). A versão que vale para a Entrega 2 é o [dicionário lógico](docs/dicionario_dados_logico.html), gerado do banco.
+### 1.2 Conversão do Modelo Conceitual para o Modelo Lógico
 
-### 1.2 Conversão do conceitual para o lógico
+- **Entidades → tabelas:** cada uma das 8 entidades virou uma tabela (`categoria`, `fornecedor`, `produto`, `estoque`, `cliente`, `funcionario`, `venda`, `pagamento`) e a associativa ITEM_VENDA virou `item_venda`.
+- **Atributos → colunas:** identificador → PK `id_*` `INT AUTO_INCREMENT`; atributo opcional → coluna que aceita `NULL` (`codigo_barras`, `ncm`, `telefone`, `email`, `endereco`, `localizacao_deposito`); domínio fechado → `ENUM` (`tipo_pessoa`, `status_venda`, `forma_pagamento`) ou `TINYINT(1)` (`ativo`); derivado → coluna gerada (`subtotal`); valores em dinheiro → `DECIMAL(10,2)`.
+- **Relacionamentos → chaves:** 1:N vira FK no lado N; 1:1 (PRODUTO–ESTOQUE) vira FK com `UNIQUE` em `estoque`; N:N com atributos (VENDA × PRODUTO) vira a tabela `item_venda` com duas FKs e `UNIQUE (id_venda, id_produto)`.
+- **Cardinalidades:** mínima 1 → FK `NOT NULL` (todo produto tem categoria e fornecedor; toda venda tem cliente e funcionário); mínima 0 do lado N → nenhum registro filho obrigatório (cliente sem compras, orçamento sem pagamento).
+- **Generalização/especialização:** não há no DER. Cliente PF e PJ ficou em **tabela única** com `tipo_pessoa`, porque os atributos são os mesmos e só o formato do documento muda (garantido por `chk_cliente_doc`).
 
-| Construção do DER | Tabela/coluna resultante |
-|---|---|
-| Entidade | Uma tabela; o identificador vira PK (`id_*`, `INT AUTO_INCREMENT`) |
-| Relacionamento 1:N | FK no lado N (`produto.id_categoria`, `venda.id_cliente`...) |
-| Relacionamento 1:1 (PRODUTO–ESTOQUE) | FK `estoque.id_produto` com `UNIQUE` |
-| Relacionamento N:N com atributos (VENDA × PRODUTO) | Tabela associativa `item_venda` com duas FKs e `UNIQUE (id_venda, id_produto)` |
-| Atributo opcional | Coluna que aceita `NULL` (`codigo_barras`, `ncm`, `telefone`, `email`, `endereco`, `localizacao_deposito`) |
-| Domínio fechado | `ENUM` (`tipo_pessoa`, `status_venda`, `forma_pagamento`) ou `TINYINT(1)` (`ativo`) |
-| Atributo derivado (subtotal) | Coluna gerada `STORED` (`quantidade * preco_unitario_venda`) |
+Resultado: **9 tabelas**, 8 FKs, 7 `UNIQUE`, 8 `CHECK`, 2 índices extras, 7 triggers e 8 views.
 
-Resultado: **9 tabelas** (8 entidades + a associativa `item_venda`), **8 chaves estrangeiras**, 7 `UNIQUE`, 6 `CHECK`, 6 triggers e 8 views.
+### 1.3 Definição de Chaves Primárias e Estrangeiras
 
-| Tabela | Origem | Linhas na carga | Após os exemplos de UPDATE/DELETE |
-|---|---|---|---|
-| categoria | CATEGORIA | 5 | 5 |
-| fornecedor | FORNECEDOR | 10 | 10 |
-| produto | PRODUTO | 67 | 67 |
-| estoque | ESTOQUE | 67 | 67 |
-| cliente | CLIENTE | 8 | 8 |
-| funcionario | FUNCIONARIO | 5 | 5 |
-| venda | VENDA | 20 | 19 |
-| item_venda | VENDA × PRODUTO | 47 | 45 |
-| pagamento | PAGAMENTO | 17 | 16 |
-
-### 1.3 Chaves primárias e estrangeiras
-
-**PKs.** Substitutas (`INT AUTO_INCREMENT`) em todas as tabelas. Identificadores naturais ficam `UNIQUE`: `produto.codigo_interno`, `cliente.cpf_cnpj`, `fornecedor.cnpj`, `funcionario.cpf`, `categoria.nome_categoria`, `estoque.id_produto` (1:1) e o par `item_venda (id_venda, id_produto)`.
-
-| Tabela filha | Coluna FK | Tabela pai | Cardinalidade (pai — filho) | Ao excluir o pai |
+| Tabela | PK | FK → tabela pai | Cardinalidade (pai — filho) | Ao excluir o pai |
 |---|---|---|---|---|
-| produto | id_categoria | categoria | (1,1) — (0,N) | bloqueia |
-| produto | id_fornecedor | fornecedor | (1,1) — (0,N) | bloqueia |
-| estoque | id_produto | produto | (1,1) — (1,1) | bloqueia |
-| venda | id_cliente | cliente | (1,1) — (0,N) | bloqueia |
-| venda | id_funcionario | funcionario | (1,1) — (0,N) | bloqueia |
-| item_venda | id_venda | venda | (1,1) — (1,N) | **CASCADE** (o item não existe sem a venda) |
-| item_venda | id_produto | produto | (1,1) — (0,N) | bloqueia |
-| pagamento | id_venda | venda | (1,1) — (0,N) | bloqueia (registro financeiro não some sozinho) |
+| categoria | id_categoria | — | | |
+| fornecedor | id_fornecedor | — | | |
+| produto | id_produto | id_categoria → categoria; id_fornecedor → fornecedor | (1,1) — (0,N) | bloqueia |
+| estoque | id_estoque | id_produto → produto (`UNIQUE`) | (1,1) — (1,1) | bloqueia |
+| cliente | id_cliente | — | | |
+| funcionario | id_funcionario | — | | |
+| venda | id_venda | id_cliente → cliente; id_funcionario → funcionario | (1,1) — (0,N) | bloqueia |
+| item_venda | id_item_venda | id_venda → venda; id_produto → produto | (1,1) — (1,N) / (1,1) — (0,N) | venda: **CASCADE**; produto: bloqueia |
+| pagamento | id_pagamento | id_venda → venda | (1,1) — (0,N) | bloqueia |
 
-### 1.4 Normalização
+Chaves candidatas mantidas como `UNIQUE`: `produto.codigo_interno`, `cliente.cpf_cnpj`, `fornecedor.cnpj`, `funcionario.cpf`, `categoria.nome_categoria`, `estoque.id_produto`, `item_venda (id_venda, id_produto)`.
 
-**1FN.** Colunas atômicas, sem listas nem grupos repetidos; os itens da venda e os pagamentos estão em tabelas próprias; toda tabela tem PK. Ressalva: `cliente.endereco` é guardado como um texto único — aceitável porque a loja não consulta por bairro/CEP; se precisar, vira tabela (seção 8).
+### 1.4 Processo de Normalização (1FN, 2FN e 3FN)
 
-**2FN.** Todas as tabelas têm PK simples, então não há dependência parcial. Em `item_venda`, cuja chave candidata é `(id_venda, id_produto)`, `quantidade` e `preco_unitario_venda` dependem do par inteiro; a descrição e o preço vigente do produto ficam em `produto`.
-
-**3FN.** Nenhum atributo não-chave depende de outro não-chave: nome da categoria e do fornecedor ficam nas suas tabelas (e não repetidos em cada produto); nome do cliente e do vendedor não se repetem em `venda`; o saldo fica em `estoque`, separado do cadastro do produto.
+- **1FN** — eliminar grupos repetitivos e multivalorados. Na lista do PDV, uma venda traz vários produtos e pode ter vários pagamentos: colocar "produto1, produto2..." ou "forma1, forma2" na venda criaria grupos repetitivos. Por isso itens foram para `item_venda` e pagamentos para `pagamento`. ENDEREÇO, que no brModelo era multivalorado (1,N), ficou como um único texto por cliente, porque a loja não usa mais de um endereço `[VALIDAR]`. Todas as colunas são atômicas e toda tabela tem PK.
+- **2FN** — eliminar dependências parciais. Em `item_venda`, a chave candidata é `(id_venda, id_produto)`. A descrição e o preço vigente dependem só de `id_produto` (dependência parcial) e por isso ficam em `produto`; em `item_venda` ficam só `quantidade` e `preco_unitario_venda`, que dependem do par inteiro. As demais tabelas têm PK simples.
+- **3FN** — eliminar dependências transitivas. Em uma "planilha de vendas" única, `nome_categoria` e `nome_fornecedor` dependeriam de `id_produto`, que depende da venda (venda → produto → categoria): o nome da categoria seria repetido em centenas de linhas e um erro de digitação quebraria o relatório por categoria (P3). Por isso `categoria` e `fornecedor` são tabelas próprias, o nome do cliente e do vendedor não se repetem em `venda`, e o saldo fica em `estoque`, não em `produto`.
+- **Por que cada forma foi necessária aqui:** a 1FN permite registrar vendas com vários itens e pagamento dividido (24 vendas da massa pagam em duas formas); a 2FN permite reajustar o preço do produto sem alterar o histórico (RN04, `UPDATE` 4.1); a 3FN dá relatórios por categoria/fornecedor/vendedor sem inconsistência (G07, G08, G09).
 
 **Redundâncias deliberadas e proteção:**
 
 | Redundância | Por quê | Proteção |
 |---|---|---|
-| `item_venda.preco_unitario_venda` | O preço praticado não pode mudar quando o produto é reajustado (o `UPDATE` 4.1 reajusta tintas em 5% sem alterar vendas antigas) | Gravado no momento da venda |
-| `item_venda.subtotal` | Facilita relatórios | Coluna gerada: o MySQL calcula, não há como divergir |
-| `venda.valor_total` | Consulta rápida do total da venda | Auditoria **7.1** compara com a soma dos itens (pega a divergência criada de propósito pelo `DELETE` 5.2) |
-| `estoque.quantidade_atual` | Saldo instantâneo no balcão | Só os triggers alteram na venda; `CHECK >= 0`; auditoria **7.4** |
+| `item_venda.preco_unitario_venda` | Preço praticado não muda com o reajuste (as tintas vendidas antes de abril/2026 mantêm o preço antigo) | Gravado na venda (RN04) |
+| `item_venda.subtotal` | Relatórios mais simples | Coluna gerada pelo MySQL: não diverge |
+| `venda.valor_total` | Total instantâneo no balcão | Auditoria A01 |
+| `estoque.quantidade_atual` | Saldo instantâneo | Só triggers alteram na venda; `CHECK >= 0`; A06 |
 
-### 1.5 Justificativas técnicas
+### 1.5 Justificativas Técnicas das Decisões
 
-| Decisão | Justificativa |
-|---|---|
-| PK substituta em todas as tabelas | Código do PDV, CPF/CNPJ e nomes podem ser digitados errado ou mudar; um número interno estável evita atualizar FKs |
-| ESTOQUE separado de PRODUTO (1:1) | Separa o dado que muda a cada venda (saldo) do cadastro que quase não muda; permite evoluir para estoque por depósito/filial sem mexer em `produto` |
-| `item_venda` como associativa | A relação real é N:N e é o lugar certo do preço praticado (histórico) |
-| `UNIQUE (id_venda, id_produto)` | O mesmo produto não aparece duas vezes na venda; mais unidades atualizam a linha |
-| PAGAMENTO separado de VENDA (1:N) | Uma venda pode ser paga em partes (ex.: dinheiro + cartão) |
-| `status_venda` em vez de apagar | Cancelamento e troca preservam o histórico para auditoria (P6) |
-| `ON DELETE CASCADE` só em `item_venda → venda` | Item não existe sem venda; pagamento e cadastros nunca somem em cascata |
-| `UNIQUE` em código interno, CPF/CNPJ e nome de categoria | Evita cadastro duplicado (regra organizacional da Entrega 1) |
-| `CHECK` (`preco_unitario >= 0`, `quantidade > 0`, `quantidade_atual >= 0`, `valor_total >= 0`, `valor_pago >= 0`, `parcelas >= 1`) | Bloqueiam valores impossíveis na origem |
-| `ENUM` em `tipo_pessoa`, `status_venda` e `forma_pagamento` | Só os valores previstos no dicionário |
-| `DECIMAL(10,2)` em valores | Dinheiro sem erro de arredondamento de ponto flutuante |
-
-**Regras de negócio no banco** (Anexo A, seção 4 → implementação). Valem mesmo que outra ferramenta acesse o banco:
-
-| Regra | Implementação | Teste |
+| Decisão | Justificativa | RN |
 |---|---|---|
-| Venda referencia cliente e funcionário cadastrados | FKs `NOT NULL` | T06 |
-| Item com quantidade > 0 | `chk_item_qtd` | T01 |
-| Produto não repete na mesma venda | `uq_item_venda_produto` | T07 |
-| Pagamento só para venda existente, valor ≥ 0, parcelas ≥ 1 | FK + `chk_pagamento_valor` + `chk_pagamento_parcelas` | T09 |
-| Venda concluída baixa o estoque | `trg_item_venda_after_insert`, `trg_venda_after_update_status` | seção 4.2 do script |
-| Estoque nunca negativo | `chk_estoque_qtd` (o trigger tenta baixar e a CHECK barra a venda) | T08 |
-| Cancelamento devolve o estoque sem apagar a venda | `trg_venda_after_update_status` | seção 5.1 do script |
-| Exclusão de venda devolve o estoque (sem devolver em dobro) | `trg_venda_before_delete` + variável `@venda_em_exclusao` + `trg_venda_after_delete_cleanup` | seção 5.1b do script |
-| Correção de item ajusta o estoque | `trg_item_venda_after_update` / `after_delete` | seção 5.2 do script |
-| CPF/CNPJ e código interno únicos | `UNIQUE` | T03, T04 |
-| Produto com histórico não é apagado (inativar) | FKs sem cascade + coluna `ativo` | T11 |
+| **PK substituta** (`INT AUTO_INCREMENT`) em todas as tabelas | Código do PDV, CPF/CNPJ e nomes podem ser digitados errado ou mudar; um número interno estável evita atualizar FKs. As chaves naturais ficam `UNIQUE` | RN11, RN12 |
+| **FKs `NOT NULL`** em produto e venda | Todo produto tem categoria e fornecedor; toda venda tem cliente e funcionário | RN13, RN14 |
+| **`ON DELETE CASCADE` só em `item_venda → venda`** | O item não existe sem a venda; pagamento e cadastros nunca somem em cascata | RN17 |
+| **ESTOQUE separado de PRODUTO (1:1)** | Separa o dado que muda a cada venda do cadastro; permite evoluir para estoque por depósito | RN13 |
+| **`item_venda` associativa + `UNIQUE (id_venda, id_produto)`** | Resolve o N:N, guarda o preço praticado e impede produto repetido | RN03, RN04 |
+| **`status_venda` em vez de apagar** | Orçamento, venda e cancelamento no mesmo registro, com histórico | RN06, RN08, RN10 |
+| **Cliente "Consumidor final"** | Boa parte das vendas de balcão é feita sem cadastro; evita FK nula e dados pessoais desnecessários (minimização da LGPD) | RN14, RN18 |
+| **`CHECK`** de valores (preço, quantidade, saldo, total, valor pago, parcelas) e de formato (CPF/CNPJ) | Bloqueiam valores impossíveis na origem | RN02, RN07, RN09, RN11 |
+| **`ENUM`** em `tipo_pessoa`, `status_venda`, `forma_pagamento` | Só os valores previstos no dicionário | RN09 |
+| **Triggers de estoque** (7, criados antes da carga) | A regra vale para qualquer aplicação; a própria massa passa pela baixa automática; a variável `@venda_em_exclusao` evita devolução em dobro no `DELETE` em cascata | RN01, RN06, RN08 |
+| **Índices** `ix_venda_data` e `ix_venda_status_data` | Consultas gerenciais por período e status | RNF05 |
+| **`DECIMAL(10,2)`** | Dinheiro sem erro de arredondamento | RN05, RN09 |
+| **MySQL 8.0.16+** | SGBD da disciplina; `CHECK` só é aplicada a partir do 8.0.16 e `DEFAULT (CURRENT_DATE)` exige 8.0.13 | — |
 
-**Particularidades do MySQL.** `CHECK` só é aplicada a partir do MySQL **8.0.16** (antes era ignorada) e `DEFAULT (CURRENT_DATE)` exige 8.0.13+, por isso o script pede MySQL 8.0.16 ou superior. Os triggers são criados **antes** da carga, de propósito: a massa de vendas já passa pela baixa automática de estoque, provando que ela funciona. No `DELETE FROM venda`, o `ON DELETE CASCADE` apaga os itens e dispararia a devolução de cada um de novo; a variável de sessão `@venda_em_exclusao` evita a devolução em dobro.
-
-**Por que MySQL.** É o SGBD definido pela disciplina e atende tudo o que o modelo usa: `CHECK`, colunas geradas, `ENUM`, triggers e views.
-
-### 1.6 Arquitetura analítica (BI e IA)
-
-O banco transacional atende o balcão; a análise só lê dele:
+### 1.6 Proposta de Arquitetura Analítica para BI e IA
 
 ```
 PDV / balcão ──► MySQL (OLTP, 9 tabelas, triggers de estoque)
-                     │  views (leitura) / exportação periódica
+                     │  views (somente leitura) / exportação periódica
                      ▼
-          Camada analítica (8 views + tabelas agregadas)
+          Camada analítica (8 views + consultas G01–G16)
                      │
         ┌────────────┴─────────────┐
         ▼                          ▼
-  Painéis de BI (gerência)    Modelos de IA (previsão, reposição)
+  Painéis de BI (gerência)    Modelos de IA (demanda, reposição)
 ```
 
-Fatos: `item_venda`, `pagamento`. Dimensões: tempo (`venda.data_venda`), produto/categoria/fornecedor, funcionário, cliente (PF/PJ).
+**Informações estratégicas:** quanto a loja fatura e com quais produtos (curva ABC), quais marcas sustentam a receita (negociação com fornecedor), quando falta mercadoria, quem compra (balcão, PF, PJ), em que dias e horários a loja precisa dos dois funcionários, quanto dinheiro está parado em estoque.
 
-**Rastreabilidade: problema ou indicador → tabelas → consulta** (arquivos `docs/05` a `docs/08`):
+**KPIs** (cada um com consulta no script):
 
-| Problema / indicador (KPI) | Tabelas | Consulta |
+| KPI | Fórmula | Período | Meta | Consulta | Na massa (jan–jun/2026) |
+|---|---|---|---|---|---|
+| KPI1 Faturamento | Σ `valor_total` das vendas concluídas | mensal | R$ 20.000 (informado pela loja) | G01 | R$ 14,2 mil a R$ 22,1 mil; média R$ 18,9 mil |
+| KPI2 Ticket médio | faturamento ÷ nº de vendas concluídas | mensal | ≥ R$ 130 `[VALIDAR]` | G02 | média R$ 128,43 |
+| KPI3 Unidades vendidas | Σ `quantidade` dos itens de vendas concluídas | mensal | ≈ 500 (informado) | G03 | média 536 |
+| KPI4 Taxa de cancelamento | canceladas ÷ (concluídas + canceladas) | mensal | ≤ 5% | G04 | 1,9% a 4,6% |
+| KPI5 Produtos abaixo do mínimo | nº de produtos com saldo ≤ mínimo | diário | 0 | G05 | 7 na carga |
+| KPI6 Cobertura de estoque | saldo ÷ média diária vendida (90 dias) | diário | ≥ 15 dias `[VALIDAR]` | G06 | lista os 15 piores |
+| KPI7 Desempenho por vendedor | faturamento e ticket por funcionário | mensal | — | G09 | |
+| KPI8 Concentração da receita (ABC) | % acumulado da receita por produto | semestral | — | G10 | 18 produtos fazem 80% |
+| KPI9 Formas de pagamento | % do valor por forma | mensal | — | G11 | PIX 34%, crédito 21%, boleto 19% |
+| KPI10 Perfil de cliente | % do faturamento por perfil | mensal | — | G14 | balcão 40%, PJ 36%, PF 24% |
+| KPI11 Vendas por dia/turno | nº de vendas por dia da semana e turno | semanal | — | G15 | |
+| KPI12 Valor do estoque | Σ saldo × preço de venda | mensal | — | G16 | |
+
+**Rastreabilidade — problema ou KPI → tabelas → consulta:**
+
+| Problema ou KPI | Tabelas envolvidas | Consulta no script |
 |---|---|---|
-| P1 visão única de catálogo e estoque | produto, categoria, fornecedor, estoque | `vw_estoque_situacao` (3.3) |
-| P2 produtos no ponto de reposição | estoque, produto | `vw_produtos_abaixo_minimo` (6.5) |
-| P3 desempenho por vendedor | venda, funcionario | `vw_desempenho_vendedor` (6.4) |
-| P3 receita por categoria | item_venda, produto, categoria | `vw_faturamento_categoria` (6.3) |
-| P4 baixa e devolução automáticas | item_venda, estoque | seções 4.2, 5.1, 5.1b e 5.2 + auditoria 7.4 |
-| P5 conferência venda × pagamento | venda, item_venda, pagamento | auditorias 7.1 e 7.2 |
-| P6 histórico de cancelamentos | venda | `vw_vendas_detalhado` (3.1) filtrando `CANCELADA` |
-| KPI faturamento mensal | venda | `vw_faturamento_mensal` (6.1) |
-| KPI produtos mais vendidos | item_venda, produto | `vw_ranking_produtos` (6.2) |
-| Integridade do cadastro | produto, estoque, cliente | auditorias 7.3 e 7.5 |
+| P1 base única, orçamentos e visão do estoque | VENDA, CLIENTE, ESTOQUE, PRODUTO, CATEGORIA | G13, G14, G16 |
+| P2 ponto de reposição | ESTOQUE, PRODUTO, FORNECEDOR, ITEM_VENDA | G05, G06, G10 |
+| P3 relatórios por vendedor/categoria/fornecedor | VENDA, ITEM_VENDA, PRODUTO, CATEGORIA, FORNECEDOR, FUNCIONARIO | G01, G02, G07, G08, G09, G15 |
+| P4 baixa automática de estoque | ITEM_VENDA, VENDA, ESTOQUE | G03, G06, A06 |
+| P5 conferência de venda × pagamento e caixa | PAGAMENTO, VENDA, ITEM_VENDA | G11, G12, A01, A02, A03 |
+| P6 cancelamentos sem perder histórico | VENDA | G04 |
+| KPI1 a KPI12 | ver tabela de KPIs | G01–G16 |
 
-**Potencial para BI:** ligar uma ferramenta de BI (Power BI, Metabase, Looker Studio) às 8 views já entrega painéis de faturamento por mês, ranking de produtos, receita por categoria/fornecedor, desempenho do vendedor e alerta de reposição.
+**Potencial para BI:** uma ferramenta de BI (Power BI, Metabase, Looker Studio) ligada às 8 views e às consultas G01–G16 entrega um painel com faturamento × meta, ticket médio, curva ABC, alerta de reposição, formas de pagamento e desempenho por vendedor. O modelo já é praticamente um esquema estrela: fatos em `item_venda` e `pagamento`; dimensões tempo (`data_venda`), produto/categoria/fornecedor, funcionário e cliente.
 
-**Usos de IA que o modelo sustenta** (propostas, não implementadas): (1) **previsão de demanda** por produto e mês sobre `item_venda` (tintas têm sazonalidade: fim de ano e verão); (2) **reposição sugerida**, em que `vw_produtos_abaixo_minimo` é a versão em SQL e um modelo ajusta o mínimo pelo giro real; (3) **produtos comprados juntos** (regras de associação sobre `item_venda`: tinta + rolo + fita + lixa) para sugerir itens no balcão; (4) **detecção de anomalias** em cancelamentos e diferenças de caixa (auditorias 7.1 e 7.2).
+**Aplicações de IA** (propostas): (1) **previsão de demanda** por produto e mês sobre `item_venda` (tintas têm sazonalidade: verão e fim de ano); (2) **reposição sugerida**, em que G05/G06 são a versão em SQL e um modelo ajusta o estoque mínimo pelo giro real; (3) **produtos comprados juntos** (regras de associação sobre `item_venda`: tinta + rolo + fita + lixa) para sugerir itens no balcão; (4) **detecção de anomalias** em cancelamentos e diferenças de caixa (G04, A01–A03).
 
-Cuidados: CPF/CNPJ, telefone e e-mail de clientes ficam fora da camada analítica (LGPD). Nenhum dado pessoal real foi usado na massa.
+**Cuidados:** CPF/CNPJ, telefone, e-mail e endereço ficam fora da camada analítica (LGPD, RN18). A massa é 100% fictícia.
 
 ---
 
-## 2. Modelo lógico
+## 2. Modelo Lógico Relacional
 
 ![Modelo lógico](docs/modelo_logico.png)
 
-Diagrama gerado pelo **Graphviz** a partir do catálogo do MySQL real (`scripts/gerar_docs_banco.py`), com PK/FK/UQ, tipos, `NOT NULL` (NN) e cardinalidade (mín,máx) em cada ponta. Versão vetorial: [`docs/modelo_logico.svg`](docs/modelo_logico.svg); fonte: [`docs/modelo_logico.dot`](docs/modelo_logico.dot). `[VALIDAR]` se o professor exige a notação do BRModelo.
+- **Tabelas, colunas com tipo, PK, FK e cardinalidade (mín, máx) em cada ponta.** Gerado com **Graphviz** a partir do catálogo do MySQL real (`scripts/gerar_docs_banco.py`), então reflete exatamente o banco. Versão vetorial: [`docs/modelo_logico.svg`](docs/modelo_logico.svg).
+- `[VALIDAR]` O esqueleto pede a **notação visual do brModelo** para o modelo lógico. Recomenda-se redesenhá-lo no brModelo Web a partir deste diagrama (mesmas tabelas, tipos, PK/FK e cardinalidades) e salvar a imagem em `docs/`.
+- As demais restrições (`NOT NULL`, `UNIQUE`, `CHECK`, `DEFAULT`) estão no **dicionário de dados**: [`docs/dicionario_dados.html`](docs/dicionario_dados.html), no modelo do `02-03g_Exemplo_Dicionario_Dados.pdf` (modelo conceitual, fluxo de dados, convenções, notação formal por entidade, índices, log de acesso e acesso por operação/LGPD).
 
-**Dicionário de dados lógico** (tipo, nulo, padrão, restrições e regra de negócio de cada coluna, triggers e views): [`docs/dicionario_dados_logico.html`](docs/dicionario_dados_logico.html), em um único arquivo HTML.
+## 3. Script SQL Completo
 
-## 3. Script SQL
+O script único é [`docs/script.sql`](docs/script.sql), na ordem exigida, montado por [`docs/build_script.sh`](docs/build_script.sh) a partir dos arquivos numerados:
 
-O script único é [`docs/script.sql`](docs/script.sql), gerado por [`docs/build_script.sh`](docs/build_script.sh) a partir dos arquivos numerados (que também podem ser lidos separadamente):
-
-| Arquivo | Conteúdo |
+| Arquivo | Conteúdo (ordem do esqueleto) |
 |---|---|
-| `01_create_database.sql` | Cabeçalho e `CREATE DATABASE loja_tintas_materiais` |
-| `02_create_tables.sql` | 9 `CREATE TABLE` com PK, FK, `UNIQUE`, `NOT NULL`, `CHECK`, `ENUM` e coluna gerada |
-| `03_triggers_views.sql` | 6 triggers de estoque e 8 views (JOIN e relatórios) |
-| `04_massa_de_dados.sql` | `INSERT` da massa (67 produtos reais do catálogo, 20 vendas) |
-| `05_select_join.sql` | `SELECT` com `JOIN` (vendas com cliente/vendedor, itens com produto/categoria/fornecedor, estoque) |
-| `06_update_delete.sql` | `UPDATE` (reajuste, orçamento → venda, cadastro) e `DELETE` (cancelamento, exclusão com devolução de estoque, item lançado errado) |
-| `07_consultas_gerenciais.sql` | Faturamento mensal, ranking, receita por categoria, desempenho por vendedor, reposição |
-| `08_consultas_auditoria.sql` | 5 verificações de integridade |
-| `09_testes_restricoes.sql` | 11 operações inválidas que o banco deve rejeitar (fora do script único; rodar com `--force`) |
+| `01_create_database.sql` | 1. `CREATE DATABASE` |
+| `02_create_tables.sql` | 2–3. `CREATE TABLE` com PK, FK, `NOT NULL`, `UNIQUE`, `CHECK`, `ENUM`, `DEFAULT`, coluna gerada e índices |
+| `03_triggers_views.sql` | 7 triggers (estoque e RN01) e 8 views — criados antes da carga para a massa passar pelas regras |
+| `04_massa_de_dados.sql` | 4. `INSERT INTO` (gerado por `scripts/gerar_massa.py`) |
+| `05_select_join.sql` | 5. `SELECT` com `JOIN` (S01–S05) |
+| `06_update_delete.sql` | 6–7. `UPDATE` (reajuste, orçamento → venda, cadastro, reposição) e `DELETE` (cancelamento, item de orçamento, venda duplicada com devolução de estoque, funcionário, demonstração da auditoria com `ROLLBACK`) |
+| `07_consultas_gerenciais.sql` | 8. **G01–G16**, cada uma com código, pergunta e problema/KPI atendido |
+| `08_consultas_auditoria.sql` | 9. **A01–A10**, cada uma com código, pergunta e `Verifica: RNxx` |
+| `09_testes_restricoes.sql` | 14 operações inválidas que o banco deve rejeitar (fora do script único; rodar com `--force`) |
+
+Exemplo de cabeçalho usado:
+
+```sql
+-- G05 — Quais produtos estao no ponto de reposicao agora?
+-- Atende: KPI5 Produtos abaixo do minimo (meta: 0) · P2
+
+-- A03 — Existe venda concluida cuja soma dos pagamentos difere do total?
+-- Verifica: RN09 (pagamento integral, em uma ou mais formas)
+```
+
+Como executar:
 
 ```bash
 mysql -u root -p --default-character-set=utf8mb4 < docs/script.sql
@@ -308,112 +386,99 @@ mysql -u root -p --default-character-set=utf8mb4 < docs/script.sql
 mysql -u root -p --force loja_tintas_materiais < docs/09_testes_restricoes.sql
 ```
 
-Reexecutar é seguro: o script recria o banco (`DROP DATABASE IF EXISTS`). Requer MySQL 8.0.16 ou superior. **Testado em MySQL 8.0.46 a partir de banco vazio, sem erros (exit 0).** Resultado: 9 tabelas, 8 views, 6 triggers, 6 `CHECK`, 7 `UNIQUE`, 8 FKs.
+**Testes (09/11/2026, MySQL 8.0.46, banco vazio):** script executado do início ao fim **sem erros (exit 0)**; auditoria **A01–A10 com 0 violações** na carga e após os `UPDATE`/`DELETE`; **14 de 14** operações inválidas rejeitadas (quantidade zero, preço negativo, CPF duplicado, CPF com formato errado, código interno duplicado, produto inexistente, produto inativo, cliente inexistente, produto repetido na venda, venda maior que o estoque, parcelas = 0, forma de pagamento inválida, exclusão de produto e de cliente com histórico). A seção 5.5 do `06` mostra a auditoria A01 encontrando uma divergência provocada dentro de uma transação desfeita com `ROLLBACK`.
 
-**Testes e evidências** (execução de 08/11/2026):
+## 4. Massa de Dados
 
-- **Auditoria na carga inicial:** as 5 consultas (`08`) retornam **0 linhas** logo após o `04_massa_de_dados.sql`: totais batem com os itens, toda venda concluída tem pagamento, todo produto tem estoque, nenhum estoque negativo, nenhum CPF/CNPJ duplicado.
-- **Auditoria após os exemplos de UPDATE/DELETE:** detecta exatamente as duas inconsistências provocadas pelo próprio script — a venda 5 (total R$ 287,40 × itens R$ 203,80, porque o `DELETE` 5.2 removeu um item sem recalcular o total, de propósito) e a venda 4 (orçamento convertido em venda concluída pelo `UPDATE` 4.2, ainda sem pagamento).
-- **Triggers:** ao converter o orçamento 4 em venda, o estoque dos itens é baixado de uma vez; ao cancelar a venda 1, devolvido; ao apagar a venda 2 (`DELETE`), o THINNER 16 ITAQUA 18L volta ao saldo sem devolução em dobro.
-- **Restrições (`09`):** **11 de 11** operações inválidas rejeitadas — quantidade zero, preço negativo, CPF duplicado, código interno duplicado, produto inexistente, cliente inexistente, produto repetido na venda, venda maior que o estoque, parcelas = 0, forma de pagamento fora do domínio e exclusão de produto com histórico.
-- **Consultas gerenciais (após o script):** faturamento de jan a jun/2026 entre R$ 26,70 e R$ 1.809,80 por mês; categoria líder "Tintas e Vernizes" (R$ 1.674,40); produto mais vendido SUVINIL TOQ FSC BR NEVE 900ML (10 unidades); 1 produto no ponto de reposição (CHV CANHAO CRV 5MM FAMASTIL).
+Arquivo: [`docs/04_massa_de_dados.sql`](docs/04_massa_de_dados.sql), gerado por [`scripts/gerar_massa.py`](scripts/gerar_massa.py) (Python, semente fixa: a mesma saída a cada execução). **Nenhum dado pessoal real**: nomes, CPFs, CNPJs, telefones e e-mails são inventados. Os 67 produtos (código, EAN, NCM, descrição) são os reais das listas do PDV.
 
-## 4. Massa de dados
+**Como o porte real justifica o volume de cada tabela** (período simulado: jan–jun/2026, segunda a sábado):
 
-A massa está em [`docs/04_massa_de_dados.sql`](docs/04_massa_de_dados.sql).
-
-| Dado | Origem |
-|---|---|
-| 67 produtos (código interno, EAN, descrição, NCM) | **Reais**, das listas de preço do PDV da loja |
-| 5 categorias e 10 fornecedores (marcas) | Marcas reais das listas; **CNPJs, telefones e e-mails dos fornecedores são fictícios** |
-| 8 clientes (5 PF, 3 PJ) e 5 funcionários | **Fictícios** (nomes, CPF/CNPJ e contatos inventados) |
-| 20 vendas (jan a jul/2026), 47 itens, 17 pagamentos | Fictícias, coerentes com os preços e o estoque |
-| Estoque inicial | Fictício, com folga para nunca ficar negativo após as baixas automáticas |
-
-**Volume versus números reais.**
-
-| Item | Real (informado) | Na massa |
+| Tabela | Linhas | Justificativa |
 |---|---|---|
-| Funcionários | 2 | 5 (para exercitar o relatório por vendedor) `[VALIDAR]` |
-| Faturamento | ≈ R$ 20 mil/mês | R$ 5.826,30 em 13 vendas concluídas ao longo de 6 meses |
-| Saída de produtos | ≈ 500 unidades/mês | 47 itens no período |
-| Formas de pagamento | `[PREENCHER]` | débito 7, boleto 4, dinheiro 3, PIX 1, crédito 1 (após o script) |
+| categoria | 5 | Categorias das listas do PDV |
+| fornecedor | 10 | Marcas reais das listas (contatos fictícios) |
+| produto | 67 | Itens reais das listas de preço; 2 inativados no fim do período (descontinuados) |
+| estoque | 67 | 1 por produto; 7 terminam no ponto de reposição |
+| funcionario | 3 | Os **2 funcionários** da loja + 1 ex-funcionário desligado em 31/03 (mostra o histórico preservado e `ativo = 0`) |
+| cliente | 121 | "Consumidor final" + 95 PF + 25 PJ; 10 nunca compraram |
+| venda | 940 | ≈ 150 vendas/mês (881 concluídas, 31 canceladas, 28 orçamentos) → com ticket médio de R$ 128, dá **≈ R$ 18,9 mil/mês** (real: ≈ R$ 20 mil) |
+| item_venda | 2.199 | ≈ 2,3 itens por venda → **≈ 536 unidades/mês** (real: ≈ 500) |
+| pagamento | 905 | 1 por venda concluída; 24 vendas pagas em duas formas; 32 parcelamentos no crédito; boleto só para PJ |
 
-A massa é uma **base de demonstração**: pequena o bastante para conferir à mão na apresentação, mas não reproduz o volume real da loja. Se o professor pedir volume realista, o próximo passo é gerar cerca de 6 meses de vendas (≈ 3.000 itens) com um script gerador (seção 8).
+**Variedade para os testes:** vendas canceladas (3–5% ao mês), orçamentos em aberto, clientes sem compras, produtos abaixo do mínimo e zerados, 5 formas de pagamento, pagamento dividido, parcelamento, boleto com vencimento posterior, reajuste de 5% nas tintas em 01/04 (vendas antigas mantêm o preço antigo), ex-funcionário com vendas, produtos inativos com histórico, variação mensal (fevereiro mais fraco, junho mais forte).
 
-**Coerência.** Os pagamentos fecham o valor das vendas pagas; orçamentos não têm pagamento; o estoque inicial já considera as baixas que os triggers fazem durante a carga, e a auditoria inicial retorna 0 violações.
+**Coerência:** o estoque inicial é calculado para que nenhum saldo fique negativo depois das baixas automáticas; todo total bate com os itens e todo pagamento com o total — a auditoria A01–A10 retorna 0 violações.
 
-## 5. Repositório
+## 5. Repositório GitHub
 
 ```text
 Banco-de-dados-3feira/
-├── README.md                      ← este relatório (Entrega 2 + Anexo A com a Entrega 1)
+├── README.md                      ← relatório técnico (Entrega 2 + Anexo A com a Entrega 1)
+├── levantamento/levantamento.md   ← levantamento da entrevista (o grupo completa)
+├── evidencias/                    ← fotos JPG da visita (balcão/PDV, loja)
 ├── docs/                          ← script.sql, 01..09, build_script.sh,
-│                                    modelo lógico (.png/.svg/.dot), dicionário lógico (.html)
-├── entrega-1/                     ← DER em Chen, DER do BRModelo (22/09/2026), dicionário conceitual (.html)
+│                                    modelo lógico (.png/.svg/.dot), dicionario_dados.html
+├── entrega-1/                     ← DER no brModelo (PDF), DER em Chen (PNG), dicionário conceitual (HTML)
 ├── fluxograma/                    ← fluxos de venda e de reposição (.dot/.png/.svg)
-├── evidencias/                    ← fotos da visita (balcão/PDV, loja); catálogos e entrevista a anexar
-└── scripts/gerar_docs_banco.py    ← gera o modelo lógico e o dicionário a partir do MySQL
+└── scripts/                       ← gerar_massa.py, gerar_docs_banco.py, gerar_dicionario.py
 ```
 
-> Reorganização feita nesta atualização: o antigo `script_banco_dados (3).sql` virou `docs/script.sql` (dividido em 01..08, com a mesma saída), `FLUXOGRAMA.pdf` — que na verdade é o DER do BRModelo — virou `entrega-1/DER_brmodelo_22-09-2026.pdf`, `DER_loja_tintas_materiais.png` virou `entrega-1/DER_chen_loja_tintas.png` e `Dicionario de dados.html` virou `entrega-1/dicionario_dados_conceitual.html`.
+**Commits:** o histórico deve ser **equilibrado entre os 4 integrantes**, cada um com a **própria conta do GitHub** e nome compatível com a tabela de integrantes. Evitar um único commit final.
 
-**Commits.** O histórico deve mostrar contribuições equilibradas de cada integrante, feitas pela **própria conta do GitHub**, com o nome igual ao da tabela de integrantes. `[VALIDAR]` conferir antes da entrega (o professor costuma corrigir a branch `main`).
+**Responsabilidades:** `[PREENCHER]` (ex.: visita e levantamento; DER no brModelo; script SQL; documentação; pitch e vídeo).
 
-**Responsabilidades:** `[PREENCHER]` (ex.: quem fez a visita, o DER, o script SQL, a documentação e o pitch).
+## 6. Uso de Inteligência Artificial
 
-## 6. Uso de inteligência artificial nesta entrega
+| Item | Registro |
+|---|---|
+| **Ferramentas e etapas** | **ChatGPT** (Entrega 1: apoio na construção do banco e alteração de dados). **Claude (Anthropic)**: script SQL inicial e esqueletos da documentação (Entrega 1); na Entrega 2: reorganização do repositório no padrão do esqueleto, testes no MySQL 8.0.46, gerador da massa de dados, consultas G01–G16 e A01–A10, códigos RN, dicionário no modelo 02-03g, diagrama do modelo lógico, fluxogramas, levantamento de processos/requisitos/regras/KPIs típicos de lojas de materiais de construção e redação deste relatório |
+| **Motivação** | Organizar o trabalho no padrão do esqueleto, testar o script de verdade no MySQL, gerar uma massa coerente com o porte real e conferir o atendimento a cada item da Entrega 2 |
+| **Prompts utilizados** | "gostaria que você pudesse me fazer uma atualização geral de como está esse projeto referente a aula de banco de dados. Gostaria que você utilizasse esse projeto como base de organização e apresentação [repositório de referência], não quero que copie o tema"; "Coloque mais um integrante nos membros"; "você consegue acessar o drive agora?" (material da disciplina); "Sim, por gentileza" (aplicar os ajustes do esqueleto). O prompt da Entrega 1 está no [Anexo A, seção 9](#9-uso-de-inteligência-artificial) |
+| **Resposta recebida (resumo)** | Reorganização do repositório; script dividido em arquivos e testado; lista do que faltava em relação ao esqueleto (códigos G/A e RN, KPIs com meta, levantamento, responsável, volume da massa, notação brModelo, dicionário no modelo 02-03g); geração dos artefatos correspondentes |
+| **Fontes consultadas e verificadas** | Esqueleto e enunciado da Entrega 2, modelo de dicionário 02-03g e links da disciplina (Drive do professor); números da loja (informados pelo grupo); execução real do script no MySQL 8.0.46 |
+| **Trechos rejeitados ou corrigidos** | O cabeçalho do script dizia "testado em MariaDB": refeito e documentado em MySQL 8.0.46. O `FLUXOGRAMA.pdf` era o DER do brModelo e foi renomeado. A primeira massa (20 vendas) não refletia o porte: substituída por uma massa calibrada (≈ R$ 18,9 mil e ≈ 536 unidades/mês). A primeira calibração gerou ≈ 700 unidades e R$ 14 mil/mês (produtos baratos demais), e a seguinte R$ 26 mil/mês; os pesos foram ajustados até chegar perto dos números reais. Exemplos de `UPDATE`/`DELETE` com id fixo foram trocados por consultas, para não quebrar se a massa mudar. Dados pessoais trocados por fictícios |
+| **Justificativa da escolha final** | Mantido o que foi verificado executando no MySQL e conferindo com o esqueleto; dados reais da loja (responsável, entrevista, correção da E1) ficaram como `[PREENCHER]`, porque a IA não pode inventá-los |
+| **Reflexão crítica** | `[PREENCHER]` texto do grupo (sugestões: o que a IA não podia saber; o que só foi descoberto rodando o script; quais respostas vieram genéricas por falta de contexto no prompt; o que o grupo aprendeu de modelagem revisando o material) |
 
-O registro da Entrega 1 (prompt e resposta) está no [Anexo A, seção 9](#9-uso-de-inteligência-artificial).
+## 7. Apresentação Corporativa Final
 
-| Ferramenta | Para quê | Como foi verificado |
-|---|---|---|
-| ChatGPT (OpenAI) | Apoio na construção do banco e na alteração de dados (Entrega 1) | `[PREENCHER]` |
-| Claude (Anthropic) | Script SQL inicial (tabelas, triggers, views, consultas) e esqueletos da documentação (Entrega 1); nesta atualização: reorganização do repositório, divisão do script, testes no MySQL, diagrama do modelo lógico, dicionário lógico, fluxogramas e este relatório | Execução completa do `script.sql` em MySQL 8.0.46 a partir de banco vazio (exit 0); auditoria com 0 violações na carga; 11 operações inválidas rejeitadas; comparação com o DER do BRModelo e as regras da Entrega 1 |
+**Vídeo do pitch (8 min, YouTube "Não listado"):** `[PREENCHER — link até 16/11]`. A Máximo Das Tintas não está na lista de seminários presenciais da turma de terça; por isso o pitch é entregue em vídeo, com o link aqui no README.
 
-**O que foi corrigido ou ajustado ao revisar o material gerado:** o cabeçalho do script dizia "testado em MariaDB"; agora o teste foi refeito e documentado em **MySQL 8.0.46**, o SGBD da disciplina. O `FLUXOGRAMA.pdf` era, na verdade, o DER do BRModelo; foi renomeado e os fluxogramas de processo foram criados. As diferenças entre o DER do BRModelo e o banco (ENDEREÇO, VENDEDOR, ESTOQUE ligado a CATEGORIA) estavam sem explicação e agora estão na tabela de revisão (seção 1.1). Os dados pessoais (clientes, funcionários, contatos de fornecedores) foram trocados por fictícios, como já registrado na Entrega 1.
+Roteiro (ordem do esqueleto, slides limpos, sem blocos de texto):
 
-**Reflexão crítica do grupo.** `[PREENCHER]` — texto do próprio grupo. Sugestão de pontos: o que a IA não podia saber (dados reais da loja, que vieram da visita); o que precisou ser conferido rodando o script, e não só lendo; quais respostas vieram genéricas e por quê (prompt sem o esqueleto do professor ou sem os dados da loja); o que o grupo aprendeu de modelagem ao revisar o que foi gerado.
-
-## 7. Pitch de 8 minutos
-
-Roteiro sugerido, na ordem pedida:
-
-1. **Problema (1 min)** — a loja Máximo Das Tintas, 2 funcionários, ≈ R$ 20 mil/mês, controle em PDF/planilha (P1 a P6), com foto da visita.
+1. **Problema (1 min)** — loja com 2 funcionários, ≈ R$ 20 mil/mês, controle em PDF/planilha (P1–P6); foto do balcão.
 2. **Solução (1 min)** — 9 tabelas integradas; regras e estoque garantidos pelo próprio banco.
-3. **Modelo conceitual → lógico (1,5 min)** — DER e a tabela de revisão (o que mudou desde o BRModelo e por quê); diagrama do modelo lógico.
-4. **Demonstração em SQL (2 min)** — rodar `script.sql`; converter um orçamento em venda e mostrar o estoque baixando sozinho; cancelar e mostrar a devolução; rodar um teste do `09` (venda maior que o estoque é bloqueada).
-5. **Consultas (1 min)** — faturamento mensal, ranking de produtos e produtos para repor.
-6. **BI e IA (1 min)** — tabela de rastreabilidade e as propostas (previsão de demanda, produtos comprados juntos).
+3. **Modelo lógico (1,5 min)** — diagrama; o que mudou desde o DER do brModelo.
+4. **SQL rodando (1,5 min)** — `script.sql` do zero; converter um orçamento e ver o estoque baixar; tentar vender além do estoque (T10) e ver o bloqueio.
+5. **Consultas (1,5 min)** — G01 faturamento × meta, G05 reposição, G10 curva ABC; auditoria A01–A10 com 0 violações.
+6. **BI e IA (1 min)** — KPIs e rastreabilidade; previsão de demanda e produtos comprados juntos.
 7. **Benefícios (0,5 min)** — estoque confiável, relatórios sem planilha, histórico preservado.
 
-`[VALIDAR]` o tempo ensaiando; definir quem apresenta cada parte.
+Defesa: cada integrante responde só às perguntas dirigidas a ele; todos presentes, com vestimenta corporativa.
 
 ## 8. Limitações e pontos a validar
 
-1. **ENDEREÇO** era entidade no DER do BRModelo e virou atributo de texto em `cliente`. `[VALIDAR]` com o professor; se for exigido, criar a tabela `endereco (id_endereco, id_cliente, logradouro, numero, bairro, cidade, cep)`.
-2. **Custo e margem:** a loja forma o preço com ≈ 60% sobre o custo, mas o modelo não guarda o custo de aquisição. Evolução natural: `produto.preco_custo` (ou uma tabela `compra`/`item_compra` com o fornecedor), o que permitiria relatório de margem.
-3. **Entrada de mercadoria** (compra ao fornecedor) não tem tabela própria; a reposição hoje é feita com `UPDATE estoque`. Uma tabela de movimentação de estoque daria histórico de entradas e saídas.
-4. **`produto.ativo`** existe, mas o banco ainda não impede vender produto inativo (não há trigger para isso). `[VALIDAR]` se vale incluir.
-5. **`venda.valor_total`** é informado na inserção e não é recalculado sozinho ao alterar itens; a auditoria 7.1 detecta a diferença. Um trigger de recálculo é uma melhoria possível.
-6. **Massa pequena:** 20 vendas não representam o volume real (≈ 500 unidades/mês); 5 funcionários na massa contra 2 na loja `[VALIDAR]`.
-7. **Política de troca** (2 semanas, com nota) está no processo e no fluxograma, mas não é verificada pelo banco (não há data limite de cancelamento).
-8. **Desconto e taxa de entrega** aparecem na tela do PDV da loja (foto em `evidencias/balcao_pdv.jpg`), mas não existem no modelo. Se a loja confirmar, incluir `venda.valor_desconto` e `venda.taxa_entrega` (e ajustar o total e a auditoria 7.1). `[VALIDAR]`
-9. **RGM do Vinicius:** 46749257 nesta entrega e 46749527 na Entrega 1. `[VALIDAR]`
-10. **Evidências:** faltam foto da fachada, endereço/CNPJ, responsável entrevistado e os catálogos usados (`evidencias/`).
+1. **Correção da Entrega 1:** a tabela "Caso A" precisa dos apontamentos do professor. `[PREENCHER]`
+2. **Notação brModelo:** o DER revisado e o modelo lógico devem ser redesenhados no brModelo. `[VALIDAR]`
+3. **ENDEREÇO** virou atributo de texto em `cliente`; se exigido, criar `endereco (id_endereco, id_cliente, logradouro, numero, bairro, cidade, cep)`. `[VALIDAR]`
+4. **Custo e margem (RN16):** o modelo não guarda o custo de aquisição; evolução: `produto.preco_custo` ou tabelas `compra`/`item_compra`, permitindo relatório de margem.
+5. **Desconto e taxa de entrega** aparecem no PDV (foto) mas não estão no modelo; se a loja confirmar, incluir `venda.valor_desconto` e `venda.taxa_entrega` e ajustar A01. `[VALIDAR]`
+6. **Troca em 2 semanas (RN15)** não é verificada pelo banco (não há data do cancelamento); evolução: `venda.data_cancelamento` + `CHECK`.
+7. **Estorno:** venda cancelada depois de paga mantém o pagamento registrado; o estorno não é modelado.
+8. **Entrada de mercadoria** é um `UPDATE` em `estoque`; uma tabela de movimentação daria o histórico de entradas e saídas.
+9. **Evidências:** faltam endereço, responsável com telefone, foto da entrevista e o texto do levantamento. `[PREENCHER]`
 
 ## Referências da disciplina
 
-Materiais usados como base para a modelagem e a documentação:
-
-| Tema | Link | Onde foi aplicado neste projeto |
+| Tema | Link | Onde foi aplicado |
 |---|---|---|
-| Dicionário de dados | [medium.com/datapsico — Dicionário de dados](https://medium.com/datapsico/dicionario-de-dados-ac3ce726c34b) | Dicionário conceitual (Anexo A, seção 5) e [dicionário lógico](docs/dicionario_dados_logico.html) |
-| Script SQL passo a passo (Westeros) | [cidandrade.github.io/script-sql-westeros](https://cidandrade.github.io/script-sql-westeros/#passo-2) | Ordem do [`script.sql`](docs/script.sql): banco → tabelas → carga → consultas (seção 3) |
-| Conversão do DER em tabelas | [cidandrade.github.io/conversor-der-tabelas](https://cidandrade.github.io/conversor-der-tabelas/#c=lotacao&a=11&b=0n&alt=1) | Regras de conversão 1:1, 1:N e N:N (seção 1.2) |
-| Cardinalidade no DER | [cidandrade.github.io/cardinalidade-der](https://cidandrade.github.io/cardinalidade-der/) | Cardinalidades (mín,máx) das FKs (seção 1.3) e do [modelo lógico](docs/modelo_logico.png) |
-| Normalização (conferência) | [cidandrade.github.io/normalizacao](http://cidandrade.github.io/normalizacao/#conferencia) | 1FN, 2FN e 3FN (seção 1.4) |
-| Material da disciplina (Drive) | [Pasta no Google Drive](https://drive.google.com/drive/folders/1QVVdiG4LxFE7L3BSnZDFmHyakaoPX94A) | Enunciado e esqueleto das entregas |
+| Material da disciplina (Drive) | [Pasta do Prof. Cid Andrade](https://drive.google.com/drive/folders/1QVVdiG4LxFE7L3BSnZDFmHyakaoPX94A) | Esqueleto e enunciado da Entrega 2; modelo de dicionário 02-03g |
+| Dicionário de dados | [medium.com/datapsico — Dicionário de dados](https://medium.com/datapsico/dicionario-de-dados-ac3ce726c34b) | [`docs/dicionario_dados.html`](docs/dicionario_dados.html) |
+| Script SQL passo a passo (Westeros) | [cidandrade.github.io/script-sql-westeros](https://cidandrade.github.io/script-sql-westeros/#passo-2) | Ordem do `script.sql` (seção 3) |
+| Conversão do DER em tabelas | [cidandrade.github.io/conversor-der-tabelas](https://cidandrade.github.io/conversor-der-tabelas/#c=lotacao&a=11&b=0n&alt=1) | Seção 1.2 |
+| Cardinalidade no DER | [cidandrade.github.io/cardinalidade-der](https://cidandrade.github.io/cardinalidade-der/) | Seção 1.3 e modelo lógico |
+| Normalização (conferência) | [cidandrade.github.io/normalizacao](http://cidandrade.github.io/normalizacao/#conferencia) | Seção 1.4 |
 
 ---
 
@@ -481,7 +546,7 @@ Materiais usados como base para a modelagem e a documentação:
 
 ### 5. Dicionário de Dados Conceitual (Preliminar)
 
-> Versão em HTML: [`entrega-1/dicionario_dados_conceitual.html`](entrega-1/dicionario_dados_conceitual.html). A versão final, com tipos e restrições do MySQL, é o [dicionário lógico](docs/dicionario_dados_logico.html).
+> Versão em HTML: [`entrega-1/dicionario_dados_conceitual.html`](entrega-1/dicionario_dados_conceitual.html). A versão da Entrega 2, com tipos e restrições do MySQL, é o [dicionário de dados](docs/dicionario_dados.html).
 
 #### Entidade: CATEGORIA
 | Atributo | Descrição | Regra de negócio associada |
@@ -598,7 +663,7 @@ Materiais usados como base para a modelagem e a documentação:
 
 #### 7.1 DER do grupo no BRModelo (22/09/2026)
 
-Arquivo: [`entrega-1/DER_brmodelo_22-09-2026.pdf`](entrega-1/DER_brmodelo_22-09-2026.pdf) (antes chamado `FLUXOGRAMA.pdf`). As diferenças entre este DER e o modelo final estão na [tabela de revisão da seção 1.1](#revisão-do-modelo-conceitual).
+Arquivo: [`entrega-1/DER_brmodelo_22-09-2026.pdf`](entrega-1/DER_brmodelo_22-09-2026.pdf) (antes chamado `FLUXOGRAMA.pdf`). As diferenças entre este DER e o modelo final estão na [tabela de revisão da seção 1.1](#caso-a--revisão-a-partir-da-correção-da-entrega-1).
 
 O modelo comporta evolução futura sem quebrar a estrutura atual: histórico de reajuste de preços por produto, compras/entradas junto a fornecedores, vários endereços por cliente ou metas de vendas por funcionário.
 
