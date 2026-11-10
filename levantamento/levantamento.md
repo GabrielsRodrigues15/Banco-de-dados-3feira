@@ -8,15 +8,16 @@ Texto organizado pelo grupo a partir da entrevista e da observação na loja. O 
 |---|---|
 | Organização | **MAXIMO DAS TINTAS LTDA - ME** (nome fantasia: Máximo Das Tintas) — varejo de tintas, ferramentas e materiais de construção |
 | CNPJ | 52.489.342/0001-10 |
-| Endereço | R. Ana Maria Sirani, 577 — São Paulo/SP |
-| Telefone da loja | (11) 91297-8462 |
+| Endereço | R. Ana Maria Sirani, 577 (placa: 577A) — Conjunto Residencial José Bonifácio, São Paulo/SP |
+| Telefones da loja | (11) 2522-8880 · WhatsApp (11) 91297-8462 |
+| Instagram | @maximodastintas |
 | Google Meu Negócio | https://share.google/O58fMgnEeO1ujE6RM |
 | E-mail | maximosdastintas@gmail.com |
 | Responsáveis pela loja | Pedro, Waldeane e Larissa |
 | **Entrevistada** | **Larissa** — Financeiro / Ajudas gerais — telefone **(11) 98338-6503** |
 | Integrante presente na entrevista | Ítalo Leal Oliveira |
 | Data e local | 07/11/2026, por volta de 13h, no balcão da loja (data e hora aparecem no relógio do PDV nas fotos) `[VALIDAR]` |
-| Fotos | [`balcao_pdv.jpg`](../evidencias/balcao_pdv.jpg) · [`pdv_tela_venda.jpg`](../evidencias/pdv_tela_venda.jpg) · [`sistema_cadastro_produtos.jpg`](../evidencias/sistema_cadastro_produtos.jpg) · [`visita_loja.jpg`](../evidencias/visita_loja.jpg) |
+| Fotos | [`fachada.jpg`](../evidencias/fachada.jpg) · [`mural_cnpj_troca_devolucao.jpg`](../evidencias/mural_cnpj_troca_devolucao.jpg) · [`cadastro_produto_tinta.jpg`](../evidencias/cadastro_produto_tinta.jpg) · [`cadastro_produto_eletrica.jpg`](../evidencias/cadastro_produto_eletrica.jpg) · [`balcao_pdv.jpg`](../evidencias/balcao_pdv.jpg) · [`pdv_tela_venda.jpg`](../evidencias/pdv_tela_venda.jpg) · [`sistema_cadastro_produtos.jpg`](../evidencias/sistema_cadastro_produtos.jpg) · [`visita_loja.jpg`](../evidencias/visita_loja.jpg) |
 
 ## 2. Roteiro (o que foi perguntado)
 
@@ -42,8 +43,8 @@ Texto organizado pelo grupo a partir da entrevista e da observação na loja. O 
 | Registro de vendas | Em **sistema próprio** (PDV) |
 | Controle de estoque e compras | A loja é revisada **todo dia**; o que está acabando ou vai acabar é colocado no **carrinho do site dos fornecedores**; o pessoal da loja e do **escritório** decide o que será comprado |
 | Formas de pagamento | **PIX, débito, crédito e dinheiro**; para **obras parceiras**, venda **a prazo no boleto** |
-| Troca e devolução | **Resposta pendente** (a loja responde depois). Na Entrega 1 foi informado prazo de 2 semanas, com nota fiscal `[VALIDAR]` |
-| Preço de venda | O sistema calcula o preço com a **margem que a loja coloca sobre a venda, de 3,6%**, mais um **reajuste** para acompanhar o valor de venda atual do produto |
+| Troca e devolução | Segue o **Código de Defesa do Consumidor** (resposta confirmada pelo aviso no mural da loja; ver seção 4) |
+| Preço de venda | O sistema calcula o preço pela **margem sobre o custo** — **65% na maioria dos produtos**, **45% nas tintas** e **acima de 100% nos produtos pequenos** (pregos etc.) — mais um **reajuste** para acompanhar o valor de venda atual. *(Na anotação da entrevista constava "3,6%"; o valor foi corrigido pelo grupo com a loja.)* |
 | Entrega | **Não** faz entrega |
 | Desconto | **5% no PIX** |
 | Relatórios desejados | **Aumento de preço dos produtos** e **desconto dos fornecedores** |
@@ -55,9 +56,12 @@ Texto organizado pelo grupo a partir da entrevista e da observação na loja. O 
 - **Tela de venda do PDV** ([`pdv_tela_venda.jpg`](../evidencias/pdv_tela_venda.jpg)): o tipo de movimento é **Venda** ou **Orçamento** (confirma o orçamento como processo); o cliente padrão é **"BALCAO"** (venda sem cadastro) e o vendedor também é informado; há preço **faturado** e preço **à vista**, **desconto** por item e total, **taxa de entrega** (zerada — a loja não entrega) e a opção **"Gerar NF-e"**. Atalhos: F2-Desconto, F5-Finaliza, F8-Caixa, F9-Movimentos.
 - **Cadastro de produtos** ([`sistema_cadastro_produtos.jpg`](../evidencias/sistema_cadastro_produtos.jpg)): cada produto tem **código, código de barras, descrição, NCM, unidade, valor de venda, valor à vista, valor de custo** e **ativo**; é agrupado por **Família** (Elétrica, Ferramentas Manuais, Hidráulica, Selfcolor, Impermeabilizantes...) e **Fabricante** (Ferja, Colorgin, Krona, Tigre, Suvinil...); há classificação fiscal **CSOSN** e a opção de **ajustar preço** em lote.
 - **Post-it no monitor** (fotos): **parcelamento a partir de R$ 200 em 2x sem juros e a partir de R$ 400 em 3x sem juros**, "mas podem ajustar a critério da maquininha".
+- **Fichas de produto** ([`cadastro_produto_tinta.jpg`](../evidencias/cadastro_produto_tinta.jpg), [`cadastro_produto_eletrica.jpg`](../evidencias/cadastro_produto_eletrica.jpg)): código interno, código do fabricante, código de barras, descrição, família, fabricante, NCM, **valor de custo**, **"% à Vista" (a margem)**, valor à vista, valor faturado, **data de validade**, **estoque mínimo**, "controlar estoque", % de desconto permitido e as abas **Histórico de Entradas** e **Fornecedores**. Exemplo: adaptador elétrico com custo R$ 2,50 e venda R$ 4,90 (**96%**, item pequeno); aguarrás 400 ml com custo R$ 14,90 e venda R$ 19,90.
+- **Mural da loja** ([`mural_cnpj_troca_devolucao.jpg`](../evidencias/mural_cnpj_troca_devolucao.jpg)): comprovante de inscrição no CNPJ (MAXIMO DAS TINTAS LTDA, 52.489.342/0001-10, "Comércio varejista de tintas e materiais para pintura"), aviso do **CDC** e a política de **troca e devolução**: art. 18 — I. substituição do produto da mesma espécie; II. restituição da quantia paga se não houver o produto para troca; III. abatimento proporcional do preço na troca por outro produto; art. 26 — prazo para reclamar de vícios: **30 dias** (não duráveis) e **90 dias** (duráveis); **não efetuam trocas com embalagem aberta** e **não efetuam trocas de tintas pigmentadas**. Há também uma pasta de **"Boletos - Escritório"** (venda a prazo controlada pelo escritório).
+- **Fachada** ([`fachada.jpg`](../evidencias/fachada.jpg)): "Materiais para construção", selo "Aqui tem Suvinil", telefones e Instagram, número 577A, produtos em oferta na entrada.
 - Câmeras de segurança e telefone fixo no balcão; produtos expostos por tipo (painéis de ferramentas, prateleiras de tintas, rolos/pincéis/fitas no balcão).
 
-**Diferenças entre o dito e o observado:** a entrevistada não citou o orçamento nem o custo, mas os dois estão no sistema; a regra de parcelamento só apareceu no post-it; a tela tem campo de entrega, mas a loja não entrega.
+**Diferenças entre o dito e o observado:** a entrevistada não citou o orçamento nem o custo, mas os dois estão no sistema; a regra de parcelamento só apareceu no post-it; a tela tem campo de entrega, mas a loja não entrega; o sistema tem campo de **estoque mínimo** (vazio nos produtos vistos) — hoje o mínimo fica na cabeça de quem revisa a loja, e o modelo passa a guardá-lo.
 
 ## 5. Problemas levantados → como o modelo resolve
 
@@ -76,7 +80,7 @@ Texto organizado pelo grupo a partir da entrevista e da observação na loja. O 
 |---|---|---|
 | Venda de balcão | Sim | Sim |
 | Orçamento | Sim (tela do PDV) | Sim (`ORCAMENTO`) |
-| Troca e devolução | Resposta pendente | Sim (`CANCELADA` + devolução de estoque) |
+| Troca e devolução | Sim, pelo CDC (mural) | Sim (`CANCELADA` + devolução de estoque); prazo e exceções não verificados |
 | Reposição / compra de fornecedor | Sim, pelo site do fornecedor, decidida com o escritório | Parcial: ponto de reposição (G05/G06); o pedido fica no site do fornecedor |
 | Venda a prazo (boleto) | Sim, para obras parceiras | Sim (forma `BOLETO`) |
 | Desconto | Sim, 5% no PIX | Sim (`valor_desconto`, RN19) |
@@ -92,8 +96,9 @@ Texto organizado pelo grupo a partir da entrevista e da observação na loja. O 
 | Equipe | 2 funcionários | 2 funcionários + 1 intermediário | Massa com 3 funcionários ativos |
 | Faturamento | ≈ R$ 20 mil/mês | R$ 300–500 por dia (≈ R$ 10 mil/mês) | Massa recalibrada para ≈ R$ 10 mil/mês; meta do KPI1 = R$ 10 mil |
 | Produtos por mês | ≈ 500 | 100–120 | Massa recalibrada para ≈ 104 unidades/mês |
-| Preço | custo + ≈ 60% | margem de 3,6% sobre a venda + reajuste | Coluna `preco_custo` e consulta de margem (G18) |
+| Preço | custo + ≈ 60% | 45% tintas, 65% maioria, >100% itens pequenos + reajuste | Coluna `preco_custo`, custo da massa estimado por essas margens e consulta de margem (G18) |
 | Desconto | não levantado | 5% no PIX | Coluna `valor_desconto` (RN19, A11, G19) |
 | Parcelamento | não levantado | 2x a partir de R$ 200, 3x a partir de R$ 400 (observado) | RN20, A12 |
 | Entrega | não levantado | não faz | Fora do escopo, confirmado |
+| Troca | 2 semanas, com nota | CDC: 30/90 dias para vício; sem troca de embalagem aberta ou tinta pigmentada (mural) | RN15 reescrita |
 | Relatórios desejados | não levantado | aumento de preço; desconto de fornecedor | Tabela `historico_preco` + trigger (RN21, G17) |

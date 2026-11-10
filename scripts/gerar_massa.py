@@ -247,7 +247,15 @@ for p in produtos:
 INATIVOS = [9, 34]
 
 # custo de aquisicao (FICTICIO: o sistema da loja tem o custo real, nao repassado ao grupo)
-custos = [(round(p["preco"] / rnd.uniform(1.45, 1.80), 2), p["id"]) for p in produtos]
+# margem sobre o custo informada pela loja: 45% nas tintas, 65% na maioria dos
+# produtos e acima de 100% nos itens pequenos (pregos, trinchas pequenas etc.)
+def fator_margem(p):
+    if p["cat"] == CAT_TINTAS:
+        return 1.45
+    if p["preco"] < 10:
+        return 2.0 + (p["id"] % 5) * 0.1     # 100% a 140%
+    return 1.65
+custos = [(round(p["preco"] / fator_margem(p), 2), p["id"]) for p in produtos]
 
 # historico do reajuste de 5% das tintas em 01/04/2026 (RN21)
 historico = [(p["id"], round(p["preco"] / 1.05, 1), p["preco"], datetime(2026, 4, 1, 8, 0))
@@ -347,7 +355,7 @@ USE loja_tintas_materiais;
 -- Produtos descontinuados no fim do periodo: saem de linha, o historico permanece (RN17)
 UPDATE produto SET ativo = 0 WHERE id_produto IN ({", ".join(map(str, INATIVOS))});
 
--- Custo de aquisicao (FICTICIO; o sistema da loja guarda o custo real, que nao foi repassado)
+-- Custo de aquisicao: valores estimados pela margem informada pela loja (45% tintas, 65% maioria,\n-- acima de 100% itens pequenos); o custo real de cada item esta no sistema da loja
 {chr(10).join(f"UPDATE produto SET preco_custo = {c:.2f} WHERE id_produto = {i};" for c, i in custos)}
 
 -- Historico do reajuste de 5% das tintas em 01/04/2026 (a partir daqui o trigger registra sozinho)

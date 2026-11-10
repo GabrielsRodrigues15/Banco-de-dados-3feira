@@ -16,13 +16,13 @@
 
 ## Situação atual do projeto
 
-Atualizado em 10/11/2026, com a entrevista de 07/11/2026. **Entrega da turma de terça: 10/11** (só a branch `main` é corrigida). **Vídeo do pitch: até 16/11** — a Máximo Das Tintas não está na lista de seminários presenciais da terça, então o link do vídeo (YouTube, "Não listado", 8 min) vai na [seção 7](#7-apresentação-corporativa-final).
+Atualizado em 10/11/2026, com a entrevista de 07/11/2026 e as fotos do mural, da fachada e do cadastro de produtos. **Entrega da turma de terça: 10/11** (só a branch `main` é corrigida). **Vídeo do pitch: até 16/11** — a Máximo Das Tintas não está na lista de seminários presenciais da terça, então o link do vídeo (YouTube, "Não listado", 8 min) vai na [seção 7](#7-apresentação-corporativa-final).
 
 | Item da entrega | Situação | Onde está |
 |---|---|---|
 | Caracterização, problemas P1–P6, escopo | ✅ pronto | [1.1](#11-revisão-do-modelo-conceitual) |
 | Responsável (nome e telefone), endereço, CNPJ | ✅ pronto | [1.1](#evidências-da-organização) |
-| Relato da entrevista e `levantamento.md` | ✅ pronto · ⚠️ falta a resposta sobre troca/devolução | [`levantamento/levantamento.md`](levantamento/levantamento.md) |
+| Relato da entrevista e `levantamento.md` | ✅ pronto (troca/devolução confirmada pelo mural da loja) | [`levantamento/levantamento.md`](levantamento/levantamento.md) |
 | Processos, requisitos (RF/RNF) e regras (RN01–RN21) detalhados | ✅ pronto | [1.1](#processos-de-negócio) |
 | Tabela de apontamentos da correção da Entrega 1 (Caso A) | ⚠️ **falta a correção do professor** | [1.1](#caso-a--revisão-a-partir-da-correção-da-entrega-1) |
 | DER na notação do brModelo | ✅ feito no brModelo Web | [`entrega-1/DER_brmodelo_22-09-2026.pdf`](entrega-1/DER_brmodelo_22-09-2026.pdf) |
@@ -33,8 +33,8 @@ Atualizado em 10/11/2026, com a entrevista de 07/11/2026. **Entrega da turma de 
 | Massa de dados calibrada pela entrevista (467 vendas, ≈ R$ 10 mil/mês) | ✅ pronto | [4](#4-massa-de-dados) |
 | Dicionário de dados no modelo 02-03g (HTML único) | ✅ pronto | [`docs/dicionario_dados.html`](docs/dicionario_dados.html) |
 | Testes de restrições | ✅ 16 de 16 operações inválidas rejeitadas | [`docs/09_testes_restricoes.sql`](docs/09_testes_restricoes.sql) |
-| Fotos JPG no repositório | ✅ 4 fotos (balcão, tela de venda, cadastro de produtos, visita) | [`evidencias/`](evidencias/) |
-| Uso de IA — reflexão crítica do grupo | ⚠️ falta o texto do grupo | [6](#6-uso-de-inteligência-artificial) |
+| Fotos JPG no repositório | ✅ 8 fotos (fachada, balcão, mural com CNPJ e política de troca, tela de venda, cadastro de produtos, visita) | [`evidencias/`](evidencias/) |
+| Uso de IA — justificativa e reflexão crítica do grupo | ✅ pronto | [6](#6-uso-de-inteligência-artificial) |
 | Commits equilibrados entre os 4 integrantes | ⚠️ conferir | [5](#5-repositório-github) |
 | Vídeo do pitch (8 min) | ⚠️ gravar até 16/11 | [7](#7-apresentação-corporativa-final) |
 
@@ -69,10 +69,10 @@ Atualizado em 10/11/2026, com a entrevista de 07/11/2026. **Entrega da turma de 
   | Equipe | **2 funcionários + 1 intermediário**: os três vendem, atendem, cadastram produtos, preparam tinta na máquina, fazem pedidos e organizam a loja; responsáveis: Pedro, Waldeane e Larissa (financeiro, com escritório) |
   | Faturamento | **R$ 300 a R$ 500 por dia** (≈ R$ 10 mil por mês) |
   | Saída de produtos | **100 a 120 por mês** |
-  | Formação de preço | sistema aplica a margem da loja (**3,6%** sobre a venda) **+ reajuste** para acompanhar o preço de mercado |
+  | Formação de preço | margem sobre o custo: **45% nas tintas**, **65% na maioria dos produtos** e **acima de 100% nos itens pequenos** (pregos etc.); o sistema calcula o preço (campo "% à Vista") e a loja reajusta para acompanhar o mercado |
   | Pagamento | PIX (**5% de desconto**), débito, crédito (**2x a partir de R$ 200, 3x a partir de R$ 400**), dinheiro; **boleto a prazo para obras parceiras** |
   | Entrega | não faz |
-  | Troca | resposta pendente; na Entrega 1: prazo de 2 semanas, com nota fiscal `[VALIDAR]` |
+  | Troca e devolução | segue o **CDC, art. 18** (substituição, devolução do valor ou abatimento); prazo para reclamar de vício: **30 dias** (não duráveis) e **90 dias** (duráveis, art. 26); **não troca com embalagem aberta nem tinta pigmentada** (mural da loja) |
   | Sistema atual | PDV próprio (vendas, orçamentos, cadastro de produtos com custo); compras pelos sites dos fornecedores; caixa contado na abertura e no fechamento; nada anotado em papel |
   | Expansão | uma loja nova, maior e em melhor localização, está em construção |
 
@@ -88,7 +88,7 @@ Atualizado em 10/11/2026, com a entrevista de 07/11/2026. **Entrega da turma de 
   | P6 | Troca/desistência apaga ou bagunça o histórico | Venda vira `CANCELADA` (não é apagada) e o estoque volta | G04 |
 
 - **Escopo do sistema:** o banco reúne **todos os dados da operação da loja**: catálogo (categoria, fornecedor, produto), estoque, clientes, funcionários, vendas de balcão e orçamentos, itens, pagamentos, cancelamentos/trocas, descontos, custo e histórico de preços. Ficaram fora (justificativa em [processos não incluídos](#processos-típicos-não-incluídos)): pedido de compra ao fornecedor (feito no site do fornecedor), fórmula da tinta preparada na máquina, emissão de nota fiscal, contas a pagar e folha. A loja não faz entrega.
-- **Justificativa da escolha:** negócio real com processos claros de venda, estoque e vários fornecedores, com volume suficiente (67 produtos de 5 categorias e 10 marcas, ≈ 75 vendas/mês) sem a complexidade de uma rede varejista. `[PREENCHER]` vínculo de algum integrante com a loja, se houver (declarar; não dispensa a entrevista). A loja segue acessível ao grupo para validar regras (ex.: a resposta pendente sobre troca).
+- **Justificativa da escolha:** negócio real com processos claros de venda, estoque e vários fornecedores, com volume suficiente (67 produtos de 5 categorias e 10 marcas, ≈ 75 vendas/mês) sem a complexidade de uma rede varejista. `[PREENCHER]` vínculo de algum integrante com a loja, se houver (declarar; não dispensa a entrevista). A loja segue acessível ao grupo para validar regras.
 
 #### Evidências da organização
 
@@ -97,11 +97,20 @@ Atualizado em 10/11/2026, com a entrevista de 07/11/2026. **Entrega da turma de 
 | Google Meu Negócio | [share.google/O58fMgnEeO1ujE6RM](https://share.google/O58fMgnEeO1ujE6RM) |
 | E-mail da loja | maximosdastintas@gmail.com |
 | Razão social e CNPJ | MAXIMO DAS TINTAS LTDA - ME · 52.489.342/0001-10 |
-| Endereço completo | R. Ana Maria Sirani, 577 — São Paulo/SP |
-| Telefone da loja | (11) 91297-8462 |
+| Endereço completo | R. Ana Maria Sirani, 577 (placa da fachada: 577A) — Conjunto Residencial José Bonifácio, São Paulo/SP (comprovante do CNPJ no mural) |
+| Telefones da loja | (11) 2522-8880 · WhatsApp (11) 91297-8462 (fachada) |
+| Rede social | Instagram [@maximodastintas](https://www.instagram.com/maximodastintas/) (fachada) |
 | Responsáveis pela loja | Pedro, Waldeane e Larissa |
 | **Responsável que atendeu o grupo** | **Larissa** (Financeiro / Ajudas gerais) — **(11) 98338-6503** |
-| Fotos (JPG no repositório) | [`balcao_pdv.jpg`](evidencias/balcao_pdv.jpg) (balcão) · [`pdv_tela_venda.jpg`](evidencias/pdv_tela_venda.jpg) (tela de venda/orçamento do PDV) · [`sistema_cadastro_produtos.jpg`](evidencias/sistema_cadastro_produtos.jpg) (cadastro de produtos com custo) · [`visita_loja.jpg`](evidencias/visita_loja.jpg) (integrante na loja, `[PREENCHER]` quem) |
+| Fotos (JPG no repositório) | [`fachada.jpg`](evidencias/fachada.jpg) (fachada) · [`mural_cnpj_troca_devolucao.jpg`](evidencias/mural_cnpj_troca_devolucao.jpg) (comprovante do CNPJ, CDC e política de troca) · [`cadastro_produto_tinta.jpg`](evidencias/cadastro_produto_tinta.jpg) e [`cadastro_produto_eletrica.jpg`](evidencias/cadastro_produto_eletrica.jpg) (ficha do produto com custo e margem) · [`balcao_pdv.jpg`](evidencias/balcao_pdv.jpg) (balcão) · [`pdv_tela_venda.jpg`](evidencias/pdv_tela_venda.jpg) (tela de venda/orçamento do PDV) · [`sistema_cadastro_produtos.jpg`](evidencias/sistema_cadastro_produtos.jpg) (cadastro de produtos com custo) · [`visita_loja.jpg`](evidencias/visita_loja.jpg) (integrante na loja, `[PREENCHER]` quem) |
+
+| Fachada da loja | Mural: comprovante do CNPJ, CDC e política de troca |
+|---|---|
+| ![Fachada da Máximo Das Tintas](evidencias/fachada.jpg) | ![Mural com CNPJ e política de troca](evidencias/mural_cnpj_troca_devolucao.jpg) |
+
+| Ficha de produto: tinta (custo, % à vista, validade, estoque mínimo) | Ficha de produto: elétrica (item pequeno, margem de 96%) |
+|---|---|
+| ![Ficha de produto de tinta](evidencias/cadastro_produto_tinta.jpg) | ![Ficha de produto elétrico](evidencias/cadastro_produto_eletrica.jpg) |
 
 | Tela de venda do PDV (Venda/Orçamento, cliente BALCAO) | Cadastro de produtos (família, fabricante, custo) |
 |---|---|
@@ -116,8 +125,8 @@ Atualizado em 10/11/2026, com a entrevista de 07/11/2026. **Entrega da turma de 
 Resumo do levantamento (o texto completo, com o que foi **dito** separado do que foi **observado**, está em [`levantamento/levantamento.md`](levantamento/levantamento.md)):
 
 - **Quem / quando / onde:** entrevistada **Larissa** (Financeiro / Ajudas gerais); integrante presente: **Ítalo Leal Oliveira**; **07/11/2026**, por volta de 13h, no balcão da loja (data e hora no relógio do PDV nas fotos).
-- **Dito pela entrevistada:** 2 funcionários + 1 intermediário com funções compartilhadas (venda, atendimento, cadastro, tinta na máquina, pedidos, limpeza); R$ 300–500 por dia; 100–120 produtos por mês; vendas no sistema próprio; revisão diária do que está acabando e compra pelo carrinho do site dos fornecedores, decidida com o escritório; PIX com 5% de desconto, débito, crédito, dinheiro e boleto a prazo para obras parceiras; preço pelo sistema (margem de 3,6% + reajuste); não entrega; caixa contado na abertura e no fechamento; nada em papel. Relatórios desejados: **aumento de preço dos produtos** e **desconto dos fornecedores**. Troca e devolução: resposta pendente.
-- **Observado no local:** a tela de venda tem **Venda/Orçamento**, cliente padrão **"BALCAO"**, vendedor, preço faturado × à vista, desconto e "Gerar NF-e"; o cadastro de produtos tem **família, fabricante, valor de venda, valor à vista, valor de custo** e **ativo**; um post-it no monitor traz a política de **parcelamento (2x a partir de R$ 200, 3x a partir de R$ 400)**. Orçamento, custo e parcelamento não foram citados na fala, mas estão no sistema — por isso entraram no modelo.
+- **Dito pela entrevistada:** 2 funcionários + 1 intermediário com funções compartilhadas (venda, atendimento, cadastro, tinta na máquina, pedidos, limpeza); R$ 300–500 por dia; 100–120 produtos por mês; vendas no sistema próprio; revisão diária do que está acabando e compra pelo carrinho do site dos fornecedores, decidida com o escritório; PIX com 5% de desconto, débito, crédito, dinheiro e boleto a prazo para obras parceiras; preço pelo sistema com margem sobre o custo (corrigida depois pelo grupo com a loja: 45% tintas, 65% maioria, acima de 100% itens pequenos) + reajuste; não entrega; caixa contado na abertura e no fechamento; nada em papel. Relatórios desejados: **aumento de preço dos produtos** e **desconto dos fornecedores**.
+- **Observado no local:** a tela de venda tem **Venda/Orçamento**, cliente padrão **"BALCAO"**, vendedor, preço faturado × à vista, desconto e "Gerar NF-e"; o cadastro de produtos tem **família, fabricante, valor de venda, valor à vista, valor de custo** e **ativo**; um post-it no monitor traz a política de **parcelamento (2x a partir de R$ 200, 3x a partir de R$ 400)**; a **ficha do produto** tem valor de custo, "% à Vista" (a margem: 96% num adaptador de R$ 4,90 com custo de R$ 2,50), estoque mínimo, validade, "controlar estoque" e as abas **Histórico de Entradas** e **Fornecedores**; o **mural** exibe o comprovante do CNPJ, o aviso do CDC e a política de **troca e devolução**. Orçamento, custo e parcelamento não foram citados na fala, mas estão no sistema — por isso entraram no modelo.
 - **O que mudou em relação à Entrega 1:** faturamento (≈ R$ 20 mil → ≈ R$ 10 mil/mês), produtos por mês (≈ 500 → 100–120), equipe (+1 intermediário) e formação de preço; a massa de dados e as metas foram recalibradas (tabela completa no [levantamento, seção 7](levantamento/levantamento.md#7-o-que-mudou-em-relação-à-entrega-1)).
 
 #### Processos de negócio
@@ -130,7 +139,7 @@ Resumo do levantamento (o texto completo, com o que foi **dito** separado do que
 | PR4 | **Venda de balcão** — abertura, itens, fechamento | cliente, funcionário, data/hora, status `CONCLUIDA`, por item: produto, quantidade, preço praticado, subtotal; total da venda |
 | PR5 | **Recebimento** | por pagamento: forma (dinheiro, PIX, cartão de crédito, cartão de débito, boleto), valor, data, parcelas; **desconto de 5% no PIX** gravado na venda; crédito em 2x a partir de R$ 200 e 3x a partir de R$ 400; boleto a prazo só para obras parceiras; uma venda pode ter mais de um pagamento |
 | PR6 | **Baixa e controle de estoque** | saldo atual, estoque mínimo, localização no depósito; baixa automática na venda concluída |
-| PR7 | **Troca/cancelamento** (até 2 semanas, com nota) | venda passa a `CANCELADA`, o estoque dos itens volta; a venda não é apagada |
+| PR7 | **Troca/devolução** (CDC art. 18: substituição, devolução do valor ou abatimento; vício em até 30/90 dias; sem troca de embalagem aberta ou tinta pigmentada) | venda passa a `CANCELADA`, o estoque dos itens volta; a venda não é apagada |
 | PR8 | **Reposição** — revisão diária do que está acabando; o pedido é montado no carrinho do site do fornecedor e decidido com o escritório | produtos com saldo ≤ mínimo, fornecedor, cobertura em dias; a entrada da mercadoria atualiza o saldo |
 | PR9 | **Reajuste de preço** — o sistema recalcula o preço (margem + reajuste) | preço anterior, preço novo, data (gravados em `historico_preco`); custo do produto; vendas antigas mantêm o preço praticado |
 | PR10 | **Preparo de tinta na máquina** | a tinta preparada é vendida como um produto do catálogo (a fórmula/cor fica no sistema da máquina, fora do escopo) |
@@ -203,8 +212,8 @@ Levantados por pesquisa e IA (registro na seção 6) sobre lojas de materiais de
 | RN12 | Código interno do produto (PDV) é único | `uq_produto_codigo` | T05 |
 | RN13 | Todo produto tem uma categoria, um fornecedor principal e um registro de estoque | FKs `NOT NULL` + `uq_estoque_produto` | A05 |
 | RN14 | Toda venda tem cliente e funcionário; venda sem cadastro usa o "Consumidor final" | FKs `NOT NULL` | T08 |
-| RN15 | Troca e devolução: prazo de 2 semanas, com nota fiscal (informado na E1; **resposta da loja pendente**) `[VALIDAR]` | processo (PR7); não verificado pelo banco | seção 8 |
-| RN16 | Preço de venda calculado pelo sistema: margem da loja (3,6% sobre a venda) + reajuste ao preço de mercado | coluna `preco_custo` (cálculo do preço fica no PDV) | G18 |
+| RN15 | Troca e devolução pelo CDC (art. 18): substituição do produto, devolução do valor ou abatimento; reclamação de vício em até 30 dias (não duráveis) ou 90 dias (duráveis, art. 26); **não há troca com embalagem aberta nem de tinta pigmentada** | processo (PR7) + `status_venda = CANCELADA`; prazo e tipo do produto não verificados pelo banco | seção 8 |
+| RN16 | Preço de venda = custo + margem: **45% nas tintas**, **65% na maioria** e **acima de 100% nos itens pequenos**, com reajuste ao preço de mercado | coluna `preco_custo` (o cálculo do preço fica no PDV) | G18 |
 | RN17 | Produto, cliente e funcionário com histórico não são apagados — são inativados | FKs sem `CASCADE` + coluna `ativo` | T13, T14 |
 | RN18 | LGPD: dados pessoais com acesso restrito, fora da camada analítica; anonimização a pedido | política de acesso | [dicionário, §6](docs/dicionario_dados.html#s6) |
 | RN19 | Desconto de 5% sobre o valor bruto quando o pagamento é integralmente no PIX | coluna `valor_desconto` + `chk_venda_desconto` | T15, A11, G19 |
@@ -345,7 +354,7 @@ PDV / balcão ──► MySQL (OLTP, 10 tabelas, triggers de estoque e de preço
 | KPI11 Vendas por dia/turno | nº de vendas por dia da semana e turno | semanal | — | G15 | |
 | KPI12 Valor do estoque | Σ saldo × preço de venda | mensal | — | G16 | |
 | KPI13 Reajuste de preço | (preço novo − anterior) ÷ anterior, por produto | mensal | — (relatório pedido pela loja) | G17 | tintas +5% em abril/2026 |
-| KPI14 Margem bruta | (receita − custo) ÷ receita, por categoria | mensal | `[VALIDAR]` com a loja | G18 | 34% a 44% (custo fictício) |
+| KPI14 Margem sobre o custo | (receita − custo) ÷ custo, por categoria (também mostra a margem bruta) | mensal | 45% tintas · 65% maioria · >100% itens pequenos (informado) | G18 | ≈ 42% nas tintas (vendas antes do reajuste de abril puxam para baixo), ≈ 66% nas demais categorias e 140% no item pequeno de instrumentos |
 | KPI15 Desconto PIX sobre o bruto | Σ desconto ÷ faturamento bruto | mensal | — | G19 | 0,9% a 2,4% |
 
 **Rastreabilidade — problema ou KPI → tabelas → consulta:**
@@ -424,7 +433,7 @@ Arquivo: [`docs/04_massa_de_dados.sql`](docs/04_massa_de_dados.sql), gerado por 
 |---|---|---|
 | categoria | 5 | Categorias das listas do PDV |
 | fornecedor | 10 | Marcas reais das listas (contatos fictícios) |
-| produto | 67 | Itens reais das listas de preço; custo **fictício** (o sistema tem o real); 2 inativados no fim do período |
+| produto | 67 | Itens reais das listas de preço; custo **estimado pela margem informada** (45% tintas, 65% maioria, >100% itens pequenos); 2 inativados no fim do período |
 | estoque | 67 | 1 por produto; 7 terminam no ponto de reposição |
 | funcionario | 3 | Os **2 funcionários + 1 intermediário** da loja (nomes fictícios) |
 | cliente | 121 | "Consumidor final" (o "BALCAO" do PDV) + 95 PF + 25 PJ (obras parceiras); 29 sem compras no período |
@@ -464,9 +473,9 @@ Banco-de-dados-3feira/
 | **Prompts utilizados** | "gostaria que você pudesse me fazer uma atualização geral de como está esse projeto referente a aula de banco de dados. Gostaria que você utilizasse esse projeto como base de organização e apresentação [repositório de referência], não quero que copie o tema"; "Coloque mais um integrante nos membros"; "você consegue acessar o drive agora?" (material da disciplina); "Sim, por gentileza" (aplicar os ajustes do esqueleto); "Poderia adicionar essas perguntas que estavam pendentes? [respostas da entrevista] Poderia adicionar algumas fotos pendentes também" (incorporar a entrevista de 07/11). O prompt da Entrega 1 está no [Anexo A, seção 9](#9-uso-de-inteligência-artificial) |
 | **Resposta recebida (resumo)** | Reorganização do repositório; script dividido em arquivos e testado; lista do que faltava em relação ao esqueleto (códigos G/A e RN, KPIs com meta, levantamento, responsável, volume da massa, notação brModelo, dicionário no modelo 02-03g); geração dos artefatos correspondentes |
 | **Fontes consultadas e verificadas** | Esqueleto e enunciado da Entrega 2, modelo de dicionário 02-03g e links da disciplina (Drive do professor); números da loja (informados pelo grupo); execução real do script no MySQL 8.0.46 |
-| **Trechos rejeitados ou corrigidos** | O cabeçalho do script dizia "testado em MariaDB": refeito e documentado em MySQL 8.0.46. O `FLUXOGRAMA.pdf` era o DER do brModelo e foi renomeado. A primeira massa (20 vendas) não refletia o porte: substituída por uma massa calibrada (≈ R$ 18,9 mil e ≈ 536 unidades/mês). A primeira calibração gerou ≈ 700 unidades e R$ 14 mil/mês (produtos baratos demais), e a seguinte R$ 26 mil/mês; os pesos foram ajustados até chegar perto dos números reais. Depois da entrevista de 07/11 a massa foi recalibrada de novo (≈ R$ 18,9 mil e 536 unidades/mês → ≈ R$ 10,1 mil e 104 unidades/mês), porque os números informados mudaram; o modelo ganhou desconto PIX, custo e histórico de preços. Exemplos de `UPDATE`/`DELETE` com id fixo foram trocados por consultas, para não quebrar se a massa mudar. Dados pessoais trocados por fictícios |
-| **Justificativa da escolha final** | Mantido o que foi verificado executando no MySQL e conferindo com o esqueleto; dados reais da loja (responsável, entrevista, correção da E1) ficaram como `[PREENCHER]`, porque a IA não pode inventá-los |
-| **Reflexão crítica** | `[PREENCHER]` texto do grupo (sugestões: o que a IA não podia saber; o que só foi descoberto rodando o script; quais respostas vieram genéricas por falta de contexto no prompt; o que o grupo aprendeu de modelagem revisando o material) |
+| **Trechos rejeitados ou corrigidos** | O cabeçalho do script dizia "testado em MariaDB": refeito e documentado em MySQL 8.0.46. O `FLUXOGRAMA.pdf` era o DER do brModelo e foi renomeado. A primeira massa (20 vendas) não refletia o porte: substituída por uma massa calibrada (≈ R$ 18,9 mil e ≈ 536 unidades/mês). A primeira calibração gerou ≈ 700 unidades e R$ 14 mil/mês (produtos baratos demais), e a seguinte R$ 26 mil/mês; os pesos foram ajustados até chegar perto dos números reais. Depois da entrevista de 07/11 a margem de 3,6% anotada foi corrigida pelo grupo com a loja (45% tintas, 65% maioria, >100% itens pequenos) e o custo da massa refeito; a massa foi recalibrada de novo (≈ R$ 18,9 mil e 536 unidades/mês → ≈ R$ 10,1 mil e 104 unidades/mês), porque os números informados mudaram; o modelo ganhou desconto PIX, custo e histórico de preços. Exemplos de `UPDATE`/`DELETE` com id fixo foram trocados por consultas, para não quebrar se a massa mudar. Dados pessoais trocados por fictícios |
+| **Justificativa da escolha final** | Mantivemos no trabalho aquilo que foi testado e conferido na prática, tanto no MySQL quanto no modelo solicitado pelo professor. Fizemos ajustes para deixar o banco de dados mais próximo da realidade da loja, principalmente na parte de vendas, estoque, pagamentos e consultas. Os dados que dependiam de informações reais, como nome do responsável, detalhes da entrevista e correções da primeira entrega, ficaram pendentes, pois não seria correto inventar informações que não foram confirmadas. |
+| **Reflexão crítica** | Durante o desenvolvimento do trabalho, percebemos que a inteligência artificial ajudou bastante na organização das ideias, na criação dos códigos SQL e na documentação do projeto. Porém, também entendemos que ela não sabe tudo sobre a realidade da empresa e não consegue substituir as informações obtidas durante uma visita ou entrevista.<br><br>Algumas informações precisaram ser ajustadas conforme a realidade da loja. Também descobrimos, ao executar o script no MySQL, detalhes que não seriam percebidos apenas lendo o código, como problemas nas regras de estoque, pagamentos e relacionamentos entre as tabelas. Tivemos que testar, corrigir e conferir os resultados para garantir que tudo funcionasse corretamente.<br><br>Outro ponto foi que algumas respostas da IA vieram muito genéricas quando não fornecemos detalhes suficientes sobre a empresa. Com isso, aprendemos que não basta apenas pedir para a IA criar um banco de dados: precisamos entender o problema, conferir as informações e saber justificar nossas escolhas.<br><br>No final, percebemos que a IA é uma ótima ferramenta de apoio, mas a responsabilidade pelas decisões, testes e validação do trabalho continua sendo nossa, como grupo. |
 
 ## 7. Apresentação Corporativa Final
 
@@ -490,8 +499,8 @@ Defesa: cada integrante responde só às perguntas dirigidas a ele; todos presen
 2. **Notação brModelo:** o DER revisado e o modelo lógico devem ser redesenhados no brModelo. `[VALIDAR]`
 3. **ENDEREÇO** virou atributo de texto em `cliente`; se exigido, criar `endereco (id_endereco, id_cliente, logradouro, numero, bairro, cidade, cep)`. `[VALIDAR]`
 4. **Compras e desconto de fornecedor:** o pedido é feito no site do fornecedor e não entra no banco; o relatório de desconto de fornecedor (pedido pela loja) exige tabelas `compra`/`item_compra` com preço de tabela e preço pago.
-5. **Custo da massa é fictício** (o sistema da loja tem o custo real); a margem de 3,6% citada na entrevista é aplicada pelo PDV e não é recalculada pelo banco.
-6. **Troca e devolução (RN15):** resposta da loja pendente; a regra não é verificada pelo banco (não há data do cancelamento); evolução: `venda.data_cancelamento` + `CHECK`. `[PREENCHER]` quando a loja responder.
+5. **Custo da massa é estimado** pela margem informada (o custo real de cada item está no sistema da loja); o banco guarda o custo, mas o cálculo do preço continua no PDV.
+6. **Troca e devolução (RN15):** o prazo de 30/90 dias e a proibição de troca de embalagem aberta ou tinta pigmentada não são verificados pelo banco; evolução: `venda.data_cancelamento`, `produto.duravel` e `produto.pigmentada` com uma auditoria do prazo.
 7. **Estorno:** venda cancelada depois de paga mantém o pagamento registrado; o estorno não é modelado.
 8. **Entrada de mercadoria** é um `UPDATE` em `estoque`; uma tabela de movimentação daria o histórico de entradas e saídas.
 9. **Parcelamento (RN20)** é conferido pela auditoria A12, e não bloqueado, porque a loja aceita exceções "a critério da maquininha".
@@ -514,7 +523,7 @@ Defesa: cada integrante responde só às perguntas dirigidas a ele; todos presen
 
 *Conteúdo da Entrega 1 preservado, com os campos `[PREENCHER]` já respondidos pelo grupo incorporados ao texto e os caminhos de arquivos atualizados para a nova estrutura do repositório. Os processos usam o prefixo `PR` (PR1 a PR6) para não se confundir com os problemas P1 a P6 do relatório.*
 
-> **Atenção:** os números de porte e de preço abaixo são os informados na Entrega 1 (≈ R$ 20 mil/mês, ≈ 500 produtos/mês, custo + 60%). Foram **revistos na entrevista de 07/11/2026** (R$ 300–500/dia, 100–120 produtos/mês, margem de 3,6% + reajuste); os valores atuais estão na [seção 1.1](#caracterização-da-organização) e no [levantamento](levantamento/levantamento.md).
+> **Atenção:** os números de porte e de preço abaixo são os informados na Entrega 1 (≈ R$ 20 mil/mês, ≈ 500 produtos/mês, custo + 60%). Foram **revistos na entrevista de 07/11/2026** (R$ 300–500/dia, 100–120 produtos/mês, margem de 45% nas tintas, 65% na maioria e acima de 100% nos itens pequenos; troca pelo CDC, sem troca de embalagem aberta ou tinta pigmentada); os valores atuais estão na [seção 1.1](#caracterização-da-organização) e no [levantamento](levantamento/levantamento.md).
 
 **Integrantes na Entrega 1:** Gabriel Rodrigues da Silva (46885030), Gabriel Souza (46683305), Vinicius Batista Merencio (46749527) e Ítalo Leal Oliveira (47837098).
 

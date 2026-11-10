@@ -2233,74 +2233,75 @@ INSERT INTO pagamento (id_venda, forma_pagamento, valor_pago, data_pagamento, pa
 -- Produtos descontinuados no fim do periodo: saem de linha, o historico permanece (RN17)
 UPDATE produto SET ativo = 0 WHERE id_produto IN (9, 34);
 
--- Custo de aquisicao (FICTICIO; o sistema da loja guarda o custo real, que nao foi repassado)
-UPDATE produto SET preco_custo = 5.01 WHERE id_produto = 1;
-UPDATE produto SET preco_custo = 6.18 WHERE id_produto = 2;
-UPDATE produto SET preco_custo = 6.55 WHERE id_produto = 3;
-UPDATE produto SET preco_custo = 8.98 WHERE id_produto = 4;
-UPDATE produto SET preco_custo = 4.62 WHERE id_produto = 5;
-UPDATE produto SET preco_custo = 5.98 WHERE id_produto = 6;
-UPDATE produto SET preco_custo = 31.86 WHERE id_produto = 7;
-UPDATE produto SET preco_custo = 6.56 WHERE id_produto = 8;
-UPDATE produto SET preco_custo = 8.67 WHERE id_produto = 9;
-UPDATE produto SET preco_custo = 10.28 WHERE id_produto = 10;
-UPDATE produto SET preco_custo = 11.95 WHERE id_produto = 11;
-UPDATE produto SET preco_custo = 12.46 WHERE id_produto = 12;
-UPDATE produto SET preco_custo = 12.82 WHERE id_produto = 13;
-UPDATE produto SET preco_custo = 6.26 WHERE id_produto = 14;
-UPDATE produto SET preco_custo = 19.37 WHERE id_produto = 15;
-UPDATE produto SET preco_custo = 44.75 WHERE id_produto = 16;
-UPDATE produto SET preco_custo = 3.36 WHERE id_produto = 17;
-UPDATE produto SET preco_custo = 6.56 WHERE id_produto = 18;
-UPDATE produto SET preco_custo = 19.96 WHERE id_produto = 19;
-UPDATE produto SET preco_custo = 5.07 WHERE id_produto = 20;
-UPDATE produto SET preco_custo = 5.11 WHERE id_produto = 21;
-UPDATE produto SET preco_custo = 5.74 WHERE id_produto = 22;
-UPDATE produto SET preco_custo = 6.35 WHERE id_produto = 23;
-UPDATE produto SET preco_custo = 5.44 WHERE id_produto = 24;
-UPDATE produto SET preco_custo = 5.84 WHERE id_produto = 25;
-UPDATE produto SET preco_custo = 7.22 WHERE id_produto = 26;
-UPDATE produto SET preco_custo = 12.66 WHERE id_produto = 27;
-UPDATE produto SET preco_custo = 8.72 WHERE id_produto = 28;
-UPDATE produto SET preco_custo = 5.55 WHERE id_produto = 29;
-UPDATE produto SET preco_custo = 13.18 WHERE id_produto = 30;
-UPDATE produto SET preco_custo = 7.85 WHERE id_produto = 31;
-UPDATE produto SET preco_custo = 10.02 WHERE id_produto = 32;
-UPDATE produto SET preco_custo = 16.00 WHERE id_produto = 33;
-UPDATE produto SET preco_custo = 18.39 WHERE id_produto = 34;
-UPDATE produto SET preco_custo = 21.07 WHERE id_produto = 35;
-UPDATE produto SET preco_custo = 13.53 WHERE id_produto = 36;
-UPDATE produto SET preco_custo = 15.27 WHERE id_produto = 37;
-UPDATE produto SET preco_custo = 11.69 WHERE id_produto = 38;
-UPDATE produto SET preco_custo = 24.98 WHERE id_produto = 39;
-UPDATE produto SET preco_custo = 11.94 WHERE id_produto = 40;
-UPDATE produto SET preco_custo = 9.48 WHERE id_produto = 41;
-UPDATE produto SET preco_custo = 9.47 WHERE id_produto = 42;
-UPDATE produto SET preco_custo = 18.94 WHERE id_produto = 43;
-UPDATE produto SET preco_custo = 28.15 WHERE id_produto = 44;
-UPDATE produto SET preco_custo = 16.75 WHERE id_produto = 45;
-UPDATE produto SET preco_custo = 33.55 WHERE id_produto = 46;
-UPDATE produto SET preco_custo = 10.95 WHERE id_produto = 47;
-UPDATE produto SET preco_custo = 4.10 WHERE id_produto = 48;
-UPDATE produto SET preco_custo = 9.49 WHERE id_produto = 49;
-UPDATE produto SET preco_custo = 13.13 WHERE id_produto = 50;
-UPDATE produto SET preco_custo = 15.18 WHERE id_produto = 51;
-UPDATE produto SET preco_custo = 194.02 WHERE id_produto = 52;
-UPDATE produto SET preco_custo = 13.21 WHERE id_produto = 53;
-UPDATE produto SET preco_custo = 13.11 WHERE id_produto = 54;
-UPDATE produto SET preco_custo = 391.52 WHERE id_produto = 55;
-UPDATE produto SET preco_custo = 112.28 WHERE id_produto = 56;
-UPDATE produto SET preco_custo = 34.83 WHERE id_produto = 57;
-UPDATE produto SET preco_custo = 6.15 WHERE id_produto = 58;
-UPDATE produto SET preco_custo = 11.64 WHERE id_produto = 59;
-UPDATE produto SET preco_custo = 122.20 WHERE id_produto = 60;
-UPDATE produto SET preco_custo = 41.17 WHERE id_produto = 61;
-UPDATE produto SET preco_custo = 202.73 WHERE id_produto = 62;
-UPDATE produto SET preco_custo = 64.01 WHERE id_produto = 63;
-UPDATE produto SET preco_custo = 6.12 WHERE id_produto = 64;
-UPDATE produto SET preco_custo = 2.97 WHERE id_produto = 65;
-UPDATE produto SET preco_custo = 3.91 WHERE id_produto = 66;
-UPDATE produto SET preco_custo = 2.37 WHERE id_produto = 67;
+-- Custo de aquisicao: valores estimados pela margem informada pela loja (45% tintas, 65% maioria,
+-- acima de 100% itens pequenos); o custo real de cada item esta no sistema da loja
+UPDATE produto SET preco_custo = 4.24 WHERE id_produto = 1;
+UPDATE produto SET preco_custo = 4.50 WHERE id_produto = 2;
+UPDATE produto SET preco_custo = 6.61 WHERE id_produto = 3;
+UPDATE produto SET preco_custo = 9.03 WHERE id_produto = 4;
+UPDATE produto SET preco_custo = 3.95 WHERE id_produto = 5;
+UPDATE produto SET preco_custo = 4.24 WHERE id_produto = 6;
+UPDATE produto SET preco_custo = 30.24 WHERE id_produto = 7;
+UPDATE produto SET preco_custo = 6.61 WHERE id_produto = 8;
+UPDATE produto SET preco_custo = 7.82 WHERE id_produto = 9;
+UPDATE produto SET preco_custo = 9.64 WHERE id_produto = 10;
+UPDATE produto SET preco_custo = 11.82 WHERE id_produto = 11;
+UPDATE produto SET preco_custo = 12.06 WHERE id_produto = 12;
+UPDATE produto SET preco_custo = 13.88 WHERE id_produto = 13;
+UPDATE produto SET preco_custo = 6.36 WHERE id_produto = 14;
+UPDATE produto SET preco_custo = 18.12 WHERE id_produto = 15;
+UPDATE produto SET preco_custo = 42.36 WHERE id_produto = 16;
+UPDATE produto SET preco_custo = 2.68 WHERE id_produto = 17;
+UPDATE produto SET preco_custo = 6.61 WHERE id_produto = 18;
+UPDATE produto SET preco_custo = 21.76 WHERE id_produto = 19;
+UPDATE produto SET preco_custo = 3.95 WHERE id_produto = 20;
+UPDATE produto SET preco_custo = 4.24 WHERE id_produto = 21;
+UPDATE produto SET preco_custo = 4.05 WHERE id_produto = 22;
+UPDATE produto SET preco_custo = 4.30 WHERE id_produto = 23;
+UPDATE produto SET preco_custo = 3.58 WHERE id_produto = 24;
+UPDATE produto SET preco_custo = 6.36 WHERE id_produto = 25;
+UPDATE produto SET preco_custo = 6.61 WHERE id_produto = 26;
+UPDATE produto SET preco_custo = 13.27 WHERE id_produto = 27;
+UPDATE produto SET preco_custo = 7.82 WHERE id_produto = 28;
+UPDATE produto SET preco_custo = 4.12 WHERE id_produto = 29;
+UPDATE produto SET preco_custo = 12.06 WHERE id_produto = 30;
+UPDATE produto SET preco_custo = 7.21 WHERE id_produto = 31;
+UPDATE produto SET preco_custo = 9.03 WHERE id_produto = 32;
+UPDATE produto SET preco_custo = 15.70 WHERE id_produto = 33;
+UPDATE produto SET preco_custo = 16.30 WHERE id_produto = 34;
+UPDATE produto SET preco_custo = 19.33 WHERE id_produto = 35;
+UPDATE produto SET preco_custo = 14.48 WHERE id_produto = 36;
+UPDATE produto SET preco_custo = 15.70 WHERE id_produto = 37;
+UPDATE produto SET preco_custo = 12.06 WHERE id_produto = 38;
+UPDATE produto SET preco_custo = 22.36 WHERE id_produto = 39;
+UPDATE produto SET preco_custo = 10.85 WHERE id_produto = 40;
+UPDATE produto SET preco_custo = 9.64 WHERE id_produto = 41;
+UPDATE produto SET preco_custo = 10.24 WHERE id_produto = 42;
+UPDATE produto SET preco_custo = 18.73 WHERE id_produto = 43;
+UPDATE produto SET preco_custo = 29.03 WHERE id_produto = 44;
+UPDATE produto SET preco_custo = 15.70 WHERE id_produto = 45;
+UPDATE produto SET preco_custo = 33.88 WHERE id_produto = 46;
+UPDATE produto SET preco_custo = 10.85 WHERE id_produto = 47;
+UPDATE produto SET preco_custo = 3.00 WHERE id_produto = 48;
+UPDATE produto SET preco_custo = 10.24 WHERE id_produto = 49;
+UPDATE produto SET preco_custo = 13.27 WHERE id_produto = 50;
+UPDATE produto SET preco_custo = 14.48 WHERE id_produto = 51;
+UPDATE produto SET preco_custo = 202.36 WHERE id_produto = 52;
+UPDATE produto SET preco_custo = 12.67 WHERE id_produto = 53;
+UPDATE produto SET preco_custo = 12.67 WHERE id_produto = 54;
+UPDATE produto SET preco_custo = 404.07 WHERE id_produto = 55;
+UPDATE produto SET preco_custo = 117.17 WHERE id_produto = 56;
+UPDATE produto SET preco_custo = 39.93 WHERE id_produto = 57;
+UPDATE produto SET preco_custo = 4.30 WHERE id_produto = 58;
+UPDATE produto SET preco_custo = 12.06 WHERE id_produto = 59;
+UPDATE produto SET preco_custo = 133.72 WHERE id_produto = 60;
+UPDATE produto SET preco_custo = 46.83 WHERE id_produto = 61;
+UPDATE produto SET preco_custo = 235.79 WHERE id_produto = 62;
+UPDATE produto SET preco_custo = 70.28 WHERE id_produto = 63;
+UPDATE produto SET preco_custo = 6.61 WHERE id_produto = 64;
+UPDATE produto SET preco_custo = 2.45 WHERE id_produto = 65;
+UPDATE produto SET preco_custo = 3.29 WHERE id_produto = 66;
+UPDATE produto SET preco_custo = 1.77 WHERE id_produto = 67;
 
 -- Historico do reajuste de 5% das tintas em 01/04/2026 (a partir daqui o trigger registra sozinho)
 INSERT INTO historico_preco (id_produto, preco_anterior, preco_novo, data_alteracao) VALUES
@@ -2672,12 +2673,13 @@ JOIN produto p    ON p.id_produto = h.id_produto
 JOIN fornecedor f ON f.id_fornecedor = p.id_fornecedor
 ORDER BY h.data_alteracao, p.descricao;
 
--- G18 — Qual a margem bruta estimada por categoria (preco praticado x custo atual)?
--- Atende: KPI14 Margem bruta = (receita - custo) / receita, mensal · RN16 (formacao de preco)
--- Obs.: o custo da massa e ficticio; com o custo real do sistema da loja o calculo e o mesmo.
+-- G18 — Qual a margem por categoria (preco praticado x custo)?
+-- Atende: KPI14 Margem sobre o custo (markup) e margem bruta, mensal · RN16
+-- Referencia da loja: 45% sobre o custo nas tintas, 65% na maioria, acima de 100% nos itens pequenos.
 SELECT cat.nome_categoria,
        SUM(iv.subtotal) AS receita_bruta,
-       SUM(iv.quantidade * p.preco_custo) AS custo_estimado,
+       SUM(iv.quantidade * p.preco_custo) AS custo,
+       ROUND(100 * (SUM(iv.subtotal) - SUM(iv.quantidade * p.preco_custo)) / SUM(iv.quantidade * p.preco_custo), 1) AS margem_sobre_custo_pct,
        ROUND(100 * (SUM(iv.subtotal) - SUM(iv.quantidade * p.preco_custo)) / SUM(iv.subtotal), 1) AS margem_bruta_pct
 FROM item_venda iv
 JOIN venda v       ON v.id_venda = iv.id_venda
@@ -2685,7 +2687,7 @@ JOIN produto p     ON p.id_produto = iv.id_produto
 JOIN categoria cat ON cat.id_categoria = p.id_categoria
 WHERE v.status_venda = 'CONCLUIDA' AND p.preco_custo IS NOT NULL
 GROUP BY cat.nome_categoria
-ORDER BY margem_bruta_pct DESC;
+ORDER BY margem_sobre_custo_pct DESC;
 
 -- G19 — Quanto a loja concede de desconto no PIX por mes e quanto isso pesa no faturamento?
 -- Atende: KPI15 Desconto PIX / faturamento bruto, mensal · RN19 · P5

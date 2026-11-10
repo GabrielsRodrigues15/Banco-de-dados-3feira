@@ -58,7 +58,7 @@ DESC_COLUNA = {
     ("produto", "ncm"): "Classificacao fiscal NCM",
     ("produto", "unidade_medida"): "Unidade de venda (UN, LT, GL...)",
     ("produto", "preco_unitario"): "Preco de venda vigente",
-    ("produto", "preco_custo"): "Valor de custo (no sistema da loja; ficticio na massa)",
+    ("produto", "preco_custo"): "Valor de custo (no sistema da loja; na massa, estimado pela margem: 45% tintas, 65% maioria, >100% itens pequenos)",
     ("venda", "valor_desconto"): "Desconto concedido (5% no pagamento via PIX)",
     ("historico_preco", "id_historico"): "Identificador do registro de reajuste",
     ("historico_preco", "id_produto"): "Produto reajustado",

@@ -18,7 +18,7 @@ digraph fluxo_vendas {
   baixa    [label="Trigger baixa o estoque\nde todos os itens", fillcolor="#E6F2E6", color="#2E7D32"];
   pag      [label="Registrar pagamento(s)\nPIX (5% desconto), debito, credito (2x >= R$200, 3x >= R$400),\ndinheiro, boleto (obras parceiras)\nINSERT pagamento"];
   fim      [label="Cliente leva a mercadoria\n(a loja nao entrega)", shape=oval, fillcolor="#5B2C83", fontcolor="white"];
-  troca    [label="Troca / desistencia\n(regra a confirmar com a loja)", shape=box, fillcolor="#FDECEC", color="#C62828"];
+  troca    [label="Troca / devolucao (CDC art. 18)\nvicio: 30 dias (nao duravel) / 90 dias (duravel)\nnao troca: embalagem aberta ou tinta pigmentada", shape=box, fillcolor="#FDECEC", color="#C62828"];
   cancela  [label="Venda CANCELADA\n(historico preservado)", fillcolor="#FDECEC", color="#C62828"];
   devolve  [label="Trigger devolve o estoque", fillcolor="#E6F2E6", color="#2E7D32"];
 

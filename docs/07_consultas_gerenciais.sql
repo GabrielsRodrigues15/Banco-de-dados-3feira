@@ -198,12 +198,13 @@ JOIN produto p    ON p.id_produto = h.id_produto
 JOIN fornecedor f ON f.id_fornecedor = p.id_fornecedor
 ORDER BY h.data_alteracao, p.descricao;
 
--- G18 — Qual a margem bruta estimada por categoria (preco praticado x custo atual)?
--- Atende: KPI14 Margem bruta = (receita - custo) / receita, mensal · RN16 (formacao de preco)
--- Obs.: o custo da massa e ficticio; com o custo real do sistema da loja o calculo e o mesmo.
+-- G18 — Qual a margem por categoria (preco praticado x custo)?
+-- Atende: KPI14 Margem sobre o custo (markup) e margem bruta, mensal · RN16
+-- Referencia da loja: 45% sobre o custo nas tintas, 65% na maioria, acima de 100% nos itens pequenos.
 SELECT cat.nome_categoria,
        SUM(iv.subtotal) AS receita_bruta,
-       SUM(iv.quantidade * p.preco_custo) AS custo_estimado,
+       SUM(iv.quantidade * p.preco_custo) AS custo,
+       ROUND(100 * (SUM(iv.subtotal) - SUM(iv.quantidade * p.preco_custo)) / SUM(iv.quantidade * p.preco_custo), 1) AS margem_sobre_custo_pct,
        ROUND(100 * (SUM(iv.subtotal) - SUM(iv.quantidade * p.preco_custo)) / SUM(iv.subtotal), 1) AS margem_bruta_pct
 FROM item_venda iv
 JOIN venda v       ON v.id_venda = iv.id_venda
@@ -211,7 +212,7 @@ JOIN produto p     ON p.id_produto = iv.id_produto
 JOIN categoria cat ON cat.id_categoria = p.id_categoria
 WHERE v.status_venda = 'CONCLUIDA' AND p.preco_custo IS NOT NULL
 GROUP BY cat.nome_categoria
-ORDER BY margem_bruta_pct DESC;
+ORDER BY margem_sobre_custo_pct DESC;
 
 -- G19 — Quanto a loja concede de desconto no PIX por mes e quanto isso pesa no faturamento?
 -- Atende: KPI15 Desconto PIX / faturamento bruto, mensal · RN19 · P5
