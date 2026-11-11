@@ -25,7 +25,7 @@ Atualizado em 11/11/2026. **Vídeo do pitch: até 16/11** — a Máximo Das Tint
 | Relato da entrevista e levantamento.md | ✅ pronto (troca/devolução confirmada pelo mural da loja) | [levantamento/levantamento.md](levantamento/levantamento.md) |
 | Processos, requisitos (RF/RNF) e regras (RN01–RN21) detalhados | ✅ pronto | [1.1](#processos-de-negócio) |
 | Revisão do modelo conceitual (Caso A) | ✅ sem apontamentos do professor na E1; revisão feita pelo grupo | [1.1](#revisão-do-modelo-conceitual-caso-a) |
-| DER na notação do brModelo | ✅ versão de 22/09 · ⚠️ versão revisada em andamento no brModelo | [entrega-1/DER_brmodelo_22-09-2026.pdf](entrega-1/DER_brmodelo_22-09-2026.pdf) |
+| DER na notação do brModelo | ✅ versão de 22/09 | [entrega-1/DER_brmodelo_22-09-2026.pdf](entrega-1/DER_brmodelo_22-09-2026.pdf) |
 | Conversão, PK/FK, normalização, justificativas | ✅ pronto | [1.2 a 1.5](#12-conversão-do-modelo-conceitual-para-o-modelo-lógico) |
 | BI e IA com 15 KPIs (fórmula, período, meta, consulta) | ✅ pronto | [1.6](#16-proposta-de-arquitetura-analítica-para-bi-e-ia) |
 | Modelo lógico | ✅ no brModelo Web + diagrama gerado do banco | [2](#2-modelo-lógico-relacional) |
