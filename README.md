@@ -28,7 +28,7 @@ Atualizado em 11/11/2026. **Vídeo do pitch: até 16/11** — a Máximo Das Tint
 | DER na notação do brModelo | ✅ versão de 22/09 · ⚠️ versão revisada em andamento no brModelo | [entrega-1/DER_brmodelo_22-09-2026.pdf](entrega-1/DER_brmodelo_22-09-2026.pdf) |
 | Conversão, PK/FK, normalização, justificativas | ✅ pronto | [1.2 a 1.5](#12-conversão-do-modelo-conceitual-para-o-modelo-lógico) |
 | BI e IA com 15 KPIs (fórmula, período, meta, consulta) | ✅ pronto | [1.6](#16-proposta-de-arquitetura-analítica-para-bi-e-ia) |
-| Modelo lógico | ✅ gerado do banco · ⚠️ versão no brModelo em andamento | [2](#2-modelo-lógico-relacional) |
+| Modelo lógico | ✅ no brModelo Web + diagrama gerado do banco | [2](#2-modelo-lógico-relacional) |
 | Script SQL com consultas G01–G19 e A01–A13 | ✅ testado no MySQL 8.0.46, sem erros | [docs/script.sql](docs/script.sql) |
 | Massa de dados calibrada pela entrevista (467 vendas, ≈ R$ 10 mil/mês) | ✅ pronto | [4](#4-massa-de-dados) |
 | Dicionário de dados no modelo 02-03g (HTML único) | ✅ pronto | [docs/dicionario_dados.html](docs/dicionario_dados.html) |
@@ -74,7 +74,7 @@ Atualizado em 11/11/2026. **Vídeo do pitch: até 16/11** — a Máximo Das Tint
   | Entrega | não faz |
   | Troca e devolução | segue o **CDC, art. 18** (substituição, devolução do valor ou abatimento); prazo para reclamar de vício: **30 dias** (não duráveis) e **90 dias** (duráveis, art. 26); **não troca com embalagem aberta nem tinta pigmentada** (mural da loja) |
   | Sistema atual | PDV próprio (vendas, orçamentos, cadastro de produtos com custo); compras pelos sites dos fornecedores; caixa contado na abertura e no fechamento; nada anotado em papel |
-  | Expansão | uma loja nova, maior e em melhor localização, está em construção |
+  | Expansão | uma loja nova, maior e em melhor localização, está em construção e vai **funcionar junto com a atual** |
 
 - **Problemas e necessidades** (todo problema aparece no DER e tem consulta gerencial; ver a rastreabilidade na [seção 1.6](#16-proposta-de-arquitetura-analítica-para-bi-e-ia)):
 
@@ -191,12 +191,12 @@ Levantados por pesquisa e IA (registro na seção 6) sobre lojas de materiais de
 |---|---|
 | RNF01 | **Integridade:** toda venda referencia cliente e funcionário cadastrados; regras garantidas pelo próprio banco (FK, CHECK, triggers), valendo para qualquer aplicação |
 | RNF02 | **Consistência:** total = soma dos itens e pagamento = total, verificados pelas auditorias A01–A03 |
-| RNF03 | **Disponibilidade:** acessível em todo o horário comercial (seg–sáb); preparado para a loja nova (o modelo aceita evoluir para estoque por loja) |
+| RNF03 | **Disponibilidade:** acessível em todo o horário comercial (seg–sáb); preparado para a loja nova, que vai funcionar junto com a atual (evolução para estoque e vendas por loja) |
 | RNF04 | **Segurança e LGPD:** CPF/CNPJ e contatos com acesso restrito por perfil (dicionário, seção 6) |
 | RNF05 | **Desempenho:** consultas gerenciais em menos de 1 s com milhares de vendas (índices ix_venda_data, ix_venda_status_data) |
 | RNF06 | **Usabilidade:** venda de balcão em poucos passos, sem exigir cadastro do cliente |
 
-**Requisitos típicos não incluídos:** multiloja/filiais (hoje a loja tem uma unidade; a nova loja substitui a atual ), entrega (a loja não entrega), programa de fidelidade (não existe), integração com e-commerce (não vende on-line), controle de lote/validade de tintas  (a loja não relatou controle de validade).
+**Requisitos típicos não incluídos:** multiloja/filiais (hoje há uma unidade; a **loja nova vai funcionar junto com a atual**, e o modelo foi preparado para evoluir — ver seção 8, item 10), entrega (a loja não entrega), programa de fidelidade (não existe), integração com e-commerce (não vende on-line), controle de lote/validade de tintas  (a loja não relatou controle de validade).
 
 #### Regras de negócio
 
@@ -234,7 +234,7 @@ Levantados por pesquisa e IA (registro na seção 6) sobre lojas de materiais de
 
 ##### DER conceitual revisado (brModelo)
 
-> **Imagem do DER revisado no brModelo: a adicionar** (em produção pelo grupo; será salva em docs/der_conceitual_brmodelo.png).
+> O DER oficial no brModelo é o de 22/09 ([PDF](entrega-1/DER_brmodelo_22-09-2026.pdf)); a revisão está descrita nas tabelas abaixo e já aparece no **modelo lógico feito no brModelo** ([seção 2](#2-modelo-lógico-relacional), [link público](https://app.brmodeloweb.com/publicview/6af3cadd9650b05ddb7b6e26)).
 
 O DER revisado representa todos os dados da operação da loja em **9 entidades** e **8 relacionamentos**, na notação do brModelo: entidades em retângulo, relacionamentos em losango, identificador em círculo preenchido, atributos em círculo vazio e cardinalidade (mín, máx) dos dois lados. **Não há chaves estrangeiras desenhadas**: elas só aparecem no modelo lógico (seção 2).
 
@@ -408,7 +408,24 @@ PDV / balcão ──► MySQL (OLTP, 10 tabelas, triggers de estoque e de preço
 
 ## 2. Modelo Lógico Relacional
 
-> **Imagem do modelo lógico no brModelo: a adicionar** (em produção pelo grupo; será salva em `docs/modelo_logico_brmodelo.png`). Enquanto isso, segue o diagrama gerado do banco real, com o mesmo conteúdo.
+### Modelo lógico no brModelo Web
+
+![Modelo lógico no brModelo](docs/modelo_logico_brmodelo.png)
+
+**Software:** brModelo Web — [link público do modelo](https://app.brmodeloweb.com/publicview/6af3cadd9650b05ddb7b6e26). Feito pelo grupo na notação do brModelo: tabela com o nome no topo, uma linha por coluna com o tipo à direita, marcas **PK** e **FK** e cardinalidade (mín, máx) em cada ponta da ligação.
+
+O diagrama mostra as **10 tabelas** e as ligações principais: Categoria (1,1)–(0,n) Produto; Fornecedor (1,1)–(0,n) Produto; Produto (1,1)–(0,n) Historico_Preco; Produto (1,1)–Estoque; Produto (1,1)–(0,n) Item_venda; Venda (1,1)–(0,n) Item_venda; Cliente (1,1)–(0,n) Venda; Funcionario (1,1)–(0,n) Venda; Venda (1,1)–(0,n) Pagamento.
+
+**Diferenças entre o diagrama do brModelo e o banco implementado** (o banco, em `docs/script.sql`, é a referência):
+
+| No brModelo | No banco (MySQL) | Motivo |
+|---|---|---|
+| Nomes em camelCase (`idProduto`) e tipos genéricos (`FLOAT`, `VARCHAR`, `DATE`) | `id_produto`; valores em `DECIMAL(10,2)`, datas/hora em `DATETIME`, tamanhos de `VARCHAR` definidos | `DECIMAL` evita erro de arredondamento em dinheiro; nomes iguais ao dicionário |
+| Produto–Estoque com (0,n) do lado do estoque | (1,1)–(1,1): `estoque.id_produto` é `UNIQUE` | Cada produto tem exatamente um registro de estoque (RN13) |
+| Diagrama simplificado | Colunas extras: `codigo_interno`, `codigo_barras`, `ncm`, `unidade_medida`, `preco_custo`, `ativo` (produto); `quantidade_minima` (estoque); `tipo_pessoa`, `endereco`, `data_cadastro` (cliente); `cpf`, `data_admissao`, `ativo` (funcionário); `status_venda`, `valor_desconto` (venda); `parcelas` (pagamento) | Regras e consultas da Entrega 2 (RN01, RN06, RN11, RN16, RN17, RN19, RN20; G05, G18, G19) |
+| `telefone` e `email` em Funcionario; `metodo_pagamento`, `valor`, `preco_padrão`, `preco_antigo`, `total` | Funcionário sem contato; `forma_pagamento`, `valor_pago`, `preco_unitario`, `preco_anterior`, `valor_total` | Nomes alinhados ao dicionário de dados; contato do funcionário não é usado em nenhum processo |
+
+### Modelo lógico gerado do banco (referência completa)
 
 **O que o modelo lógico mostra:** as **10 tabelas** do banco `loja_tintas_materiais` — as 9 entidades do DER mais a tabela associativa `item_venda`, que resolve o N:N entre VENDA e PRODUTO —, cada coluna com seu tipo de dado, as **chaves primárias** (PK) e as **9 chaves estrangeiras** (FK) com a cardinalidade (mín, máx) nas duas pontas. Leitura rápida:
 
@@ -499,9 +516,16 @@ Banco-de-dados-3feira/
 └── scripts/                       ← gerar_massa.py, gerar_docs_banco.py, gerar_dicionario.py
 ```
 
-**Commits:** o histórico deve ser **equilibrado entre os 4 integrantes**, cada um com a **própria conta do GitHub** e nome compatível com a tabela de integrantes. Evitar um único commit final.
+**Commits:** o histórico deve ser **equilibrado entre os 4 integrantes**, cada um com a **própria conta do GitHub** e nome compatível com a tabela de integrantes. Evitar um único commit final. *Observação: o integrante Vinicius Batista Merencio não conseguiu acessar o repositório por um problema no compartilhamento do acesso ao GitHub; sua participação (compreensão e análise dos dados) foi feita junto ao grupo, fora do repositório.* Os commits de "Gabriel de Souza" e da conta `gabrieldesouza1830-cell` são do mesmo integrante (Gabriel Souza).
 
-**Responsabilidades:** `[PREENCHER]` (ex.: visita e levantamento; DER no brModelo; script SQL; documentação; pitch e vídeo).
+**Responsabilidades:**
+
+| Integrante | Responsabilidade |
+|---|---|
+| Gabriel Souza | Organização do README (relatório técnico) |
+| Gabriel Rodrigues da Silva | Banco de dados (modelo, script SQL e testes) |
+| Ítalo Leal Oliveira | Entrevista na loja e levantamento dos dados |
+| Vinicius Batista Merencio | Compreensão e análise dos dados |
 
 ## 6. Uso de Inteligência Artificial
 
@@ -543,7 +567,7 @@ Defesa: cada integrante responde só às perguntas dirigidas a ele; todos presen
 7. **Estorno:** venda cancelada depois de paga mantém o pagamento registrado; o estorno não é modelado.
 8. **Entrada de mercadoria** é um `UPDATE` em `estoque`; uma tabela de movimentação daria o histórico de entradas e saídas.
 9. **Parcelamento (RN20):** o limite de 24x é garantido por `CHECK`; a política de 2x/3x é conferida pela auditoria A12, e não bloqueada, porque a loja aceita exceções "a critério da maquininha".
-10. **Loja nova:** se as duas lojas funcionarem ao mesmo tempo, o estoque passa a ser por loja (nova tabela `loja` e FK em `estoque` e `venda`).
+10. **Loja nova:** as duas lojas vão funcionar juntas. Quando a nova abrir, o modelo evolui com a tabela `loja (id_loja, nome, endereco)`, a FK `id_loja` em `venda` e o estoque por loja (`estoque` com `UNIQUE (id_produto, id_loja)`), sem mudar as demais tabelas; as consultas gerenciais passam a poder agrupar por loja.
 
 ## Referências da disciplina
 
