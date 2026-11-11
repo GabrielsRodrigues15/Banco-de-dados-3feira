@@ -121,7 +121,7 @@ CREATE TABLE pagamento (
     data_pagamento   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     parcelas         INT NOT NULL DEFAULT 1,
     CONSTRAINT chk_pagamento_valor CHECK (valor_pago >= 0),
-    CONSTRAINT chk_pagamento_parcelas CHECK (parcelas >= 1),
+    CONSTRAINT chk_pagamento_parcelas CHECK (parcelas BETWEEN 1 AND 24),   -- RN20: limite de 24x no credito
     CONSTRAINT fk_pagamento_venda FOREIGN KEY (id_venda) REFERENCES venda(id_venda)
 ) ENGINE=InnoDB;
 

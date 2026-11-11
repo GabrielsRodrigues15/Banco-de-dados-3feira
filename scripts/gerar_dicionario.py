@@ -72,7 +72,7 @@ VALORES = {
     ("produto", "ativo"): "0 | 1", ("funcionario", "ativo"): "0 | 1",
     ("produto", "preco_unitario"): ">= 0", ("venda", "valor_total"): ">= 0",
     ("item_venda", "quantidade"): "> 0", ("estoque", "quantidade_atual"): ">= 0",
-    ("pagamento", "valor_pago"): ">= 0", ("pagamento", "parcelas"): ">= 1 (2x a partir de R$ 200; 3x a partir de R$ 400)",
+    ("pagamento", "valor_pago"): ">= 0", ("pagamento", "parcelas"): "1 a 24 (2x a partir de R$ 200; 3x a partir de R$ 400; limite de 24x)",
     ("venda", "valor_desconto"): ">= 0 (5% do bruto no PIX)", ("produto", "preco_custo"): ">= 0",
     ("historico_preco", "preco_novo"): ">= 0 e diferente do anterior",
     ("cliente", "cpf_cnpj"): "11 digitos (PF) ou 14 (PJ)", ("fornecedor", "cnpj"): "14 digitos",

@@ -8,16 +8,17 @@ Texto organizado pelo grupo a partir da entrevista e da observação na loja. O 
 |---|---|
 | Organização | **MAXIMO DAS TINTAS LTDA - ME** (nome fantasia: Máximo Das Tintas) — varejo de tintas, ferramentas e materiais de construção |
 | CNPJ | 52.489.342/0001-10 |
-| Endereço | R. Ana Maria Sirani, 577 (placa: 577A) — Conjunto Residencial José Bonifácio, São Paulo/SP |
+| Endereço | R. Ana Maria Sirani, 577 — Conj. Res. José Bonifácio, São Paulo/SP — CEP 08255-400 |
 | Telefones da loja | (11) 2522-8880 · WhatsApp (11) 91297-8462 |
 | Instagram | @maximodastintas |
 | Google Meu Negócio | https://share.google/O58fMgnEeO1ujE6RM |
 | E-mail | maximosdastintas@gmail.com |
 | Responsáveis pela loja | Pedro, Waldeane e Larissa |
 | **Entrevistada** | **Larissa** — Financeiro / Ajudas gerais — telefone **(11) 98338-6503** |
-| Integrante presente na entrevista | Ítalo Leal Oliveira |
+| Integrante presente na entrevista | Ítalo Leal Oliveira (aparece na foto `visita_loja.jpg`) |
+| Vínculo com a loja | Ítalo trabalhou na loja durante seu período profissional (declarado; a entrevista foi feita normalmente com a responsável) |
 | Data e local | 07/11/2026, por volta de 13h, no balcão da loja (data e hora aparecem no relógio do PDV nas fotos) `[VALIDAR]` |
-| Fotos | [`fachada.jpg`](../evidencias/fachada.jpg) · [`mural_cnpj_troca_devolucao.jpg`](../evidencias/mural_cnpj_troca_devolucao.jpg) · [`cadastro_produto_tinta.jpg`](../evidencias/cadastro_produto_tinta.jpg) · [`cadastro_produto_eletrica.jpg`](../evidencias/cadastro_produto_eletrica.jpg) · [`balcao_pdv.jpg`](../evidencias/balcao_pdv.jpg) · [`pdv_tela_venda.jpg`](../evidencias/pdv_tela_venda.jpg) · [`sistema_cadastro_produtos.jpg`](../evidencias/sistema_cadastro_produtos.jpg) · [`visita_loja.jpg`](../evidencias/visita_loja.jpg) |
+| Fotos | [`fachada.jpg`](../evidencias/fachada.jpg) · [`fachada_2.jpg`](../evidencias/fachada_2.jpg) · [`mural_cnpj_troca_devolucao.jpg`](../evidencias/mural_cnpj_troca_devolucao.jpg) · [`cadastro_produto_tinta.jpg`](../evidencias/cadastro_produto_tinta.jpg) · [`cadastro_produto_eletrica.jpg`](../evidencias/cadastro_produto_eletrica.jpg) · [`balcao_pdv.jpg`](../evidencias/balcao_pdv.jpg) · [`pdv_tela_venda.jpg`](../evidencias/pdv_tela_venda.jpg) · [`sistema_cadastro_produtos.jpg`](../evidencias/sistema_cadastro_produtos.jpg) · [`visita_loja.jpg`](../evidencias/visita_loja.jpg) |
 
 ## 2. Roteiro (o que foi perguntado)
 
@@ -58,7 +59,7 @@ Texto organizado pelo grupo a partir da entrevista e da observação na loja. O 
 - **Post-it no monitor** (fotos): **parcelamento a partir de R$ 200 em 2x sem juros e a partir de R$ 400 em 3x sem juros**, "mas podem ajustar a critério da maquininha".
 - **Fichas de produto** ([`cadastro_produto_tinta.jpg`](../evidencias/cadastro_produto_tinta.jpg), [`cadastro_produto_eletrica.jpg`](../evidencias/cadastro_produto_eletrica.jpg)): código interno, código do fabricante, código de barras, descrição, família, fabricante, NCM, **valor de custo**, **"% à Vista" (a margem)**, valor à vista, valor faturado, **data de validade**, **estoque mínimo**, "controlar estoque", % de desconto permitido e as abas **Histórico de Entradas** e **Fornecedores**. Exemplo: adaptador elétrico com custo R$ 2,50 e venda R$ 4,90 (**96%**, item pequeno); aguarrás 400 ml com custo R$ 14,90 e venda R$ 19,90.
 - **Mural da loja** ([`mural_cnpj_troca_devolucao.jpg`](../evidencias/mural_cnpj_troca_devolucao.jpg)): comprovante de inscrição no CNPJ (MAXIMO DAS TINTAS LTDA, 52.489.342/0001-10, "Comércio varejista de tintas e materiais para pintura"), aviso do **CDC** e a política de **troca e devolução**: art. 18 — I. substituição do produto da mesma espécie; II. restituição da quantia paga se não houver o produto para troca; III. abatimento proporcional do preço na troca por outro produto; art. 26 — prazo para reclamar de vícios: **30 dias** (não duráveis) e **90 dias** (duráveis); **não efetuam trocas com embalagem aberta** e **não efetuam trocas de tintas pigmentadas**. Há também uma pasta de **"Boletos - Escritório"** (venda a prazo controlada pelo escritório).
-- **Fachada** ([`fachada.jpg`](../evidencias/fachada.jpg)): "Materiais para construção", selo "Aqui tem Suvinil", telefones e Instagram, número 577A, produtos em oferta na entrada.
+- **Fachada** ([`fachada.jpg`](../evidencias/fachada.jpg)): "Materiais para construção", selo "Aqui tem Suvinil", telefones e Instagram, produtos em oferta na entrada.
 - Câmeras de segurança e telefone fixo no balcão; produtos expostos por tipo (painéis de ferramentas, prateleiras de tintas, rolos/pincéis/fitas no balcão).
 
 **Diferenças entre o dito e o observado:** a entrevistada não citou o orçamento nem o custo, mas os dois estão no sistema; a regra de parcelamento só apareceu no post-it; a tela tem campo de entrega, mas a loja não entrega; o sistema tem campo de **estoque mínimo** (vazio nos produtos vistos) — hoje o mínimo fica na cabeça de quem revisa a loja, e o modelo passa a guardá-lo.

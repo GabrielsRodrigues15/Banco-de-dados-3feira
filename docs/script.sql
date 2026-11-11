@@ -160,7 +160,7 @@ CREATE TABLE pagamento (
     data_pagamento   DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     parcelas         INT NOT NULL DEFAULT 1,
     CONSTRAINT chk_pagamento_valor CHECK (valor_pago >= 0),
-    CONSTRAINT chk_pagamento_parcelas CHECK (parcelas >= 1),
+    CONSTRAINT chk_pagamento_parcelas CHECK (parcelas BETWEEN 1 AND 24),   -- RN20: limite de 24x no credito
     CONSTRAINT fk_pagamento_venda FOREIGN KEY (id_venda) REFERENCES venda(id_venda)
 ) ENGINE=InnoDB;
 
@@ -2800,7 +2800,8 @@ HAVING GROUP_CONCAT(pg.forma_pagamento) IS NULL
     OR ABS(v.valor_desconto - ROUND((v.valor_total + v.valor_desconto) * 0.05, 2)) > 0.01;
 
 -- A12 — Existe parcelamento fora da politica da loja (2x a partir de R$ 200, 3x a partir de R$ 400)?
--- Verifica: RN20 (excecoes sao permitidas "a criterio da maquininha"; a consulta lista para conferencia)
+-- Verifica: RN20 (excecoes ate o limite de 24x sao permitidas "a criterio da maquininha";
+-- a consulta lista essas excecoes para conferencia; acima de 24x a CHECK ja bloqueia)
 SELECT pg.id_pagamento, pg.id_venda, pg.valor_pago, pg.parcelas
 FROM pagamento pg
 WHERE pg.forma_pagamento = 'CARTAO_CREDITO'

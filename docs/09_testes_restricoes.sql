@@ -69,6 +69,9 @@ INSERT INTO venda (id_cliente, id_funcionario, valor_desconto) VALUES (1, 1, -5.
 -- T16 RN21 Historico nao aceita "reajuste" com o mesmo preco -> ERROR 3819 chk_historico_precos
 INSERT INTO historico_preco (id_produto, preco_anterior, preco_novo) VALUES (1, 10.00, 10.00);
 
+-- T17 RN20 Limite de 24 parcelas no credito                -> ERROR 3819 chk_pagamento_parcelas
+INSERT INTO pagamento (id_venda, forma_pagamento, valor_pago, parcelas) VALUES (@v, 'CARTAO_CREDITO', 10.00, 25);
+
 -- Conferencia: nada foi gravado pelos testes acima (esperado: 0 e 0)
 SELECT COUNT(*) AS produtos_teste FROM produto WHERE codigo_interno = 'TESTE01';
 SELECT COUNT(*) AS clientes_teste FROM cliente WHERE nome IN ('Cliente Duplicado', 'CPF Curto');
