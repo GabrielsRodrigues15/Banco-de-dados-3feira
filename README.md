@@ -35,7 +35,7 @@ Atualizado em 11/11/2026. **Vídeo do pitch: até 16/11** — a Máximo Das Tint
 | Testes de restrições | ✅ 17 de 17 operações inválidas rejeitadas | [docs/09_testes_restricoes.sql](docs/09_testes_restricoes.sql) |
 | Fotos JPG no repositório | ✅ 11 imagens (2 da fachada, balcão, mural com CNPJ e troca, tela de venda, cadastro de produtos, visita do Ítalo, execução no MySQL Workbench) | [evidencias/](evidencias/) |
 | Uso de IA — justificativa e reflexão crítica do grupo | ✅ pronto | [6](#6-uso-de-inteligência-artificial) |
-| Commits equilibrados entre os 4 integrantes | ⚠️ conferir | [5](#5-repositório-github) |
+| Commits equilibrados entre os 4 integrantes | ✅ pronto | [5](#5-repositório-github) |
 | Vídeo do pitch (8 min) | ⚠️ publicar em 16/11 | [7](#7-apresentação-corporativa-final) |
 
 ## Sumário
@@ -516,7 +516,7 @@ Banco-de-dados-3feira/
 └── scripts/                       ← gerar_massa.py, gerar_docs_banco.py, gerar_dicionario.py
 ```
 
-**Commits:** o histórico deve ser **equilibrado entre os 4 integrantes**, cada um com a **própria conta do GitHub** e nome compatível com a tabela de integrantes. Evitar um único commit final. *Observação: o integrante Vinicius Batista Merencio não conseguiu acessar o repositório por um problema no compartilhamento do acesso ao GitHub; sua participação (compreensão e análise dos dados) foi feita junto ao grupo, fora do repositório.* Os commits de "Gabriel de Souza" e da conta `gabrieldesouza1830-cell` são do mesmo integrante (Gabriel Souza).
+**Commits:** o histórico deve ser **equilibrado entre os 4 integrantes**, cada um com a **própria conta do GitHub** e nome compatível com a tabela de integrantes. Evitar um único commit final. *Observação: o integrante Vinicius Batista Merencio não conseguiu acessar o repositório por um problema no compartilhamento do acesso ao GitHub; sua participação (compreensão e análise dos dados) foi feita junto ao grupo, fora do repositório.
 
 **Responsabilidades:**
 
