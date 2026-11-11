@@ -1,7 +1,7 @@
 -- =====================================================================
 -- Maximo das Tintas - 04 Massa de dados ficticia (INSERT)
 -- Parte do script unico docs/script.sql (gerado por docs/build_script.sh)
--- GERADO por scripts/gerar_massa.py (semente 20261109) - nao editar a mao.
+-- GERADO por entrega-2/scripts/gerar_massa.py (semente 20261109) - nao editar a mao.
 -- =====================================================================
 USE loja_tintas_materiais;
 

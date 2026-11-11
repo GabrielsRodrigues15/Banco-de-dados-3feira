@@ -435,7 +435,7 @@ O diagrama mostra as **10 tabelas** e as ligações principais: Categoria (1,1)�
 
 ![Modelo lógico](docs/modelo_logico.png)
 
-- **Tabelas, colunas com tipo, PK, FK e cardinalidade (mín, máx) em cada ponta.** Gerado com **Graphviz** a partir do catálogo do MySQL real (`scripts/gerar_docs_banco.py`), então reflete exatamente o banco. Versão vetorial: [`docs/modelo_logico.svg`](docs/modelo_logico.svg).
+- **Tabelas, colunas com tipo, PK, FK e cardinalidade (mín, máx) em cada ponta.** Gerado com **Graphviz** a partir do catálogo do MySQL real (`entrega-2/scripts/gerar_docs_banco.py`), então reflete exatamente o banco. Versão vetorial: [`docs/modelo_logico.svg`](docs/modelo_logico.svg).
 - O esqueleto pede a **notação visual do brModelo**; a versão no brModelo Web (mesmas tabelas, tipos, PK/FK e cardinalidades) está sendo produzida pelo grupo e entrará acima.
 - As demais restrições (`NOT NULL`, `UNIQUE`, `CHECK`, `DEFAULT`) estão no **dicionário de dados**: [`docs/dicionario_dados.html`](docs/dicionario_dados.html), no modelo do `02-03g_Exemplo_Dicionario_Dados.pdf` (modelo conceitual, fluxo de dados, convenções, notação formal por entidade, índices, log de acesso e acesso por operação/LGPD).
 
@@ -448,7 +448,7 @@ O script único é [`docs/script.sql`](docs/script.sql), na ordem exigida, monta
 | `01_create_database.sql` | 1. `CREATE DATABASE` |
 | `02_create_tables.sql` | 2–3. `CREATE TABLE` com PK, FK, `NOT NULL`, `UNIQUE`, `CHECK`, `ENUM`, `DEFAULT`, coluna gerada e índices |
 | `03_triggers_views.sql` | 8 triggers (estoque, RN01 e histórico de preço) e 8 views — criados antes da carga para a massa passar pelas regras |
-| `04_massa_de_dados.sql` | 4. `INSERT INTO` (gerado por `scripts/gerar_massa.py`) |
+| `04_massa_de_dados.sql` | 4. `INSERT INTO` (gerado por `entrega-2/scripts/gerar_massa.py`) |
 | `05_select_join.sql` | 5. `SELECT` com `JOIN` (S01–S05) |
 | `06_update_delete.sql` | 6–7. `UPDATE` (reajuste, orçamento → venda, cadastro, reposição) e `DELETE` (cancelamento, item de orçamento, venda duplicada com devolução de estoque, funcionário, demonstração da auditoria com `ROLLBACK`) |
 | `07_consultas_gerenciais.sql` | 8. **G01–G19**, cada uma com código, pergunta e problema/KPI atendido |
@@ -481,7 +481,7 @@ mysql -u root -p --force loja_tintas_materiais < docs/09_testes_restricoes.sql
 
 ## 4. Massa de Dados
 
-Arquivo: [`docs/04_massa_de_dados.sql`](docs/04_massa_de_dados.sql), gerado por [`scripts/gerar_massa.py`](scripts/gerar_massa.py) (Python, semente fixa: a mesma saída a cada execução). **Nenhum dado pessoal real**: nomes, CPFs, CNPJs, telefones e e-mails são inventados. Os 67 produtos (código, EAN, NCM, descrição) são os reais das listas do PDV. O volume foi calibrado pelos números da entrevista de 07/11/2026.
+Arquivo: [`docs/04_massa_de_dados.sql`](docs/04_massa_de_dados.sql), gerado por [`entrega-2/scripts/gerar_massa.py`](entrega-2/scripts/gerar_massa.py) (Python, semente fixa: a mesma saída a cada execução). **Nenhum dado pessoal real**: nomes, CPFs, CNPJs, telefones e e-mails são inventados. Os 67 produtos (código, EAN, NCM, descrição) são os reais das listas do PDV. O volume foi calibrado pelos números da entrevista de 07/11/2026.
 
 **Como o porte real justifica o volume de cada tabela** (período simulado: jan–jun/2026, segunda a sábado):
 
@@ -507,13 +507,14 @@ Arquivo: [`docs/04_massa_de_dados.sql`](docs/04_massa_de_dados.sql), gerado por 
 ```text
 Banco-de-dados-3feira/
 ├── README.md                      ← relatório técnico (Entrega 2 + Anexo A com a Entrega 1)
-├── levantamento/levantamento.md   ← levantamento da entrevista (o grupo completa)
-├── evidencias/                    ← fotos JPG da visita (balcão/PDV, loja)
+├── levantamento/levantamento.md   ← levantamento da entrevista com a responsável
+├── evidencias/                    ← fotos JPG (fachada, mural, balcão/PDV, sistema, visita, MySQL Workbench)
 ├── docs/                          ← script.sql, 01..09, build_script.sh,
-│                                    modelo lógico (.png/.svg/.dot), dicionario_dados.html
+│                                    modelos lógicos (brModelo e gerado do banco), dicionario_dados.html
 ├── entrega-1/                     ← DER no brModelo (PDF), DER em Chen (PNG), dicionário conceitual (HTML)
 ├── fluxograma/                    ← fluxos de venda e de reposição (.dot/.png/.svg)
-└── scripts/                       ← gerar_massa.py, gerar_docs_banco.py, gerar_dicionario.py
+└── entrega-2/
+    └── scripts/                   ← gerar_massa.py, gerar_docs_banco.py, gerar_dicionario.py
 ```
 
 **Commits:** o histórico deve ser **equilibrado entre os 4 integrantes**, cada um com a **própria conta do GitHub** e nome compatível com a tabela de integrantes. Evitar um único commit final. *Observação: o integrante Vinicius Batista Merencio não conseguiu acessar o repositório por um problema no compartilhamento do acesso ao GitHub; sua participação (compreensão e análise dos dados) foi feita junto ao grupo, fora do repositório.
