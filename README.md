@@ -16,7 +16,7 @@
 
 ## Situação atual do projeto
 
-Atualizado em 11/11/2026. **Vídeo do pitch: até 16/11** — a Máximo Das Tintas não está na lista de seminários presenciais da terça, então o link do vídeo (YouTube, "Não listado", 8 min) vai na [seção 7](#7-apresentação-corporativa-final).
+Atualizado em 17/11/2026. **Vídeo do pitch publicado:** [https://youtu.be/CVn85XaC2j8](https://youtu.be/CVn85XaC2j8) ([seção 7](#7-apresentação-corporativa-final)).
 
 | Item da entrega | Situação | Onde está |
 |---|---|---|
@@ -36,7 +36,7 @@ Atualizado em 11/11/2026. **Vídeo do pitch: até 16/11** — a Máximo Das Tint
 | Fotos JPG no repositório | ✅ 11 imagens (2 da fachada, balcão, mural com CNPJ e troca, tela de venda, cadastro de produtos, visita do Ítalo, execução no MySQL Workbench) | [evidencias/](evidencias/) |
 | Uso de IA — justificativa e reflexão crítica do grupo | ✅ pronto | [6](#6-uso-de-inteligência-artificial) |
 | Commits equilibrados entre os 4 integrantes | ✅ pronto | [5](#5-repositório-github) |
-| Vídeo do pitch (8 min) | ⚠️ publicar em 16/11 | [7](#7-apresentação-corporativa-final) |
+| Vídeo do pitch (8 min) | ✅ publicado | [7](#7-apresentação-corporativa-final) |
 
 ## Sumário
 
@@ -543,7 +543,9 @@ Banco-de-dados-3feira/
 
 ## 7. Apresentação Corporativa Final
 
-**Vídeo do pitch (8 min, YouTube "Não listado"):** link do vídeo A Máximo Das Tintas não está na lista de seminários presenciais da turma de terça; por isso o pitch é entregue em vídeo, com o link aqui no README.
+**Vídeo do pitch (8 min, YouTube "Não listado"):** [https://youtu.be/CVn85XaC2j8](https://youtu.be/CVn85XaC2j8)
+
+A Máximo Das Tintas não está na lista de seminários presenciais da turma de terça; por isso o pitch é entregue em vídeo, com o link aqui no README.
 
 Roteiro (ordem do esqueleto, slides limpos, sem blocos de texto):
 
